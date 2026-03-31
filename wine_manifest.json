@@ -6,8 +6,6 @@
   "background_color": "#4a1942",
   "theme_color": "#4a1942",
   "icons": [
-    {"src": "wine_icon_180.png", "sizes": "180x180", "type": "image/png"},
-    {"src": "wine_icon_512.png", "sizes": "512x512", "type": "image/png"},
     {"src": "wine_icon.svg", "sizes": "any", "type": "image/svg+xml"}
   ]
 }
