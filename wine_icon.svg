@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#4a1942"/>
+      <stop offset="100%" stop-color="#2d1b3d"/>
+    </linearGradient>
+    <linearGradient id="wine" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#c9547a"/>
+      <stop offset="100%" stop-color="#8b2252"/>
+    </linearGradient>
+    <linearGradient id="shine" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#e8a87c" stop-opacity="0.5"/>
+      <stop offset="100%" stop-color="#c9547a" stop-opacity="0.1"/>
+    </linearGradient>
+  </defs>
+  <rect width="512" height="512" rx="96" fill="url(#bg)"/>
+  <!-- Glass bowl -->
+  <path d="M160 120 h192 l-40 160 c-10 40-38 60-56 60 s-46-20-56-60 Z" fill="url(#wine)"/>
+  <!-- Wine surface shine -->
+  <path d="M180 120 h152 l-24 96 c-6 24-28 44-52 44 s-46-20-52-44 Z" fill="url(#shine)"/>
+  <!-- Stem -->
+  <rect x="236" y="340" width="40" height="80" rx="8" fill="#e8a87c"/>
+  <!-- Base -->
+  <rect x="186" y="410" width="140" height="28" rx="14" fill="#e8a87c"/>
+</svg>
