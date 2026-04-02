@@ -1,0 +1,810 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>David's Wine Collection — 249 Wines</title>
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><circle cx='32' cy='32' r='30' fill='%234a1942'/><path d='M22 18h20l-4 16c-1 4-4 6-6 6s-5-2-6-6l-4-16z' fill='%238b2252'/><path d='M24 18h16l-3 12c-.8 3.2-3 5-5 5s-4.2-1.8-5-5l-3-12z' fill='%23c9547a' opacity='.6'/><rect x='30' y='40' width='4' height='10' rx='1' fill='%23e8a87c'/><rect x='25' y='49' width='14' height='3' rx='1.5' fill='%23e8a87c'/></svg>">
+<link rel="apple-touch-icon" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAALQAAAC0CAYAAAA9zQYyAAAAAklEQVR4AewaftIAAAvZSURBVO3Bfej3e13Y8cfzw+efiBhRBFkNuh1FREV/LEarFhTZnZbrznMuzXIbLDY9HDlmN8QE4QcRdDNHndQp3dhcR03oho2x2fSoOX+W3Vi5srIsNUMi9udrO5FkJ23nOtd1fr/v93O9H48e/7H/bCzLQWyW5UA2y3Igm2U5kH0sy3FsluVANstyIJtlOZDNshzIZlkOZB/LchybZTmQzbIcyGZZDmSzLAeyWZYD2ceyHMdmWQ5ksywHsjOW5Sg2y3Igm2U5kH0sy3FsluVANstyIJtlOZDNshzIZlkOZB/LchybZTmQzbIcyGZZDmSzLAeyWZYD2SzLgexjWY5jd8W+7MM+0nJn+cX/8+euyu6KVc7BXd/9dA/58efebzkfuytWTt6Tv+vp3q8sZ2R3xX7+L9/r8R/+UU7VN3/Xt/lAyfLo/dxf/pmrtLsGlVP0Td/5rR6uspyPvuRjv3hcg6/6iI92Kr7xOd/q7/PS573AcvNe9RfvcdV216RyCr7hO57m/6eynIfdNSnX7uuf/TSPRFnOxO6avPJ97/aEf/Axrss/f/a3eKSS5ea84n3vch12uTaVq/ak+57qZlWWm5RrsblGL3/fnyqKoiiKoiiKoiiKoiiKoiiKoiiK4kn3PdWj8aT7nqooiqIoiqIoiqIoiqIoiqIoiqIoiqIoiqIoiqIoiqIoiqIoiqIoiqIoiqIoiqIoiqIoiqIoiqIoipe/709dl31cr8pV+NpnPcWtqCyPzLg+u2tWeSw98d4bbofKcvo21+xl732nEEIIIYQQQgghhBBCCOGJ995wu4QQQgghhBBCCCGEEEIIIYQQQgghhBBCCCGEEEIIIYQQQgghhBBCCCGEEEIIIYTwsve+03XanIBKpVKpVCqVSqVSqVQqlUqlUqk84d4bbqcn3HtDpVKpVCqVSqVSqVQqlUqlUqlUKpVKpVKpVCqVSqVSqVQqlUqlUqlUKpVKpVKpVCqVSqVSqVQqlUqlUqlUKpVK5brtTsBP/9kf+8aP/ji3y1ffc5fHQmX50F76nj9y3XYnotyyr3rmXR5LZTlx+zgNya34ymc+2WMtWT60cf12J+In3v0Od33Mx3s0vuIZT3YVyvIh/Pi73uEU7IxTUblZj/+33+yqfMUznuznfuAnLR/MOAW7E1J5pL7833yT61BZ/raX/MnvOxWbE/KSP/l9RVEURVEURfELP/RTrkNRFEVRFEVRFEVRFEVRFEVRFEVRFEVRFEVRFEVRFEVRFEVRFEVRFEVRFEVRFEVRFEVRFEU5KZsTkyRJkiRJkiTJL/7QS121JEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmS5JTs47S86J1v97THfaJTVVn+xgv/+Pecks0JKoqiKIqiKIriv/z7n3aVvvTbv0FRFEVRFEVRFEVRFEVRFEVRFEVRFEVRFEVRFEVRFEVRFEVRFEVRFEVRFEVRFEVRFEVRlJOzOUGVSqVSqVQqlUql8l+f/59cpUqlUqlUKpVKpVKpVCqVSqVSqVQqlUqlUqlUKpVKpVKpVCqVSqVSqVQqlUqlUqlUKpVKpVKpVCqVSuUFf/R7Ts3uBP3YO37X0z/hk52qynKaNicqhBBCCCGEEP7bf3iZqxJCCCGEEEIIIYQQQgghhBBCCCGEEEIIIYQQQgghhBBCCCGEEEIIIYQQcpp2J+pH//B/+5f/8FOcosqd7kf+4G1O0eaEFUVRFEVRFEVR/Pcf+c+uwhf/qycpiqIoiqIoiqIoiqIoiqIoiqIoiqIoiqIoiqIoiqIoiqIoiqIoiqIoiqIoiqIoiqKcrH2crsrN+h8/+jO+8F98ncda5U71/Lf/jlO1O2HPf/vv+Nef+GlOyavvf8BDKsvp2RzQq+9/wO326vsf8Or7H7Cctr7wcV80Tty3f9I/8mh8wbc90a36pR97ueVv/PDv/pZTtjsDlav2P1/wCg+pLOdjdwbKo/KaF77CP3naE9yM17zwFR5Slof5wbe91anbx+n7gbe91TM+9dM91l77oleqLB/cOH27M5FH58EXvdLnf8vX+Ps8+KJXekiWc9c/fdwXjTNxz6d9hkfrHz/1qz3c6/7jz1oeme//7d9wDnZnpHI7vP7Fr/KQynIsuzNSHrU3vORV3q8sN+H73vrrzsXujHzfW3/dsz79My3Lh7KP85IsV2ucj82ZufjNtyiKoiiKoiiKoiiKoiiKoiiKoiiKoiiKoiiKoiiKoiiKoiiKoiiKoiiKoiiKoiiKoiiKoiiKoiiKoiiKoiiKoiiKoiiK4uI33+Kc7M5QZVk+mN0ZqiyPvef92q84N5sz9Lxf+xVFURRFURRFURRFURRFURRFURRFURRFURRFURRFURRFURRFURRFURRFURRFURRFURRFURRFURRFURRFURRFURRFURTlLO3OVLIsD7eP8/Tct7zZ93zWZ1seG//uV9/sHO3OWGVZPtDujFWW2+973/wm52pzxr73zW8SQgghhBBCCCGEEEIIIYQQQgghhBBCCCGEEEIIIYQQQgghhBBCCCGEEEIIIYQQQgghhBBCCDlvuzNXWZb3252577n8X577uZ9nuT2++01vdM52B1CW5a/sY5y7ynLrnvPGNzh3mwN4zhvfIEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJDmC3UGUZbE5iGf/8utVKpVKpVKpVCqVSqVSqVQqlUqlUqlUKpVKpVKpVCqVSqVSqVQqlUqlUqlUKpVKpVKpVCqVSqVSqVQqlUqlUqlUKpVKpVJ59i+/3hHsDqQsd7jdgVSWm/es1z3oKLbBYDAYDAaDwWAwGAwGg8FgMBgMBoPBYDAYDAaDwWAwGAwGg8FgMBgMBoPBYHDv6x6UJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSDAaDwWAwGAwGg8FgMBgMBoPBYDAYDAaDwWAwGAwGg8FgMBgMBoPBYDAYDAaD3cGU5Q62OZh7HnytSqVSqVQqlUqlUqlUKpVKpVKpVCqVSqVSqVQqlUqlUqlUKpVKpVKpVCqVSqVSqVQqlUqlUqlUKpVKpVKpVCqVSqVyz4OvdSS7A3rma1/jKj3w/V/gdvjae37Jcms2y3Igm2U5kH0sp2Ist2qzLAeyWZYD2SzLgWyW5UA2y3Ig+1hOxVhu1WZZDmSzLAeyWZYD2SzLgWyW5UD2sZyKsdyqzbIcyGZZDmSzLAeyWZYD2SzLgWyW5UD2sZyKsdyqzbIcyGZZDmSzLAeyWZYD2RnLqRjLrdnHcirGcqs2y3Igm2U5kM2yHMhmWQ5ksywHso/lVIzlVu2ynIost2izLAeyWZYD2SzLgWyW5UD2sZyKsdyqzbIcyGZZDmSzLAeyO0Mvvu9znJL3vOsv3A4vvu9znJKnXFw6N5sz9JSLS8vywexjWf6uGxeXztHmTN24uLQsD7dZloe5cXHpXG3O2I2LS8vygTbL8gFuXFw6Z5szd+Pi0rK832ZZ/tqNi0vnbhsMBoPBYDAYDAaDwWAwGAwGg8FgMBgMBoPBYDAYDAaDwWAwGAwGg8FgMBjcfXFpuXWDwWAwGAwGg8FgMBgMBoPBYDAYDAaDwWAwGAwGg8FgMBgMBoPBYDAYDAaDzbL8P3dfXDqCzUHcfXFpWTbLHe/ui0tHsTmQuy8uLXe2zXJHu/vi0pFsg8FgMBgMBoPBYDAYDAaDwWAwGAwGg8FgMBgMBoPBYDAYDAaDwWAwGAwGg8FgcNfFpeWRGwwGg8FgMBgMBoPBYDAYDAaDwWAwGAwGg8FgMBgMBoPBYDAYDAaDwWAwGAwGg81yx7rr4tLRbA7orotLy51pd1B3XVxa7jw7Y1mOYrMsB7KPZTmOzbIcyGZZDmSzLAeyWZYD2SzLgexjWY5jsywHslmWA9ksy4FsluVANstyIPtYluPYLMuBbJblQP4v6itiPvedInIAAAAASUVORK5CYII=">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Wine Collection">
+<meta name="theme-color" content="#4a7cf7">
+<link rel="manifest" href="wine_manifest.json">
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+
+/* ── Light / Dark mode vars ── */
+:root {
+  --bg: #f5f5f7; --text: #2d3748; --text2: #718096; --text3: #94a3c4;
+  --surface: #fff; --surface2: #f9fafd; --border: #eef1f8; --border2: #dde3f0; --border3: #eef1f8;
+  --hover-bg: #f0f4ff; --row-hover: #f5f8ff;
+  --card-bg: #fff; --card-shadow: rgba(100,120,180,0.08); --card-hover-shadow: rgba(100,120,180,0.18);
+  --img-bg: #f5f7fa; --placeholder-bg: linear-gradient(135deg,#f0f4ff,#e8edf8); --placeholder-text: #2d3748; --placeholder-sub: #718096;
+  --input-bg: #f9fafd; --input-text: #2d3748;
+  --th-bg: #4a7cf7; --th-text: #fff; --th-hover: #3a6ce7;
+  --bar-bg: #f0f4ff; --stat-border: #eef1f8;
+  --overlay-bg: rgba(0,0,0,0.4);
+  --detail-bg: #fff; --detail-text: #2d3748; --detail-sub: #718096;
+  --star-empty: #dde3f0;
+}
+body.dark {
+  --bg: #1a1d2e; --text: #e8edf8; --text2: #94a3c4; --text3: #5a6a8a;
+  --surface: #222640; --surface2: #2a2e4a; --border: #2a2e4a; --border2: #3a3e5a; --border3: #2a2e4a;
+  --hover-bg: rgba(74,124,247,0.15); --row-hover: rgba(74,124,247,0.08);
+  --card-bg: #222640; --card-shadow: rgba(0,0,0,0.2); --card-hover-shadow: rgba(0,0,0,0.4);
+  --img-bg: #1a1d2e; --placeholder-bg: linear-gradient(135deg,#2a2e4a,#222640); --placeholder-text: #e8edf8; --placeholder-sub: #94a3c4;
+  --input-bg: #2a2e4a; --input-text: #e8edf8;
+  --th-bg: #2a2e4a; --th-text: #7ba3f7; --th-hover: #3a3e5a;
+  --bar-bg: #1a1d2e; --stat-border: #2a2e4a;
+  --overlay-bg: rgba(0,0,0,0.7);
+  --detail-bg: #222640; --detail-text: #e8edf8; --detail-sub: #94a3c4;
+  --star-empty: #2a2e4a;
+}
+body { background: var(--bg); color: var(--text); font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Text', 'Helvetica Neue', sans-serif; min-height: 100vh; transition: background 0.3s, color 0.3s; padding-bottom: env(safe-area-inset-bottom); }
+
+/* ── Menu bar ── */
+.menubar { display: flex; align-items: center; background: #fff; padding: env(safe-area-inset-top) 20px 0 20px; font-size: 12px; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; z-index: 250; border-bottom: 1px solid #eef1f8; }
+.menu-item { position: relative; }
+.menu-item > span { display: inline-block; padding: 5px 12px; color: #718096; cursor: default; user-select: none; }
+.menu-item:hover > span { background: rgba(74,124,247,0.08); color: #2d3748; }
+.menu-drop { display: none; position: absolute; top: 100%; left: 0; background: var(--surface); border: 1px solid var(--border2); border-radius: 6px; min-width: 180px; padding: 4px 0; box-shadow: 0 8px 24px rgba(0,0,0,0.2); z-index: 400; }
+.menu-item:hover > .menu-drop { display: block; }
+.menu-drop .md-item { padding: 6px 16px; font-size: 12px; color: var(--text); cursor: pointer; display: flex; justify-content: space-between; align-items: center; position: relative; }
+.menu-drop .md-item:hover { background: var(--hover-bg); }
+.menu-drop .md-item.disabled { color: var(--text3); pointer-events: none; }
+.menu-drop .md-sep { height: 1px; background: var(--border); margin: 4px 0; }
+.menu-drop .md-item .shortcut { color: var(--text3); font-size: 11px; }
+/* Cascade submenu */
+.md-item.has-sub { cursor: default; }
+.md-item.has-sub::after { content: '▶'; font-size: 8px; color: var(--text3); margin-left: 8px; }
+.md-sub { display: none; position: absolute; left: 100%; top: -4px; background: var(--surface); border: 1px solid var(--border2); border-radius: 6px; min-width: 160px; padding: 4px 0; box-shadow: 0 8px 24px rgba(0,0,0,0.2); z-index: 401; }
+.md-item.has-sub:hover > .md-sub { display: block; }
+.md-sub .md-item { padding: 6px 16px; font-size: 12px; color: var(--text); cursor: pointer; display: flex; justify-content: space-between; }
+.md-sub .md-item:hover { background: var(--hover-bg); }
+
+.top-fixed { position: sticky; top: 0; z-index: 200; }
+.header { background: #fff; padding: 18px 40px 12px; border-bottom: 1px solid #eef1f8; }
+.header h1 { font-size: 1.9em; color: #2d3748; margin-bottom: 4px; }
+.header h1 span { color: #4a7cf7; }
+.header .subtitle { color: #718096; font-size: 0.9em; }
+.tabs { display: flex; gap: 0; background: var(--surface); border-bottom: 2px solid var(--border); padding: 0 40px; }
+.tab { padding: 10px 26px; cursor: pointer; color: var(--text3); font-size: 13px; font-weight: bold; border-bottom: 3px solid transparent; transition: all 0.2s; letter-spacing: 0.5px; }
+.tab:hover { color: var(--text2); }
+.tab.active { color: #4a7cf7; border-bottom-color: #4a7cf7; }
+.controls { background: var(--surface); padding: 10px 40px; display: flex; gap: 10px; align-items: center; flex-wrap: wrap; border-bottom: 1px solid var(--border); }
+.controls input[type="text"] { padding: 6px 12px; border-radius: 24px; border: 1px solid var(--border2); background: var(--input-bg); color: var(--input-text); font-size: 12px; width: 200px; outline: none; }
+.controls input[type="text"]:focus { border-color: #4a7cf7; }
+.controls select { padding: 6px 8px; border-radius: 16px; border: 1px solid var(--border2); background: var(--input-bg); color: var(--input-text); font-size: 12px; cursor: pointer; max-width: 170px; }
+.controls label { color: var(--text2); font-size: 11px; }
+.controls .rating-range { display: flex; align-items: center; gap: 4px; }
+.controls .rating-range input[type="range"] { width: 60px; accent-color: #4a7cf7; }
+.controls .filter-count { margin-left: auto; color: var(--text3); font-size: 11px; }
+
+/* Multi-select dropdown (shared by type + grape) */
+.ms-dropdown { position: relative; display: inline-block; }
+.ms-dropdown-btn { padding: 5px 10px; border-radius: 10px; border: 1px solid var(--border2); background: var(--input-bg); color: var(--input-text); font-size: 12px; cursor: pointer; min-width: 120px; text-align: left; }
+.ms-dropdown-btn:hover { border-color: var(--text3); }
+.ms-dropdown-list { display: none; position: absolute; top: 100%; left: 0; background: var(--surface); border: 1px solid var(--border2); border-radius: 8px; max-height: 300px; overflow-y: auto; z-index: 300; min-width: 200px; padding: 6px 0; margin-top: 4px; box-shadow: 0 8px 24px rgba(0,0,0,0.12); }
+.ms-dropdown-list.open { display: block; }
+.ms-dropdown-list label { display: flex; align-items: center; gap: 8px; padding: 5px 12px; font-size: 12px; color: var(--text); cursor: pointer; white-space: nowrap; }
+.ms-dropdown-list label:hover { background: var(--hover-bg); }
+.ms-dropdown-list input[type="checkbox"] { accent-color: #4a7cf7; }
+.ms-dropdown-list .ms-all { border-bottom: 1px solid var(--border); padding-bottom: 6px; margin-bottom: 4px; font-weight: bold; color: #4a7cf7; }
+
+/* ── Bottle Grid ── */
+.grid { padding: 18px 40px; display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 16px; }
+.card { position: relative; background: var(--card-bg); border-radius: 24px; overflow: hidden; cursor: pointer; transition: transform 0.25s, box-shadow 0.25s; box-shadow: 0 2px 8px var(--card-shadow); border: 1px solid #eef1f8; }
+.card:hover { transform: translateY(-4px) scale(1.02); box-shadow: 0 10px 25px var(--card-hover-shadow); z-index: 10; }
+.card-img-wrap { width: 100%; aspect-ratio: 3/4; overflow: hidden; background: var(--img-bg); display: flex; align-items: center; justify-content: center; }
+.card-img { max-width: 100%; max-height: 100%; object-fit: contain; display: block; }
+.card-placeholder { width: 100%; aspect-ratio: 3/4; display: flex; flex-direction: column; justify-content: center; align-items: center; padding: 12px; text-align: center; background: var(--placeholder-bg); }
+.card-placeholder .pl-name { font-size: 11px; font-weight: bold; line-height: 1.3; color: var(--placeholder-text); }
+.card-placeholder .pl-winery { font-size: 10px; margin-top: 6px; color: var(--placeholder-sub); }
+.card-type-strip { display: none; }
+.card-info { padding: 8px 10px; }
+.card-name { font-size: 11px; font-weight: bold; color: var(--text); line-height: 1.3; max-height: 2.6em; overflow: hidden; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; }
+.card-winery { font-size: 10px; color: var(--text2); margin-top: 2px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.card-meta { display: flex; justify-content: space-between; align-items: center; margin-top: 4px; }
+.card-rating { font-size: 12px; }
+.card-flag { font-size: 13px; }
+.rotate-btn { position: absolute; top: 6px; right: 6px; z-index: 5; background: var(--surface); color: var(--text2); border: 1px solid var(--border2); border-radius: 50%; width: 44px; height: 44px; font-size: 20px; cursor: pointer; display: none; align-items: center; justify-content: center; line-height: 1; padding: 0; }
+.card:hover .rotate-btn { display: flex; }
+.rotate-btn:hover { background: #4a7cf7; color: white; border-color: #4a7cf7; }
+.detail-rotate { position: absolute; bottom: 12px; right: 12px; z-index: 5; background: var(--surface); color: var(--text2); border: 1px solid var(--border2); border-radius: 6px; padding: 4px 10px; font-size: 12px; cursor: pointer; }
+.detail-rotate:hover { background: #4a7cf7; color: white; border-color: #4a7cf7; }
+
+/* ── Table View ── */
+.table-container { padding: 0 40px 20px; display: none; overflow-x: auto; }
+.wine-table { width: 100%; border-collapse: collapse; font-size: 13px; }
+.wine-table th { background: var(--th-bg); color: var(--th-text); padding: 10px 12px; text-align: left; cursor: pointer; user-select: none; border-bottom: 2px solid #4a7cf7; white-space: nowrap; position: relative; }
+.wine-table th:hover { background: var(--th-hover); }
+.wine-table th .sort-arrow { margin-left: 4px; font-size: 10px; }
+.wine-table th { cursor: grab; }
+.wine-table th:active { cursor: grabbing; }
+.wine-table th.drag-over { border-left: 3px solid #4a7cf7; }
+.wine-table th .col-resize { display: none; }
+.wine-table td { padding: 8px 12px; border-bottom: 1px solid var(--border3); color: var(--text); }
+.wine-table td.wine-name-cell { max-width: 280px; }
+.wine-table td.wine-name-cell a { color: var(--text); text-decoration: none; }
+.wine-table td.wine-name-cell a:hover { color: #4a7cf7; text-decoration: underline; }
+.wine-table tbody tr { cursor: default; transition: background 0.15s; }
+.wine-table tbody tr:hover { background: var(--row-hover); }
+.type-dot { display: inline-block; width: 10px; height: 10px; border-radius: 50%; margin-right: 6px; vertical-align: middle; }
+.type-dot.red { background: #c45670; }
+.type-dot.white { background: #c4a838; }
+.type-dot.rosé { background: #d4789c; }
+.type-dot.sparkling { background: #5fa8d3; }
+
+/* ── Half-star rating editor ── */
+.star-editor { display: inline-flex; align-items: center; gap: 1px; cursor: pointer; font-size: 0; line-height: 1; }
+.star-editor .se-star { position: relative; display: inline-block; width: 20px; height: 20px; }
+.star-editor .se-star .se-bg { position: absolute; top: 0; left: 0; font-size: 20px; color: var(--star-empty); }
+.star-editor .se-star .se-fill { position: absolute; top: 0; left: 0; overflow: hidden; font-size: 20px; color: #4a7cf7; pointer-events: none; }
+.star-editor .se-star .se-half { position: absolute; top: 0; left: 0; width: 50%; height: 100%; z-index: 2; cursor: pointer; }
+.star-editor .se-star .se-full { position: absolute; top: 0; left: 50%; width: 50%; height: 100%; z-index: 2; cursor: pointer; }
+.star-editor .se-val { font-size: 13px; color: #4a7cf7; margin-left: 6px; display: inline-block; min-width: 24px; }
+.star-editor.sm .se-star { width: 16px; height: 16px; }
+.star-editor.sm .se-star .se-bg, .star-editor.sm .se-star .se-fill { font-size: 16px; }
+.star-editor.sm .se-val { font-size: 12px; margin-left: 4px; }
+
+/* read-only mini stars for cards (no numeric value) */
+.stars-ro { font-size: 0; display: inline; }
+.stars-ro .sr { position: relative; display: inline-block; width: 12px; height: 12px; }
+.stars-ro .sr .sb { position: absolute; top: 0; left: 0; font-size: 12px; color: var(--star-empty); }
+.stars-ro .sr .sf { position: absolute; top: 0; left: 0; overflow: hidden; font-size: 12px; color: #4a7cf7; }
+
+/* ── Stats View ── */
+.stats-container { padding: 25px 40px; display: none; }
+.stats-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 20px; }
+.stats-card { background: var(--card-bg); border-radius: 24px; padding: 22px; border: 1px solid var(--border3); box-shadow: 0 2px 8px var(--card-shadow); }
+.stats-card h3 { color: #4a7cf7; font-size: 14px; margin-bottom: 14px; border-bottom: 1px solid var(--border3); padding-bottom: 7px; }
+.bar-chart { display: flex; flex-direction: column; gap: 7px; }
+.bar-row { display: flex; align-items: center; gap: 8px; font-size: 12px; }
+.bar-label { width: 110px; text-align: right; color: var(--text2); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; flex-shrink: 0; }
+.bar-track { flex: 1; height: 18px; background: var(--bar-bg); border-radius: 4px; overflow: hidden; }
+.bar-fill { height: 100%; border-radius: 4px; transition: width 0.5s; display: flex; align-items: center; padding-left: 6px; font-size: 10px; color: white; font-weight: bold; min-width: 18px; }
+.bar-fill.red { background: linear-gradient(90deg, #c45670, #d4789c); }
+.bar-fill.white { background: linear-gradient(90deg, #c4a838, #d4b850); }
+.bar-fill.rosé { background: linear-gradient(90deg, #d4789c, #e488ac); }
+.bar-fill.sparkling { background: linear-gradient(90deg, #5fa8d3, #7bb8e3); }
+.bar-fill.country { background: linear-gradient(90deg, #5fa8d3, #7bb8e3); }
+.bar-fill.rating { background: linear-gradient(90deg, #4a7cf7, #7ba3f7); }
+.big-number { font-size: 2.8em; color: #4a7cf7; font-weight: 300; text-align: center; }
+.big-label { text-align: center; color: #718096; font-size: 12px; margin-top: 3px; }
+.stat-row { display: flex; justify-content: space-between; padding: 5px 0; border-bottom: 1px solid var(--stat-border); font-size: 12px; }
+.stat-row .sl { color: var(--text2); }
+.stat-row .sv { color: #4a7cf7; font-weight: bold; }
+
+/* Collapsible section */
+.collapsible-header { display: flex; align-items: center; justify-content: space-between; cursor: pointer; user-select: none; }
+.collapsible-header .chevron { transition: transform 0.2s; font-size: 12px; color: var(--text3); }
+.collapsible-header .chevron.open { transform: rotate(90deg); }
+.collapsible-body { overflow: hidden; transition: max-height 0.3s ease; }
+.collapsible-body.collapsed { max-height: 0 !important; }
+
+/* ── Wine Detail Overlay ── */
+.wine-detail-overlay { display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: var(--overlay-bg); z-index: 1000; overflow-y: auto; }
+.wine-detail { max-width: 680px; margin: 40px auto; background: var(--detail-bg); border-radius: 24px; overflow: hidden; border: 1px solid var(--border); box-shadow: 0 20px 60px rgba(0,0,0,0.25); }
+.detail-close { position: absolute; top: 14px; right: 18px; font-size: 26px; color: var(--text3); cursor: pointer; z-index: 10; background: var(--surface); border-radius: 50%; width: 38px; height: 38px; display: flex; align-items: center; justify-content: center; transition: color 0.2s; }
+.detail-close:hover { color: var(--text); }
+.detail-hero { position: relative; display: flex; background: var(--img-bg); min-height: 280px; align-items: center; justify-content: center; }
+.detail-img { max-height: 400px; max-width: 260px; object-fit: contain; display: block; margin: 16px auto; }
+.detail-placeholder { display: flex; align-items: center; justify-content: center; min-height: 280px; width: 100%; }
+.detail-placeholder span { font-size: 4em; opacity: 0.3; }
+.detail-body { padding: 28px; }
+.detail-type-badge { display: inline-block; padding: 3px 12px; border-radius: 20px; font-size: 10px; font-weight: bold; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 10px; }
+.detail-type-badge.red { background: #c45670; color: white; }
+.detail-type-badge.white { background: #c4a838; color: #222; }
+.detail-type-badge.rosé { background: #d4789c; color: white; }
+.detail-type-badge.sparkling { background: #5fa8d3; color: white; }
+.detail-name { font-size: 20px; font-weight: bold; color: var(--detail-text); line-height: 1.3; margin-bottom: 4px; }
+.detail-name a { color: var(--detail-text); text-decoration: none; }
+.detail-name a:hover { color: #4a7cf7; text-decoration: underline; }
+.detail-winery { font-size: 14px; color: #4a7cf7; margin-bottom: 14px; }
+.detail-rating-row { margin-bottom: 4px; }
+.detail-meta-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 18px; padding-top: 18px; border-top: 1px solid var(--border3); }
+.detail-meta-item .dm-label { font-size: 10px; text-transform: uppercase; letter-spacing: 1px; color: var(--text3); margin-bottom: 2px; }
+.detail-meta-item .dm-value { font-size: 13px; color: var(--detail-sub); }
+.no-results { text-align: center; padding: 50px; color: var(--text3); font-size: 1.1em; }
+
+@media (max-width: 768px) {
+  .header { padding: 12px 15px 8px; }
+  .header h1 { font-size: 1.4em; }
+  .tabs { padding: 0 15px; }
+  .tab { padding: 8px 14px; font-size: 11px; }
+  .controls { padding: 6px 15px; gap: 6px; }
+  .grid { padding: 10px; grid-template-columns: repeat(auto-fill, minmax(110px, 1fr)); gap: 8px; }
+  .table-container { padding: 0 10px 10px; }
+  .stats-container { padding: 12px; }
+  .stats-grid { grid-template-columns: 1fr; }
+  .wine-detail { margin: 8px; }
+  .detail-body { padding: 18px; }
+  .detail-meta-grid { grid-template-columns: 1fr; }
+}
+
+
+/* ── iOS PWA Support ── */
+@media (display-mode: standalone) {
+  .menubar { padding: env(safe-area-inset-top) 20px 0 20px; }
+}
+
+/* Mobile touch targets - minimum 44px for accessibility */
+button, .tab, .menu-item > span, .ms-dropdown-btn, input[type="text"], select {
+  min-height: 44px;
+  display: flex;
+  align-items: center;
+}
+
+/* Prevent zoom on input focus on iOS */
+input[type="text"], select, textarea { font-size: 16px; }
+</style>
+</head>
+<body>
+<div class="top-fixed">
+<div class="menubar">
+  <div class="menu-item"><span>File</span>
+    <div class="menu-drop">
+      <div class="md-item has-sub">Export
+        <div class="md-sub">
+          <div class="md-item" onclick="exportCSV()">CSV<span class="shortcut">⌘E</span></div>
+          <div class="md-item" onclick="exportJSON()">JSON</div>
+        </div>
+      </div>
+      <div class="md-sep"></div>
+      <div class="md-item" onclick="window.print()">Print<span class="shortcut">⌘P</span></div>
+    </div>
+  </div>
+  <div class="menu-item"><span>Edit</span>
+    <div class="menu-drop">
+      <div class="md-item" onclick="document.getElementById('search').focus()">Find Wine<span class="shortcut">⌘F</span></div>
+      <div class="md-item" onclick="clearFilters()">Clear All Filters</div>
+    </div>
+  </div>
+  <div class="menu-item"><span>View</span>
+    <div class="menu-drop">
+      <div class="md-item" onclick="switchTab('bottle')">Bottles</div>
+      <div class="md-item" onclick="switchTab('table')">Table</div>
+      <div class="md-item" onclick="switchTab('stats')">Stats</div>
+      <div class="md-sep"></div>
+      <div class="md-item" onclick="toggleDarkMode()" id="darkModeMenuItem">Dark Mode</div>
+    </div>
+  </div>
+  <div class="menu-item"><span>Window</span>
+    <div class="menu-drop">
+      <div class="md-item" onclick="document.documentElement.requestFullscreen?.()">Enter Fullscreen</div>
+      <div class="md-item" onclick="window.scrollTo(0,0)">Scroll to Top</div>
+    </div>
+  </div>
+  <div class="menu-item"><span>Help</span>
+    <div class="menu-drop">
+      <div class="md-item" onclick="showAbout()">About Wine Collection</div>
+      <div class="md-sep"></div>
+      <div class="md-item" onclick="window.open('https://www.vivino.com','_blank')">Visit Vivino</div>
+    </div>
+  </div>
+</div>
+<div class="header">
+  <h1>🍷 David's <span>Wine Collection</span></h1>
+  <div class="subtitle">249 wines rated on Vivino</div>
+</div>
+<div class="tabs">
+  <div class="tab active" data-tab="bottle">🍾 Bottles</div>
+  <div class="tab" data-tab="table">📋 Table</div>
+  <div class="tab" data-tab="stats">📊 Stats</div>
+</div>
+<div class="controls" id="controlsBar">
+  <input type="text" id="search" placeholder="Search wines, wineries, grapes...">
+  <select id="countryFilter"><option value="">All Countries</option>
+<option value="Argentina">🇦🇷 Argentina</option>
+<option value="Australia">🇦🇺 Australia</option>
+<option value="Austria">🇦🇹 Austria</option>
+<option value="Chile">🇨🇱 Chile</option>
+<option value="France">🇫🇷 France</option>
+<option value="Georgia">🇬🇪 Georgia</option>
+<option value="Germany">🇩🇪 Germany</option>
+<option value="Italy">🇮🇹 Italy</option>
+<option value="New Zealand">🇳🇿 New Zealand</option>
+<option value="South Africa">🇿🇦 South Africa</option>
+<option value="Spain">🇪🇸 Spain</option>
+<option value="United States">🇺🇸 United States</option>
+<option value="Unknown">🏳️ Unknown</option>
+<option value="Uruguay">🇺🇾 Uruguay</option></select>
+  <div class="ms-dropdown" id="typeDropdown">
+    <button class="ms-dropdown-btn" id="typeBtn">All Types ▾</button>
+    <div class="ms-dropdown-list" id="typeList"></div>
+  </div>
+  <div class="ms-dropdown" id="grapeDropdown">
+    <button class="ms-dropdown-btn" id="grapeBtn">All Grapes ▾</button>
+    <div class="ms-dropdown-list" id="grapeList"></div>
+  </div>
+  <div class="rating-range">
+    <label>Min: <span id="minRatingVal">1.0</span></label>
+    <input type="range" id="minRating" min="1" max="5" step="0.5" value="1">
+    <label>Max: <span id="maxRatingVal">5.0</span></label>
+    <input type="range" id="maxRating" min="1" max="5" step="0.5" value="5">
+  </div>
+  <div class="filter-count" id="filterCount"></div>
+</div>
+</div>
+
+<div class="grid" id="wineGrid"></div>
+<div class="table-container" id="tableView">
+  <table class="wine-table"><thead><tr id="tableHead"></tr></thead><tbody id="tableBody"></tbody></table>
+</div>
+<div class="stats-container" id="statsView"></div>
+<div class="wine-detail-overlay" id="wineDetail"><div class="wine-detail" id="wineDetailContent"></div></div>
+<div class="no-results" id="noResults" style="display:none;">No wines match your filters.</div>
+
+<script>
+const wines = [{"wine": "Himmel auf Erden Grande Cuvée", "winery": "Christian Tschida", "region": "Burgenland", "country": "Austria", "rating": 3.8, "type": "red", "img": "https://images.vivino.com/thumbs/FmqjzClqTi-ANqElNxOVOQ_pl_480x640.png", "grape": "Blend"}, {"wine": "Revazashvilebis Marani Goruli Mtsvane 2023", "winery": "", "region": "", "country": "Unknown", "rating": 2.0, "type": "white", "img": "https://images.vivino.com/labels/boylYAxdRBKjnO01dSDq5A.jpg", "grape": "Mtsvane"}, {"wine": "Patra Marani Rkatsiteli Qvevri", "winery": "", "region": "", "country": "Unknown", "rating": 2.7, "type": "white", "img": "https://images.vivino.com/labels/Dhh8OpZgSreqhyD8IQQ1Ag.jpg", "grape": "Rkatsiteli"}, {"wine": "Chinuri Goruli - Mtsvane White Dry 2023", "winery": "Lamiskana Estate", "region": "Kartli", "country": "Georgia", "rating": 4.6, "type": "white", "img": "https://images.vivino.com/labels/szxwX9nuSXWYK7mvtVTKHw.jpg", "grape": "Mtsvane"}, {"wine": "Rkatsiteli - Mtsvane Dry White 2023", "winery": "Perle du Caucase Giuaani", "region": "Kakheti", "country": "Georgia", "rating": 3.8, "type": "white", "img": "https://images.vivino.com/labels/XHsF_giZQ6yT_BVJeGy21A.jpg", "grape": "Rkatsiteli"}, {"wine": "Tvishi Semi Sweet White 2017", "winery": "Friends' Wine", "region": "Kakheti", "country": "Georgia", "rating": 3.5, "type": "white", "img": "https://images.vivino.com/labels/L0DEgVYqSW6uwYa39cuvDQ.jpg", "grape": "Tvishi"}, {"wine": "Saperavi Qvevri 2024", "winery": "Perle du Caucase Giuaani", "region": "Kakheti", "country": "Georgia", "rating": 2.5, "type": "red", "img": "https://images.vivino.com/labels/f19k0XIdRvC__Ld6B_AibA.jpg", "grape": "Saperavi"}, {"wine": "Mukuzani 2022", "winery": "Friends' Wine", "region": "Mukuzani", "country": "Georgia", "rating": 3.5, "type": "red", "img": "https://images.vivino.com/labels/2qvOrVQNQQaUxqrWCL8CFA.jpg", "grape": "Mukuzani"}, {"wine": "Kindzmaruli 2017", "winery": "Friends' Wine", "region": "Kakheti", "country": "Georgia", "rating": 3.0, "type": "red", "img": "https://images.vivino.com/labels/GwvUVwWvSk6Q7U8wOzs8tA.jpg", "grape": "Kindzmaruli"}, {"wine": "Krakhuna", "winery": "Anemo", "region": "Imereti", "country": "Georgia", "rating": 2.7, "type": "white", "img": "https://images.vivino.com/labels/7ReacQoaRVCuC02Dxq4Jww.jpg", "grape": "Krakhuna"}, {"wine": "Saperavi", "winery": "Anemo", "region": "Kakheti", "country": "Georgia", "rating": 2.7, "type": "red", "img": "https://images.vivino.com/labels/MCecrzJNQrSdR9wpTaN9YA.jpg", "grape": "Saperavi"}, {"wine": "Chardonnay 234 2023", "winery": "Enate", "region": "Somontano", "country": "Spain", "rating": 5.0, "type": "white", "img": "https://images.vivino.com/labels/7A3LzX3bSgGLKAlSETzodg.jpg", "grape": "Chardonnay"}, {"wine": "White Zinfandel", "winery": "Gallo Family Vineyards", "region": "California", "country": "United States", "rating": 3.8, "type": "white", "img": "https://images.vivino.com/thumbs/UwHiFa2KT5Oc_X_hHaq4wA_pl_480x640.png", "grape": "Zinfandel"}, {"wine": "Tantehue Sauvignon Blanc 2024", "winery": "Ventisquero", "region": "Central Valley", "country": "Chile", "rating": 3.6, "type": "white", "img": "https://images.vivino.com/labels/Ws1xklxMQxy-VDkK-4UIYw.jpg", "grape": "Sauvignon Blanc"}, {"wine": "Malbec", "winery": "Catena", "region": "Mendoza", "country": "Argentina", "rating": 3.8, "type": "red", "img": "https://images.vivino.com/thumbs/lyii-OkDTDG6StRGF3qmUQ_pl_480x640.png", "grape": "Malbec"}, {"wine": "Verdejo 2022", "winery": "Marqués de Riscal", "region": "Rueda", "country": "Spain", "rating": 5.0, "type": "red", "img": "https://images.vivino.com/labels/kcyZns9FSPSbTplcKi2wSA.jpg", "grape": "Verdejo"}, {"wine": "Entrecôte Red Blend 2015", "winery": "Gourmet Pere & Fils", "region": "Languedoc-Roussillon", "country": "France", "rating": 3.8, "type": "red", "img": "https://images.vivino.com/labels/GLDi2paWQYK6eh4i9rhn0Q.jpg", "grape": "Blend"}, {"wine": "Crianza Rioja 2019", "winery": "Ramón Bilbao", "region": "Rioja", "country": "Spain", "rating": 4.5, "type": "red", "img": "https://images.vivino.com/labels/jKgtZCTBR82lOuS97nezTw.jpg", "grape": "Tempranillo"}, {"wine": "Don Pascual Tannat 2020", "winery": "Don Pascual", "region": "Juanicó", "country": "Uruguay", "rating": 3.7, "type": "red", "img": "https://images.vivino.com/thumbs/jBRoLRciSva2H-q_zIu5JA_pb_x600.png", "grape": "Tannat"}, {"wine": "Arbol De Acacia Tempranillo 2019", "winery": "Arbol de Acacia", "region": "Vinos de Madrid", "country": "Spain", "rating": 3.0, "type": "red", "img": "https://images.vivino.com/thumbs/Qpqm8u2vTJ2By8RzjGUw6w_150x200.jpg", "grape": "Tempranillo"}, {"wine": "Castillo De Olite Reserva 2016", "winery": "Bodegas Marco Real", "region": "Navarra", "country": "Spain", "rating": 3.5, "type": "red", "img": "https://images.vivino.com/thumbs/vGfa3q-iTtGjpopLDYy9rw_150x200.jpg", "grape": "Blend"}, {"wine": "Cabernet Sauvignon 2021", "winery": "Concha y Toro", "region": "Maipo Valley", "country": "Chile", "rating": 3.3, "type": "red", "img": "https://images.vivino.com/thumbs/xI-IFF5QQ5mBOVvIx7a7Ig_pb_x600.png", "grape": "Cabernet Sauvignon"}, {"wine": "Pinot Noir 2020", "winery": "Novare", "region": "Languedoc-Roussillon", "country": "France", "rating": 3.1, "type": "red", "img": "https://images.vivino.com/thumbs/fjBaM_ZHTxqQtDa5Qj94JQ_pb_x600.png", "grape": "Pinot Noir"}, {"wine": "Côtes du Rhône 2019", "winery": "E. Guigal", "region": "Côtes du Rhône", "country": "France", "rating": 4.0, "type": "red", "img": "https://images.vivino.com/thumbs/I0e3d01sQLumhbrSID4aEg_pb_x600.png", "grape": "Blend"}, {"wine": "Syrah Reserva 2020", "winery": "Aromo", "region": "Maule Valley", "country": "Chile", "rating": 3.7, "type": "red", "img": "https://images.vivino.com/thumbs/WbNsd1YsRkakyrX_d1DKRQ_pb_x600.png", "grape": "Syrah"}, {"wine": "Chardonnay 2020", "winery": "Viña Tarapacá", "region": "Casablanca Valley", "country": "Chile", "rating": 4.5, "type": "white", "img": "https://images.vivino.com/thumbs/_GYW7r0RQ2W_y_mvrbqcqA_pb_x600.png", "grape": "Chardonnay"}, {"wine": "Varietal Sauvignon Blanc 2021", "winery": "Viña Tarapacá", "region": "Central Valley", "country": "Chile", "rating": 4.5, "type": "white", "img": "https://images.vivino.com/thumbs/T7KijYDJQA2MQ3ibWlX3Ow_pb_x600.png", "grape": "Sauvignon Blanc"}, {"wine": "Reserva Merlot 2019", "winery": "Viña Tarapacá", "region": "Maipo Valley", "country": "Chile", "rating": 4.0, "type": "red", "img": "https://images.vivino.com/thumbs/VxWfeB_gRDOlrpdPKKrV9A_pb_x600.png", "grape": "Merlot"}, {"wine": "Merlot 2017", "winery": "Casillero del Diablo", "region": "Central Valley", "country": "Chile", "rating": 3.5, "type": "red", "img": "https://images.vivino.com/thumbs/MbUwLPqCSx2JVTjMgvesmg_pb_x600.png", "grape": "Merlot"}, {"wine": "Reserva Cabernet Sauvignon 2020", "winery": "Viña Tarapacá", "region": "Maipo Valley", "country": "Chile", "rating": 4.0, "type": "red", "img": "https://images.vivino.com/thumbs/Qeil3YFcQnWAUVJSlVpTRg_pb_x600.png", "grape": "Cabernet Sauvignon"}, {"wine": "Gran Reserva Carmenere 2018", "winery": "Viña Tarapacá", "region": "Rapel Valley", "country": "Chile", "rating": 4.2, "type": "red", "img": "https://images.vivino.com/thumbs/yNgzL1k8TeaFvL3h38m1TA_pb_x600.png", "grape": "Carmenère"}, {"wine": "Reserva Chardonnay 2020", "winery": "Viña Tarapacá", "region": "Casablanca Valley", "country": "Chile", "rating": 4.0, "type": "white", "img": "https://images.vivino.com/thumbs/5IcyB7szQ3aVF17iGSQHJw_pb_x600.png", "grape": "Chardonnay"}, {"wine": "Sauvignon Blanc - Semillon 2019", "winery": "Santa Ema", "region": "Central Valley", "country": "Chile", "rating": 4.5, "type": "white", "img": "https://images.vivino.com/thumbs/iQnY4kePTDGC3K3tjEH4lg_pb_x600.png", "grape": "Sauvignon Blanc"}, {"wine": "Serie Riberas Gran Reserva Merlot 2019", "winery": "Concha y Toro", "region": "Rapel Valley", "country": "Chile", "rating": 4.5, "type": "red", "img": "https://images.vivino.com/thumbs/KKXu8Q5jTka14ge6cgUq5A_150x200.jpg", "grape": "Merlot"}, {"wine": "Gran Reserva Cabernet Sauvignon 2019", "winery": "Viña Tarapacá", "region": "Maipo Valley", "country": "Chile", "rating": 4.0, "type": "red", "img": "https://images.vivino.com/thumbs/Qeil3YFcQnWAUVJSlVpTRg_pb_x600.png", "grape": "Cabernet Sauvignon"}, {"wine": "Gran Reserva Merlot 2019", "winery": "Viña Tarapacá", "region": "Maipo Valley", "country": "Chile", "rating": 4.0, "type": "red", "img": "https://images.vivino.com/thumbs/VxWfeB_gRDOlrpdPKKrV9A_pb_x600.png", "grape": "Merlot"}, {"wine": "Sauvignon Blanc 2021", "winery": "Santa Ema", "region": "Leyda Valley", "country": "Chile", "rating": 4.8, "type": "white", "img": "https://images.vivino.com/thumbs/iQnY4kePTDGC3K3tjEH4lg_pb_x600.png", "grape": "Sauvignon Blanc"}, {"wine": "Selecion del Directorio Cabernet Sauvignon 2016", "winery": "Santa Ema", "region": "Maipo Valley", "country": "Chile", "rating": 4.5, "type": "red", "img": "https://images.vivino.com/thumbs/GSfkVv_lSnCANM1xFqyDrA_pb_x600.png", "grape": "Cabernet Sauvignon"}, {"wine": "Gran Reserva Syrah 2019", "winery": "Viña Tarapacá", "region": "Maipo Valley", "country": "Chile", "rating": 4.0, "type": "red", "img": "https://images.vivino.com/thumbs/aCtUIVpeTIiutFRzKjgDgw_pb_x600.png", "grape": "Syrah"}, {"wine": "Gran Reserva Carignan 2017", "winery": "Viña Tarapacá", "region": "Maule Valley", "country": "Chile", "rating": 4.0, "type": "red", "img": "https://images.vivino.com/thumbs/Qeil3YFcQnWAUVJSlVpTRg_pb_x600.png", "grape": "Carignan"}, {"wine": "Reserva Privada Cabernet Sauvignon 2017", "winery": "Viña Tarapacá", "region": "Maipo Valley", "country": "Chile", "rating": 4.5, "type": "red", "img": "https://images.vivino.com/thumbs/nlqFrts9RQuSLOk_ncx6Uw_150x200.jpg", "grape": "Cabernet Sauvignon"}, {"wine": "Gran Reserva Etiqueta Negra Cabernet Sauvignon 2018", "winery": "Viña Tarapacá", "region": "Maipo Valley", "country": "Chile", "rating": 4.5, "type": "red", "img": "https://images.vivino.com/thumbs/nFvNU4DsSmexo75s_ubpoQ_pb_x600.png", "grape": "Cabernet Sauvignon"}, {"wine": "Barrel Selection Cabernet Sauvignon 2018", "winery": "Santa Ema", "region": "Maipo Valley", "country": "Chile", "rating": 4.2, "type": "red", "img": "https://images.vivino.com/thumbs/Arfw0Jz8Qiy88RjY4V4n1A_pb_x600.png", "grape": "Cabernet Sauvignon"}, {"wine": "Rosé 2019", "winery": "Santa Ema", "region": "Maipo Valley", "country": "Chile", "rating": 3.5, "type": "rosé", "img": "https://images.vivino.com/thumbs/va6YBl8aQu-zlxFw0i5Cqg_pb_x600.png", "grape": "Blend"}, {"wine": "Merlot 2021", "winery": "Santa Ema", "region": "Central Valley", "country": "Chile", "rating": 3.6, "type": "red", "img": "https://images.vivino.com/thumbs/Mg0n1ofMR1eA0q1KM8bhXA_pb_x600.png", "grape": "Merlot"}, {"wine": "Amplus Sauvignon Blanc 2017", "winery": "Santa Ema", "region": "San Antonio Valley", "country": "Chile", "rating": 5.0, "type": "white", "img": "https://images.vivino.com/thumbs/u7pEyNELT6S5RsxeqRknbA_pb_x600.png", "grape": "Sauvignon Blanc"}, {"wine": "Panul Cabernet Sauvignon", "winery": "Marchigüe", "region": "Colchagua Valley", "country": "Chile", "rating": 4.0, "type": "red", "img": "https://images.vivino.com/labels/5Ze0UQf0Tna0guczM_h_1Q.jpg", "rotation": 270, "grape": "Cabernet Sauvignon"}, {"wine": "Classic Series Merlot", "winery": "Viña Maipo", "region": "Central Valley", "country": "Chile", "rating": 3.0, "type": "red", "img": "https://images.vivino.com/labels/8w3dgEbIQ_61Q7Z6pu8Zeg.jpg", "rotation": 270, "grape": "Merlot"}, {"wine": "Varietal Cabernet Sauvignon", "winery": "Viña Santa Helena", "region": "Central Valley", "country": "Chile", "rating": 3.7, "type": "red", "img": "https://images.vivino.com/thumbs/_lR6r49qSOice8UWlhCPpw_pl_480x640.png", "grape": "Cabernet Sauvignon"}, {"wine": "Bourgogne Pinot Noir 2020", "winery": "Marie-Louise Parisot", "region": "Bourgogne", "country": "France", "rating": 3.0, "type": "red", "img": "https://images.vivino.com/labels/l0pPwkv0SPGcAARbiEiMAA.jpg", "rotation": 270, "grape": "Pinot Noir"}, {"wine": "Vineyards Pinot Grigio", "winery": "Trapiche", "region": "Mendoza", "country": "Argentina", "rating": 1.8, "type": "white", "img": "https://images.vivino.com/thumbs/qSB4eqN3ThykVhlOoBR4gQ_pl_480x640.png", "grape": "Pinot Grigio"}, {"wine": "Torrontes", "winery": "Phebus", "region": "Mendoza", "country": "Argentina", "rating": 3.5, "type": "red", "img": "https://images.vivino.com/thumbs/K5keQubNRHmGpVVrDFOjFQ_pl_480x640.png", "grape": "Torrontes"}, {"wine": "Tempranillo", "winery": "5 Viñas", "region": "Vino de España", "country": "Spain", "rating": 4.0, "type": "red", "img": "https://images.vivino.com/labels/F4ucEHVwQDmUOtiBUqV3AA.jpg", "grape": "Tempranillo"}, {"wine": "Crianza 2017", "winery": "Castillo de Enériz", "region": "Navarra", "country": "Spain", "rating": 4.0, "type": "red", "img": "https://images.vivino.com/labels/P42w6mM8Q2-QPv2lG1H3Lg.jpg", "rotation": 270, "grape": "Blend"}, {"wine": "Chianti 2017", "winery": "La Cacciatora", "region": "Chianti", "country": "Italy", "rating": 3.8, "type": "red", "img": "https://images.vivino.com/labels/7kpAwMRqRTqasQFHpcOeMQ.jpg", "rotation": 270, "grape": "Sangiovese"}, {"wine": "Cabernet Sauvignon 2021", "winery": "Santa Írene", "region": "Mendoza", "country": "Argentina", "rating": 4.5, "type": "red", "img": "https://images.vivino.com/labels/SltECjMJT9yJAi2YiaVFYA.jpg", "rotation": 270, "grape": "Cabernet Sauvignon"}, {"wine": "Lazo Merlot 2020", "winery": "Undurraga", "region": "Central Valley", "country": "Chile", "rating": 4.2, "type": "red", "img": "https://images.vivino.com/thumbs/wMtZluYsTy6xb8MKls-o6w_pl_480x640.png", "grape": "Merlot"}, {"wine": "Family Selection Gran Reserva Carmenère 2021", "winery": "Luis Felipe Edwards", "region": "Rapel Valley", "country": "Chile", "rating": 3.8, "type": "red", "img": "https://images.vivino.com/labels/nN9dNhP0RAaTCgEBcff0uA.jpg", "rotation": 270, "grape": "Carmenère"}, {"wine": "Sauvignon Blanc 2018", "winery": "Matua", "region": "Marlborough", "country": "New Zealand", "rating": 1.1, "type": "white", "img": "https://images.vivino.com/labels/1G2Tgm7VRcWXH4lFWUmjQQ.jpg", "rotation": 270, "grape": "Sauvignon Blanc"}, {"wine": "Sangiovese - Merlot Ortonese 2019", "winery": "Caldora", "region": "Puglia", "country": "Italy", "rating": 3.5, "type": "red", "img": "https://images.vivino.com/labels/9qSnuDsTTBC3tt1aJzG8-g.jpg", "rotation": 270, "grape": "Sangiovese"}, {"wine": "Montepulciano d'Abruzzo 2020", "winery": "Tavernello", "region": "Montepulciano d'Abruzzo", "country": "Italy", "rating": 2.7, "type": "red", "img": "https://images.vivino.com/labels/RnhFJD4uRS-Ue7RIDghacA.jpg", "rotation": 270, "grape": "Montepulciano"}, {"wine": "Finca La Colonia Malbec 2019", "winery": "Bodega Norton", "region": "Lujan de Cuyo", "country": "Argentina", "rating": 2.4, "type": "red", "img": "https://images.vivino.com/labels/8iMtWv8JTdWg6PMIodE_6A.jpg", "rotation": 270, "grape": "Malbec"}, {"wine": "Pinot Grigio 2018", "winery": "Matua", "region": "Marlborough", "country": "New Zealand", "rating": 1.9, "type": "white", "img": "https://images.vivino.com/labels/st8kqOPxT8qEwaLffoy4zA.jpg", "rotation": 270, "grape": "Pinot Grigio"}, {"wine": "Malbec 2016", "winery": "Bodega Norton", "region": "Mendoza", "country": "Argentina", "rating": 3.8, "type": "red", "img": "https://images.vivino.com/thumbs/jjRiO2x8Q764Ro9J3Dd5hA_pb_x600.png", "grape": "Malbec"}, {"wine": "Los Vascos Sauvignon Blanc 2019", "winery": "Los Vascos", "region": "Colchagua Valley", "country": "Chile", "rating": 3.0, "type": "white", "img": "https://images.vivino.com/thumbs/qKg2Of9ATrisVR6VjRn1rQ_pb_x600.png", "grape": "Sauvignon Blanc"}, {"wine": "Bonterra Cabernet Sauvignon 2019", "winery": "Bonterra", "region": "Mendocino County", "country": "United States", "rating": 3.5, "type": "red", "img": "https://images.vivino.com/thumbs/8xpcqc4USwiCv0pO11o6HA_pb_x600.png", "grape": "Cabernet Sauvignon"}, {"wine": "Moscato", "winery": "Caposaldo", "region": "Provincia di Pavia", "country": "Italy", "rating": 5.0, "type": "white", "img": "https://images.vivino.com/thumbs/QIGZCi1pQHq0b6KdCy70Lw_pb_x600.png", "grape": "Moscato"}, {"wine": "Appassimento Primitivo 2019", "winery": "Epicuro", "region": "Puglia", "country": "Italy", "rating": 3.5, "type": "red", "img": "https://images.vivino.com/thumbs/-ZvFZLxWSbaglW3fzhCzHQ_pb_x600.png", "grape": "Primitivo"}, {"wine": "Red Satin", "winery": "Turning Leaf", "region": "California", "country": "United States", "rating": 5.0, "type": "red", "img": "https://images.vivino.com/thumbs/pW6-nsSBTY2q5OxxgyP71A_pb_x600.png", "grape": "Blend"}, {"wine": "Gran Reserva Carmenère 2015", "winery": "Santa Ema", "region": "Cachapoal Valley", "country": "Chile", "rating": 4.5, "type": "red", "img": "https://images.vivino.com/thumbs/-YbivOH8QQCOzM7soI2gqA_pb_x600.png", "grape": "Carmenère"}, {"wine": "Chardonnay", "winery": "Trackers Crossing", "region": "South Eastern Australia", "country": "Australia", "rating": 5.0, "type": "white", "img": "https://images.vivino.com/thumbs/WBot8XUNQoyMKurEMHUAIg_pl_480x640.png", "grape": "Chardonnay"}, {"wine": "Pinot Noir", "winery": "The Pinot Project", "region": "California", "country": "United States", "rating": 4.0, "type": "red", "img": "https://images.vivino.com/thumbs/ub8F2xtGQ3S8uj7KmBR8WQ_pl_480x640.png", "grape": "Pinot Noir"}, {"wine": "Pinot Noir", "winery": "Angeline", "region": "California", "country": "United States", "rating": 4.0, "type": "red", "img": "https://images.vivino.com/thumbs/71tB55XeTpCt6a6XDMRy4g_pl_480x640.png", "grape": "Pinot Noir"}, {"wine": "Sweet White N.V.", "winery": "New Age", "region": "Mendoza", "country": "Argentina", "rating": 5.0, "type": "white", "img": "https://images.vivino.com/labels/TMR7F3mmTtqDhixoHl_W2w.jpg", "grape": "Blend"}, {"wine": "Bordeaux", "winery": "Château Les Granges", "region": "Bordeaux", "country": "France", "rating": 3.5, "type": "red", "img": "https://images.vivino.com/thumbs/e7wWdMEySq-B7e3LqZUu9A_pl_480x640.png", "grape": "Blend"}, {"wine": "Sauvignon Blanc 2010", "winery": "Paterson", "region": "Marlborough", "country": "New Zealand", "rating": 4.5, "type": "white", "img": "https://images.vivino.com/labels/y9OoLSpxTGCqHQGKxD2UiQ.jpg", "grape": "Sauvignon Blanc"}, {"wine": "Sauvignon Blanc", "winery": "Matua", "region": "Marlborough", "country": "New Zealand", "rating": 1.0, "type": "white", "img": "https://images.vivino.com/thumbs/bM2P3K-bRUWQcFqhivpjLQ_pl_480x640.png", "grape": "Sauvignon Blanc"}, {"wine": "Red", "winery": "Exitus", "region": "California", "country": "United States", "rating": 4.5, "type": "red", "img": "https://images.vivino.com/thumbs/g0DhXzYGTCOTPxoD6TRNIg_pl_480x640.png", "grape": "Blend"}, {"wine": "Pinot Gris", "winery": "Duck Pond", "region": "Willamette Valley", "country": "United States", "rating": 4.0, "type": "white", "img": "https://images.vivino.com/thumbs/nZpBoOtdSP6TYga3h9gEEw_pl_480x640.png", "grape": "Pinot Grigio"}, {"wine": "Sauvignon Blanc", "winery": "Mahau Sound", "region": "Marlborough", "country": "New Zealand", "rating": 5.0, "type": "white", "img": "https://images.vivino.com/thumbs/gBOY_IAvSkWSKkIxKzPb4g_pl_480x640.png", "grape": "Sauvignon Blanc"}, {"wine": "Verdejo", "winery": "Tinto Rey", "region": "Dundee Hills", "country": "United States", "rating": 3.5, "type": "red", "img": "https://images.vivino.com/thumbs/O64LVlI1Rb2j5R6EfSseOA_pl_480x640.png", "grape": "Verdejo"}, {"wine": "Q Malbec", "winery": "Zuccardi", "region": "Uco Valley", "country": "Argentina", "rating": 1.0, "type": "red", "img": "https://images.vivino.com/thumbs/6Vgw3sRxTveQMXUVrGpXsw_pl_480x640.png", "grape": "Malbec"}, {"wine": "Reserva Rioja (Finca Ygay)", "winery": "Marqués de Murrieta", "region": "Rioja", "country": "Spain", "rating": 1.0, "type": "red", "img": "https://images.vivino.com/thumbs/dHMyNYCFQ82jPhgGiQkyow_pl_480x640.png", "grape": "Tempranillo"}, {"wine": "Reserve Riesling 2017", "winery": "Onehope", "region": "Monterey County", "country": "United States", "rating": 5.0, "type": "white", "img": "https://images.vivino.com/labels/hQx_jht8QGq7SSbXSYq-zg.jpg", "grape": "Riesling"}, {"wine": "Real Agrado Blanco", "winery": "Viñedos de Alfaro", "region": "Rioja", "country": "Spain", "rating": 2.5, "type": "white", "img": "https://images.vivino.com/thumbs/WKv_kKAhSZuMzzBGcDohRA_pl_480x640.png", "grape": "Blend"}, {"wine": "Real Agrado Rosado", "winery": "Viñedos de Alfaro", "region": "Rioja", "country": "Spain", "rating": 3.0, "type": "rosé", "img": "https://images.vivino.com/thumbs/5f6BgbUySMKACX_9f3Krmg_pl_480x640.png", "grape": "Blend"}, {"wine": "Real Agrado Tinto", "winery": "Viñedos de Alfaro", "region": "Rioja", "country": "Spain", "rating": 2.0, "type": "red", "img": "https://images.vivino.com/thumbs/MVseaLziSgu92-7V9QPHKA_pl_480x640.png", "grape": "Blend"}, {"wine": "Barolo", "winery": "Natale Verga", "region": "Barolo", "country": "Italy", "rating": 1.5, "type": "red", "img": "https://images.vivino.com/thumbs/J45oTTSiSwenXwNQI9uV9g_pl_480x640.png", "grape": "Nebbiolo"}, {"wine": "Old Vine Zinfandel", "winery": "OZV", "region": "Lodi", "country": "United States", "rating": 5.0, "type": "red", "img": "https://images.vivino.com/thumbs/INn_PkAzQ9uKvXtuLTcFBQ_pl_480x640.png", "grape": "Zinfandel"}, {"wine": "Pinot Noir", "winery": "Muirwood", "region": "Arroyo Seco", "country": "United States", "rating": 5.0, "type": "red", "img": "https://images.vivino.com/thumbs/Hi-U0OGNRIqVOpJHl-b9KQ_pl_480x640.png", "grape": "Pinot Noir"}, {"wine": "Cabernet Sauvignon", "winery": "Hess Select", "region": "North Coast", "country": "United States", "rating": 4.0, "type": "red", "img": "https://images.vivino.com/thumbs/NVn3E4idRjOIsT2wQ0iQyg_pb_x600.png", "grape": "Cabernet Sauvignon"}, {"wine": "The Stump Jump Red 2016", "winery": "d'Arenberg", "region": "McLaren Vale", "country": "Australia", "rating": 4.0, "type": "red", "img": "https://images.vivino.com/thumbs/TgrnAC7rQKm44PrOg2SWcw_pb_x600.png", "grape": "Blend"}, {"wine": "Merlot", "winery": "Hahn", "region": "Central Coast", "country": "United States", "rating": 4.5, "type": "red", "img": "https://images.vivino.com/thumbs/8h7QXVsYRdi6lHUG--iNjA_pb_x600.png", "grape": "Merlot"}, {"wine": "Merlot 2013", "winery": "Northstar", "region": "Columbia Valley", "country": "United States", "rating": 3.0, "type": "red", "img": "https://images.vivino.com/thumbs/QD8c2ZFvRauvkUZyzEmrlQ_pb_x600.png", "grape": "Merlot"}, {"wine": "Cabernet Sauvignon 2016", "winery": "Robert Mondavi", "region": "Napa Valley", "country": "United States", "rating": 4.0, "type": "red", "img": "https://images.vivino.com/thumbs/UOCvMvFxQIKec64BmNc85w_pl_480x640.png", "grape": "Cabernet Sauvignon"}, {"wine": "Pinot Noir 2017", "winery": "Hahn", "region": "Monterey", "country": "United States", "rating": 4.5, "type": "red", "img": "https://images.vivino.com/thumbs/pjxVBkEoQ2aPpYsG_k9U5Q_pb_x600.png", "grape": "Pinot Noir"}, {"wine": "Red Blend 2015", "winery": "Apothic", "region": "California", "country": "United States", "rating": 5.0, "type": "red", "img": "https://images.vivino.com/thumbs/8Zw4qf4IQA-MFtP8rf1QVA_pb_x600.png", "grape": "Blend"}, {"wine": "Pinot Noir", "winery": "Murphy-Goode", "region": "California", "country": "United States", "rating": 4.5, "type": "red", "img": "https://images.vivino.com/thumbs/BTe4yr9iScSfHd1-_6Q-rg_pb_x600.png", "grape": "Pinot Noir"}, {"wine": "Pinot Noir 2016", "winery": "Belle Glos Clark & Telephone", "region": "Santa Maria Valley", "country": "United States", "rating": 5.0, "type": "red", "img": "https://images.vivino.com/thumbs/90WvGviRRGyS_stN6b8sTw_pb_x600.png", "grape": "Pinot Noir"}, {"wine": "Malbec 2016", "winery": "Tentadora", "region": "Cafayate", "country": "Argentina", "rating": 3.0, "type": "red", "img": "https://images.vivino.com/thumbs/HxCucSXXQ26D_i_0e3eHMg_pb_x600.png", "grape": "Malbec"}, {"wine": "Cabernet Sauvignon 2016", "winery": "Hess Select", "region": "North Coast", "country": "United States", "rating": 5.0, "type": "red", "img": "https://images.vivino.com/thumbs/NVn3E4idRjOIsT2wQ0iQyg_pb_x600.png", "grape": "Cabernet Sauvignon"}, {"wine": "Chardonnay 2017", "winery": "Kendall-Jackson", "region": "California", "country": "United States", "rating": 4.5, "type": "white", "img": "https://images.vivino.com/thumbs/20ykzlp3ToqV0sgtOzH3-A_pb_x600.png", "grape": "Chardonnay"}, {"wine": "Rosé (Cuvée Sabine)", "winery": "Bieler Père et Fils", "region": "Coteaux d'Aix-en-Provence", "country": "France", "rating": 4.5, "type": "rosé", "img": "https://images.vivino.com/thumbs/BqF3So1gTpibOAgaWN3Enw_pl_480x640.png", "grape": "Blend"}, {"wine": "Pure Red", "winery": "Old Soul", "region": "California", "country": "United States", "rating": 5.0, "type": "red", "img": "https://images.vivino.com/thumbs/H6hV6X2wTTW9YiDKvBmWdQ_pl_480x640.png", "grape": "Blend"}, {"wine": "California Shiraz", "winery": "Fisheye", "region": "California", "country": "United States", "rating": 2.0, "type": "red", "img": "https://images.vivino.com/labels/00k3n8cbgn1tw.jpg", "grape": "Shiraz"}, {"wine": "Sauvignon Blanc", "winery": "Fisheye", "region": "South Eastern Australia", "country": "Australia", "rating": 2.0, "type": "white", "img": "https://images.vivino.com/thumbs/KNIKzGy9Ra6DWdW_n2gtlQ_pl_480x640.png", "grape": "Sauvignon Blanc"}, {"wine": "California Cabernet Sauvignon", "winery": "Fisheye", "region": "California", "country": "United States", "rating": 1.5, "type": "red", "img": "https://images.vivino.com/thumbs/f5GfMOl9TSCXCxjNNCT4CQ_pl_480x640.png", "grape": "Cabernet Sauvignon"}, {"wine": "Merlot", "winery": "Fisheye", "region": "South Eastern Australia", "country": "Australia", "rating": 2.0, "type": "red", "img": "https://images.vivino.com/thumbs/BefVJH6bSFS16EVPVt1s_A_pl_480x640.png", "grape": "Merlot"}, {"wine": "Chardonnay", "winery": "Fisheye", "region": "South Eastern Australia", "country": "Australia", "rating": 2.0, "type": "white", "img": "https://images.vivino.com/thumbs/6Zv1nFkeRHaLf2XsOnUlNw_pl_480x640.png", "grape": "Chardonnay"}, {"wine": "Shiraz", "winery": "Fisheye", "region": "South Eastern Australia", "country": "Australia", "rating": 2.0, "type": "red", "img": "https://images.vivino.com/thumbs/HxUjlwvfQ76IS8kUiG-H5A_pl_480x640.png", "grape": "Shiraz"}, {"wine": "Pinot Grigio", "winery": "Fisheye", "region": "South Eastern Australia", "country": "Australia", "rating": 4.0, "type": "white", "img": "https://images.vivino.com/thumbs/XAwmWIznTLWgN65akzmqdw_pl_480x640.png", "grape": "Pinot Grigio"}, {"wine": "Cabernet Sauvignon", "winery": "Fisheye", "region": "South Eastern Australia", "country": "Australia", "rating": 2.0, "type": "red", "img": "https://images.vivino.com/thumbs/xlNIDgmeR-2oedk4laD7uA_pl_480x640.png", "grape": "Cabernet Sauvignon"}, {"wine": "Merlot 2015", "winery": "Chateau Ste. Michelle", "region": "Columbia Valley", "country": "United States", "rating": 5.0, "type": "red", "img": "https://images.vivino.com/labels/HzdUcqLdT1iFhTEr-pSvPw.jpg", "grape": "Merlot"}, {"wine": "La Coste Blanche Gaillac 2016", "winery": "Domaine de la Chanade", "region": "Gaillac", "country": "France", "rating": 3.0, "type": "white", "img": "https://images.vivino.com/labels/K25h5v6XShOAlDzaD8b5Jw.jpg", "grape": "Blend"}, {"wine": "Sauvignon Blanc 2016", "winery": "Matua", "region": "Marlborough", "country": "New Zealand", "rating": 5.0, "type": "white", "img": "https://images.vivino.com/labels/nl5Y6MyZQ2C3_geanabL5Q.jpg", "grape": "Sauvignon Blanc"}, {"wine": "Sauvignon blanc", "winery": "", "region": "", "country": "Unknown", "rating": 5.0, "type": "white", "img": "https://images.vivino.com/labels/gQx-fesbScG6FRLWjT0afg.jpg", "grape": "Sauvignon Blanc"}, {"wine": "Malbec", "winery": "Gascon", "region": "Mendoza", "country": "Argentina", "rating": 2.0, "type": "red", "img": "https://images.vivino.com/thumbs/z4LeNFPzSmWx64Qp26uXwQ_pl_480x640.png", "grape": "Malbec"}, {"wine": "Heritage Collection Bush Chenin Blanc", "winery": "Stellenrust", "region": "Stellenbosch", "country": "South Africa", "rating": 5.0, "type": "white", "img": "https://images.vivino.com/thumbs/q-0d5jKkSmij8xNWL14lhA_pl_480x640.png", "grape": "Chenin Blanc"}, {"wine": "Valpolicella Superiore 2016", "winery": "Zenato", "region": "Valpolicella", "country": "Italy", "rating": 4.5, "type": "red", "img": "https://images.vivino.com/thumbs/YCyn2TwuSOuXGsfz5mM8vg_pl_480x640.png", "grape": "Valpolicella"}, {"wine": "Montepulciano d'Abruzzo 2016", "winery": "Colimoro", "region": "Montepulciano d'Abruzzo", "country": "Italy", "rating": 4.5, "type": "red", "img": "https://images.vivino.com/labels/oNN8gMZ2RoCZieUAQZ0ObA.jpg", "grape": "Montepulciano"}, {"wine": "Emeri Pink Moscato N.V.", "winery": "De Bortoli", "region": "Wine of Australia", "country": "Australia", "rating": 5.0, "type": "white", "img": "https://images.vivino.com/thumbs/W4JJDwY-QQ2Fte0tq_5WlA_pl_480x640.png", "grape": "Moscato"}, {"wine": "Hot to Trot White Blend", "winery": "14 Hands", "region": "Washington", "country": "United States", "rating": 5.0, "type": "white", "img": "https://images.vivino.com/thumbs/Jt--TSGOR_K_MjNJQvJLcA_pl_480x640.png", "grape": "Blend"}, {"wine": "Napa Valley Merlot", "winery": "Beringer", "region": "Napa Valley", "country": "United States", "rating": 4.5, "type": "red", "img": "https://images.vivino.com/thumbs/v6MqC3y2TtafGM5bu1Pwvg_pl_480x640.png", "grape": "Merlot"}, {"wine": "Rosso", "winery": "Piccolo Fiore", "region": "Terre Siciliane", "country": "Italy", "rating": 4.5, "type": "red", "img": "https://images.vivino.com/thumbs/YxfMaXLTQvm2py_0uTtutg_pl_480x640.png", "grape": "Blend"}, {"wine": "Sauvignon Blanc", "winery": "Spy Valley", "region": "Marlborough", "country": "New Zealand", "rating": 5.0, "type": "white", "img": "https://images.vivino.com/thumbs/-9pi5eDcT0ybq0g_KYxGAw_pl_480x640.png", "grape": "Sauvignon Blanc"}, {"wine": "Shiraz", "winery": "Greg Norman", "region": "Limestone Coast", "country": "Australia", "rating": 4.5, "type": "red", "img": "https://images.vivino.com/thumbs/dNqidAlfSXmNVQ32PMsnYg_pl_480x640.png", "grape": "Shiraz"}, {"wine": "Blanc de Noirs N.V.", "winery": "Gruet", "region": "New Mexico", "country": "United States", "rating": 4.5, "type": "white", "img": "https://images.vivino.com/thumbs/hGysXTr_RQGxDnV-yjKOLg_pl_480x640.png", "grape": "Blend"}, {"wine": "Riesling", "winery": "Saint M - (Dr. Loosen)", "region": "Pfalz", "country": "Germany", "rating": 4.5, "type": "white", "img": "https://images.vivino.com/thumbs/W82mTvWoRCGZUz267Jp1zQ_pl_480x640.png", "grape": "Riesling"}, {"wine": "Goats do Roam Rosé", "winery": "Fairview", "region": "Paarl", "country": "South Africa", "rating": 5.0, "type": "rosé", "img": "https://images.vivino.com/thumbs/6OCr8UzSSR6y5aCIGLC8BQ_pl_480x640.png", "grape": "Blend"}, {"wine": "Pink Bubbles Rose N.V.", "winery": "Yellow Tail", "region": "South Eastern Australia", "country": "Australia", "rating": 4.5, "type": "rosé", "img": "https://images.vivino.com/thumbs/HJ5owC-8Swq3B83HDD5ubQ_pl_480x640.png", "grape": "Blend"}, {"wine": "Zinfandel Reserve 2014", "winery": "Dancing Bull", "region": "California", "country": "United States", "rating": 3.5, "type": "red", "img": "https://images.vivino.com/thumbs/vgZS3vfcRUu5Rq7k5N6N2Q_pl_480x640.png", "grape": "Zinfandel"}, {"wine": "Les Vignes de Bila-Haut Côtes du Roussillon Villages 2014", "winery": "M. Chapoutier", "region": "Côtes du Roussillon Villages", "country": "France", "rating": 3.5, "type": "red", "img": "https://images.vivino.com/thumbs/ZST2iFNJQXi_mibvIPvslg_pl_480x640.png", "grape": "Blend"}, {"wine": "Cabernet Sauvignon", "winery": "Rex Goliath", "region": "California", "country": "United States", "rating": 4.5, "type": "red", "img": "https://images.vivino.com/thumbs/9pHvzRZHQm-RvTOvk4N63A_pl_480x640.png", "grape": "Cabernet Sauvignon"}, {"wine": "Cabernet Sauvignon", "winery": "Dominio del Plata", "region": "Mendoza", "country": "Argentina", "rating": 4.5, "type": "red", "img": "https://images.vivino.com/thumbs/Fqix1kWhSFqGu95cYz597w_pl_480x640.png", "grape": "Cabernet Sauvignon"}, {"wine": "Coastal Series Cabernet Sauvignon", "winery": "Healdsburg Ranches", "region": "California", "country": "United States", "rating": 4.0, "type": "red", "img": "https://images.vivino.com/thumbs/BYQdYah-R8iOb51TmXr-oQ_pl_480x640.png", "grape": "Cabernet Sauvignon"}, {"wine": "Pinot Grigio", "winery": "Giorgio & Gianni", "region": "delle Venezie", "country": "Italy", "rating": 4.5, "type": "white", "img": "https://images.vivino.com/thumbs/e7pdKUGFTM2oL8F7dJJKGw_pl_480x640.png", "grape": "Pinot Grigio"}, {"wine": "Francs - Côtes de Bordeaux 2011", "winery": "Château Puygueraud", "region": "Francs - Côtes de Bordeaux", "country": "France", "rating": 5.0, "type": "red", "img": "https://images.vivino.com/thumbs/oBHrFgxgR62IbjzhU3jjcw_pb_x600.png", "grape": "Blend"}, {"wine": "Pinot Noir", "winery": "Layer Cake", "region": "Central Coast", "country": "United States", "rating": 4.5, "type": "red", "img": "https://images.vivino.com/thumbs/WoovlZTDQ0us40N3t39hHg_pb_x600.png", "grape": "Pinot Noir"}, {"wine": "Fine Wine Collection Sauvignon Blanc", "winery": "Cederberg", "region": "Cederberg", "country": "South Africa", "rating": 5.0, "type": "white", "img": "https://images.vivino.com/thumbs/fCUNoe3cSu29tGmqyJqj4w_pb_x600.png", "grape": "Sauvignon Blanc"}, {"wine": "Malbec 2014", "winery": "Terrazas de los Andes", "region": "Mendoza", "country": "Argentina", "rating": 5.0, "type": "red", "img": "https://images.vivino.com/thumbs/pdpEVebGREGIgaeACjoKhw_pb_x600.png", "grape": "Malbec"}, {"wine": "Cabernet Sauvignon 2014", "winery": "Mayu", "region": "Elqui Valley", "country": "Chile", "rating": 4.5, "type": "red", "img": "https://images.vivino.com/thumbs/M2S4pkHZRDuAKx1OUPmkQg_150x200.jpg", "grape": "Cabernet Sauvignon"}, {"wine": "Moscato", "winery": "Riunite", "region": "Provincia di Modena", "country": "Italy", "rating": 5.0, "type": "white", "img": "https://images.vivino.com/thumbs/M3Vv3ufST5u70_7JanudtA_pb_x600.png", "grape": "Moscato"}, {"wine": "Prosecco Extra Dry N.V.", "winery": "Riunite", "region": "Prosecco", "country": "Italy", "rating": 4.5, "type": "sparkling", "img": "https://images.vivino.com/thumbs/aSkq3bpbSsyMNTJhxDt89A_pb_x600.png", "grape": "Prosecco"}, {"wine": "Sauvignon Blanc", "winery": "Josh Cellars", "region": "California", "country": "United States", "rating": 5.0, "type": "white", "img": "https://images.vivino.com/thumbs/rTEZiVFtTbm78SvIDT8VlQ_pb_x600.png", "grape": "Sauvignon Blanc"}, {"wine": "Cabernet Sauvignon", "winery": "Josh Cellars", "region": "California", "country": "United States", "rating": 5.0, "type": "red", "img": "https://images.vivino.com/thumbs/09QGU-BwT9WFkZs6ISspZw_pb_x600.png", "grape": "Cabernet Sauvignon"}, {"wine": "Pinot Noir 2015", "winery": "Francis Ford Coppola", "region": "Monterey", "country": "United States", "rating": 4.5, "type": "red", "img": "https://images.vivino.com/thumbs/VnaoYy0pSSCrvNvpUiArQQ_pb_x600.png", "grape": "Pinot Noir"}, {"wine": "Paso Robles Cabernet Sauvignon 2014", "winery": "Justin", "region": "Paso Robles", "country": "United States", "rating": 5.0, "type": "red", "img": "https://images.vivino.com/thumbs/rDW5jrXYQsG6vs0WsnGibg_pb_x600.png", "grape": "Cabernet Sauvignon"}, {"wine": "Grüner Veltliner 2015", "winery": "Hiedler", "region": "Kamptal", "country": "Austria", "rating": 5.0, "type": "white", "img": "https://images.vivino.com/thumbs/Qz6V-iXuSW6MykIS_WscnA_pb_x600.png", "grape": "Grüner Veltliner"}, {"wine": "Pinot Noir Reserve N.V.", "winery": "Winemaker's Selection", "region": "California", "country": "United States", "rating": 5.0, "type": "red", "img": "https://images.vivino.com/thumbs/BjO9sMjyQZe2S4krhtENTA_pb_x600.png", "grape": "Pinot Noir"}, {"wine": "Riesling Spätlese 2012", "winery": "Joh. Jos. Prüm", "region": "Mosel", "country": "Germany", "rating": 5.0, "type": "white", "img": "https://images.vivino.com/thumbs/H6y8DYFpT-OkXnzNtyO43g_pb_x600.png", "grape": "Riesling"}, {"wine": "Malbec Reserva 2012", "winery": "Finca Los Primos", "region": "Mendoza", "country": "Argentina", "rating": 5.0, "type": "red", "img": "https://images.vivino.com/thumbs/xh363tXJRiKCT4IsTzH4dA_pb_x600.png", "grape": "Malbec"}, {"wine": "Red", "winery": "Fish Eye", "region": "", "country": "United States", "rating": 3.5, "type": "red", "img": "https://images.vivino.com/thumbs/jnB4j20XQW-rmfYWXV5-yA_150x200.jpg", "grape": "Blend"}, {"wine": "Reserve Pinot Noir 2014", "winery": "Meiomi", "region": "California", "country": "United States", "rating": 5.0, "type": "red", "img": "https://images.vivino.com/thumbs/Texz6n80QLin4_dhsGhEng_pb_x600.png", "grape": "Pinot Noir"}, {"wine": "Brut Grand Cuvée N.V.", "winery": "Perrier-Jouët", "region": "Champagne", "country": "France", "rating": 5.0, "type": "sparkling", "img": "https://images.vivino.com/thumbs/wKcj7cCzR-aryX6BTRP69A_pb_x600.png", "grape": "Blend"}, {"wine": "Pinot Noir 2013", "winery": "Erath", "region": "Oregon", "country": "United States", "rating": 5.0, "type": "red", "img": "https://images.vivino.com/thumbs/4W4AkiIsSWGgtiJAxKXNgw_pb_x600.png", "grape": "Pinot Noir"}, {"wine": "Malbec", "winery": "Pascual Toso", "region": "Mendoza", "country": "Argentina", "rating": 5.0, "type": "red", "img": "https://images.vivino.com/thumbs/toIDvGr7Rqyxl_L-_wq7Sg_pb_x600.png", "grape": "Malbec"}, {"wine": "Prosecco di Valdobbiadene Superiore Extra Dry N.V.", "winery": "Valdo", "region": "Valdobbiadene Prosecco Superiore", "country": "Italy", "rating": 5.0, "type": "sparkling", "img": "https://images.vivino.com/thumbs/qRYUT9rSTsyaxjpqdFreig_pb_x600.png", "grape": "Prosecco"}, {"wine": "Cuvée Marie Christine Rosé 2015", "winery": "Château de l'Aumérade", "region": "Côtes de Provence", "country": "France", "rating": 4.5, "type": "rosé", "img": "https://images.vivino.com/thumbs/2tL_WvaZSua_YJKdlZW7tw_150x200.jpg", "grape": "Blend"}, {"wine": "Moscato 2015", "winery": "Cupcake", "region": "California", "country": "United States", "rating": 4.5, "type": "white", "img": "https://images.vivino.com/thumbs/RtOMV1aYSJ-Fel9y9DgPYw_pb_x600.png", "grape": "Moscato"}, {"wine": "Pinot Noir", "winery": "A to Z", "region": "Oregon", "country": "United States", "rating": 5.0, "type": "red", "img": "https://images.vivino.com/thumbs/ONkTWXubSKSkrgiK64r4dg_pb_x600.png", "grape": "Pinot Noir"}, {"wine": "(3) Tres Medallas Cabernet Sauvignon 2021", "winery": "Santa Rita", "region": "Central Valley", "country": "Chile", "rating": 2.0, "type": "red", "img": "https://images.vivino.com/labels/nlhuyOaZSheSduwLNA4S5Q.jpg", "rotation": 270, "grape": "Cabernet Sauvignon"}, {"wine": "Pioneer Cabernet Sauvignon 2017", "winery": "Finca La Celia", "region": "Uco Valley", "country": "Argentina", "rating": 3.0, "type": "red", "img": "https://images.vivino.com/labels/xA8Q3lymScGkE5LWH6pKEA.jpg", "rotation": 270, "grape": "Cabernet Sauvignon"}, {"wine": "Classic Series Sauvignon Blanc", "winery": "Viña Maipo", "region": "Central Valley", "country": "Chile", "rating": 2.6, "type": "white", "img": "https://images.vivino.com/labels/P7yLxl49QvaW49Dcey9TGg.jpg", "rotation": 270, "grape": "Sauvignon Blanc"}, {"wine": "Bianco 2017", "winery": "Cantina Colli Euganei", "region": "Colli Euganei", "country": "Italy", "rating": 3.0, "type": "white", "img": "https://images.vivino.com/labels/0o5horK0THm6Z2pDqnHXwQ.jpg", "rotation": 270, "grape": "Blend"}, {"wine": "Antiguas Reservas Cabernet Sauvignon 2017", "winery": "Cousiño-Macul", "region": "Maipo Valley", "country": "Chile", "rating": 4.2, "type": "red", "img": "https://images.vivino.com/labels/7Drcrcc9Tfi3OD-6z-le2w.jpg", "rotation": 270, "grape": "Cabernet Sauvignon"}, {"wine": "Caballito de Mar Verdejo 2020", "winery": "Cuatro Rayas", "region": "Rueda", "country": "Spain", "rating": 3.0, "type": "red", "img": "https://images.vivino.com/labels/K7SzDDlFTg-ELCIWqlj7rQ.jpg", "rotation": 270, "grape": "Verdejo"}, {"wine": "Ice Edition Mousseux N.V.", "winery": "JP. Chenet", "region": "Vin de France", "country": "France", "rating": 4.2, "type": "sparkling", "img": "https://images.vivino.com/labels/fr9Ho8TbR1SDUtGcG20Byg.jpg", "rotation": 270, "grape": "Blend"}, {"wine": "Lazo Merlot", "winery": "Undurraga", "region": "Central Valley", "country": "Chile", "rating": 4.0, "type": "red", "img": "https://images.vivino.com/labels/sWFSFbI0RE63uIJbJms_xA.jpg", "rotation": 270, "grape": "Merlot"}, {"wine": "Linda Mora Syrah Rosé 2021", "winery": "Bodega Finca Las Moras", "region": "San Juan", "country": "Argentina", "rating": 1.9, "type": "rosé", "img": "https://images.vivino.com/labels/fYNKDUn_TBS7Qss8CqrOZw.jpg", "rotation": 270, "grape": "Syrah"}, {"wine": "Reserva Cabernet Sauvignon", "winery": "Quinta Las Cabras", "region": "Rapel Valley", "country": "Chile", "rating": 3.0, "type": "red", "img": "https://images.vivino.com/labels/UyUnaOWdRbeJWGC8vbGQHA.jpg", "rotation": 270, "grape": "Cabernet Sauvignon"}, {"wine": "Ice Edition Mousseux N.V.", "winery": "JP. Chenet", "region": "Vin de France", "country": "France", "rating": 4.1, "type": "sparkling", "img": "https://images.vivino.com/labels/fr9Ho8TbR1SDUtGcG20Byg.jpg", "rotation": 270, "grape": "Blend"}, {"wine": "Carménère", "winery": "Leyenda", "region": "Central Valley", "country": "Chile", "rating": 3.7, "type": "red", "img": "https://images.vivino.com/labels/4xzhrv8XShiFa_a7pGj6GA.jpg", "grape": "Carmenère"}, {"wine": "Estate Malbec 2020", "winery": "Kaiken", "region": "Mendoza", "country": "Argentina", "rating": 4.3, "type": "red", "img": "https://images.vivino.com/labels/WVxwrsmXSjShXDdDTCKYig.jpg", "rotation": 270, "grape": "Malbec"}, {"wine": "Merlot 2020", "winery": "Baron Philippe de Rothschild", "region": "Pays d'Oc", "country": "France", "rating": 3.5, "type": "red", "img": "https://images.vivino.com/labels/W6gHn0hWQLO8wHfx8s3k4A.jpg", "grape": "Merlot"}, {"wine": "Sweet Red", "winery": "Gallo Family Vineyards", "region": "California", "country": "United States", "rating": 3.4, "type": "red", "img": "https://images.vivino.com/thumbs/hCoLyXs3SAS8-4UZk-rUeA_pl_480x640.png", "grape": "Blend"}, {"wine": "Cosecha Tardía Blanco Dulce 2021", "winery": "Bodega Norton", "region": "Mendoza", "country": "Argentina", "rating": 5.0, "type": "white", "img": "https://images.vivino.com/labels/rrbujJh9RxeD8MKN2Ln49g.jpg", "rotation": 270, "grape": "Blend"}, {"wine": "Cabernet Sauvignon 2020", "winery": "Marchigüe", "region": "Rapel Valley", "country": "Chile", "rating": 3.8, "type": "red", "img": "https://images.vivino.com/thumbs/dzQVnO3aSUeKFl7uMG1hLg_pb_x600.png", "grape": "Cabernet Sauvignon"}, {"wine": "Sauvignon Blanc", "winery": "Trapiche", "region": "Mendoza", "country": "Argentina", "rating": 3.6, "type": "white", "img": "https://images.vivino.com/thumbs/5S6cYRr2TxaDoTbcAfrRTg_pb_x600.png", "grape": "Sauvignon Blanc"}, {"wine": "Malbec Reserva 2021", "winery": "Bodega Norton", "region": "Lujan de Cuyo", "country": "Argentina", "rating": 3.2, "type": "red", "img": "https://images.vivino.com/thumbs/jjRiO2x8Q764Ro9J3Dd5hA_pb_x600.png", "grape": "Malbec"}, {"wine": "Cabernet Sauvignon", "winery": "Frontera", "region": "Central Valley", "country": "Chile", "rating": 1.0, "type": "red", "img": "https://images.vivino.com/thumbs/FM0nJWDRS6apb0QXN7q-og_pl_480x640.png", "grape": "Cabernet Sauvignon"}, {"wine": "Colección Privada Merlot", "winery": "Navarro Correas", "region": "Uco Valley", "country": "Argentina", "rating": 4.0, "type": "red", "img": "https://images.vivino.com/thumbs/aCcxVn5KTi2DHH5OQdFwzA_pl_480x640.png", "grape": "Merlot"}, {"wine": "Merlot", "winery": "Gato Negro", "region": "Central Valley", "country": "Chile", "rating": 3.0, "type": "red", "img": "https://images.vivino.com/thumbs/IDiDNSXZRBmfbXAokEA4lg_pl_480x640.png", "grape": "Merlot"}, {"wine": "Reserva Pinot Noir", "winery": "La Moneda", "region": "Central Valley", "country": "Chile", "rating": 3.5, "type": "red", "img": "https://images.vivino.com/labels/FVfb-2aJQ4CYrsr-9GapnQ.jpg", "grape": "Pinot Noir"}, {"wine": "Carmenère", "winery": "Los Riscos", "region": "Curico Valley", "country": "Chile", "rating": 4.0, "type": "red", "img": "https://images.vivino.com/thumbs/oRs94xoAS66V-F-xAt23qQ_pl_480x640.png", "grape": "Carmenère"}, {"wine": "Carmenère 2019", "winery": "Los Riscos", "region": "Curico Valley", "country": "Chile", "rating": 2.5, "type": "red", "img": "https://images.vivino.com/labels/fG8ODw8rT_OkBPBsnp67KA.jpg", "grape": "Carmenère"}, {"wine": "Reserva Carmenère", "winery": "La Moneda", "region": "Central Valley", "country": "Chile", "rating": 3.0, "type": "red", "img": "https://images.vivino.com/labels/RAXxCaMIR22ywKStnqeECg.jpg", "grape": "Carmenère"}, {"wine": "Cabernet Sauvignon 2019", "winery": "Tribu", "region": "Mendoza", "country": "Argentina", "rating": 3.0, "type": "red", "img": "https://images.vivino.com/labels/ylZkaVLQSqW9BLsq4GAnLg.jpg", "grape": "Cabernet Sauvignon"}, {"wine": "Reservado Cabernet Sauvignon 2020", "winery": "Santa Carolina", "region": "Central Valley", "country": "Chile", "rating": 1.0, "type": "red", "img": "https://images.vivino.com/labels/yQZ6JU9eSy6Zb3PvdyRqPg.jpg", "grape": "Cabernet Sauvignon"}, {"wine": "No. 1 Red Sangria Frizzante N.V.", "winery": "Lolea", "region": "Aragón", "country": "Spain", "rating": 4.0, "type": "red", "img": "https://images.vivino.com/thumbs/yrjesrVNTXSF1KEIA6XxTA_pl_480x640.png", "grape": "Blend"}, {"wine": "Roble Cabernet Sauvignon 2019", "winery": "Trapiche", "region": "Mendoza", "country": "Argentina", "rating": 4.0, "type": "red", "img": "https://images.vivino.com/labels/up5DEvFgRPODY59IS5iWVQ.jpg", "grape": "Cabernet Sauvignon"}, {"wine": "Pinot Grigio", "winery": "Sutter Home", "region": "California", "country": "United States", "rating": 5.0, "type": "white", "img": "https://images.vivino.com/thumbs/OFQbmUtnSJqZ46o9vLtCag_pl_480x640.png", "grape": "Pinot Grigio"}, {"wine": "Pinot Grigio", "winery": "Vendange", "region": "California", "country": "United States", "rating": 1.5, "type": "white", "img": "https://images.vivino.com/thumbs/CxH7G7mmQUigTJl-U33A-g_pl_480x640.png", "grape": "Pinot Grigio"}, {"wine": "Chardonnay 2021", "winery": "Vendange", "region": "California", "country": "United States", "rating": 4.0, "type": "white", "img": "https://images.vivino.com/labels/Co20nafGRZG3mIEgABWkPQ.jpg", "grape": "Chardonnay"}, {"wine": "White Zinfandel", "winery": "Sutter Home", "region": "St. Helena", "country": "United States", "rating": 2.0, "type": "white", "img": "https://images.vivino.com/thumbs/trrEIsG-SjyIn_f9VQ2T8A_pl_480x640.png", "grape": "Zinfandel"}, {"wine": "Merlot", "winery": "Vendange", "region": "California", "country": "United States", "rating": 3.0, "type": "red", "img": "https://images.vivino.com/labels/Qtv5uuVqTriCZi1yKZe5qw.jpg", "grape": "Merlot"}, {"wine": "Pinot Noir 2006", "winery": "Sutter Home", "region": "California", "country": "United States", "rating": 4.5, "type": "red", "img": "https://images.vivino.com/labels/0tcJ0i41R2S-3OUd_PW3VQ.jpg", "grape": "Pinot Noir"}, {"wine": "Zinfandel 2015", "winery": "Girasole", "region": "Mendocino", "country": "United States", "rating": 4.0, "type": "red", "img": "https://images.vivino.com/labels/oeI5usHdSPOjWWiSfBdgfg.jpg", "grape": "Zinfandel"}, {"wine": "Reserva Carmenère 2018", "winery": "Santa Rita", "region": "Rapel Valley", "country": "Chile", "rating": 4.0, "type": "red", "img": "https://images.vivino.com/thumbs/VqbBJnT3QXaPKUkZZG6fzg_pb_x600.png", "grape": "Carmenère"}, {"wine": "Cabernet Sauvignon", "winery": "Trivento", "region": "Mendoza", "country": "Argentina", "rating": 3.0, "type": "red", "img": "https://images.vivino.com/thumbs/l7I4DqR5S6-TxWed1omlIA_pb_x600.png", "grape": "Cabernet Sauvignon"}, {"wine": "Late Harvest Sauvignon Blanc 2019", "winery": "Concha y Toro", "region": "Maule Valley", "country": "Chile", "rating": 5.0, "type": "white", "img": "https://images.vivino.com/thumbs/50Yw4QDvQ1aV6b_FJBkZ5Q_pb_x600.png", "grape": "Sauvignon Blanc"}, {"wine": "Grand Vin de Bordeaux 2018", "winery": "Château Le Gardera", "region": "Bordeaux Supérieur", "country": "France", "rating": 3.5, "type": "red", "img": "https://images.vivino.com/thumbs/ezy5ygMkRmqof9qQTSBRiA_pb_x600.png", "grape": "Blend"}, {"wine": "Merlot", "winery": "Los Riscos", "region": "Rapel Valley", "country": "Chile", "rating": 3.0, "type": "red", "img": "https://images.vivino.com/thumbs/jhJckkwQSu-w7-qOlqoTgw_pb_x600.png", "grape": "Merlot"}, {"wine": "Merlot 2019", "winery": "Veramonte", "region": "Casablanca Valley", "country": "Chile", "rating": 3.7, "type": "red", "img": "https://images.vivino.com/thumbs/GEbwVCZmTcCIIMSFC9RaOw_pb_x600.png", "grape": "Merlot"}, {"wine": "Reserva Cabernet Sauvignon 2019", "winery": "Santa Rita", "region": "Maipo Valley", "country": "Chile", "rating": 4.3, "type": "red", "img": "https://images.vivino.com/thumbs/rj9XOsmoRVm0Z2oNrFMhLA_pb_x600.png", "grape": "Cabernet Sauvignon"}, {"wine": "Sauvignon Blanc 2021", "winery": "Veramonte", "region": "Casablanca Valley", "country": "Chile", "rating": 3.5, "type": "white", "img": "https://images.vivino.com/thumbs/fItEQEL0SFOx3UednQO_FQ_pb_x600.png", "grape": "Sauvignon Blanc"}, {"wine": "Trebbiano d'Abruzzo", "winery": "Tavernello", "region": "Trebbiano d'Abruzzo", "country": "Italy", "rating": 3.5, "type": "white", "img": "https://images.vivino.com/thumbs/Ph1Fr_mzQDuEMdlenOTokg_pb_x600.png", "grape": "Trebbiano"}, {"wine": "Nero d'Avola 2019", "winery": "Tavernello", "region": "Terre Siciliane", "country": "Italy", "rating": 3.3, "type": "red", "img": "https://images.vivino.com/thumbs/GUy9P6x9RcuAbwkVikeirg_pb_x600.png", "grape": "Nero d'Avola"}, {"wine": "Moscato", "winery": "Primo Amore", "region": "Provincia di Pavia", "country": "Italy", "rating": 5.0, "type": "white", "img": "https://images.vivino.com/thumbs/Cbdg2rvHQ-KwerINDRnueg_pb_x600.png", "grape": "Moscato"}, {"wine": "Merlot", "winery": "Tavernello", "region": "Rubicone", "country": "Italy", "rating": 3.6, "type": "red", "img": "https://images.vivino.com/thumbs/LHReKTleSfW09O0pDRZVvQ_150x200.jpg", "grape": "Merlot"}, {"wine": "Vino Rosso", "winery": "Tavernello", "region": "Rubicone", "country": "Italy", "rating": 3.6, "type": "red", "img": "https://images.vivino.com/thumbs/NmsCW8-kRD-yze064jzgEA_pb_x600.png", "grape": "Blend"}, {"wine": "Sangiovese", "winery": "Tavernello", "region": "Rubicone", "country": "Italy", "rating": 3.6, "type": "red", "img": "https://images.vivino.com/thumbs/OzBA2BAjQkSkrk2P2qn7TQ_pb_x600.png", "grape": "Sangiovese"}, {"wine": "Pinot Noir 2018", "winery": "Undurraga", "region": "Central Valley", "country": "Chile", "rating": 3.5, "type": "red", "img": "https://images.vivino.com/thumbs/8WpFGs4vRXOGobKRiN8oRQ_pb_x600.png", "grape": "Pinot Noir"}, {"wine": "Pinot Noir 2019", "winery": "Marchigüe", "region": "Casablanca Valley", "country": "Chile", "rating": 3.5, "type": "red", "img": "https://images.vivino.com/thumbs/wL6bbO0CTV29blXpOcYwOw_150x200.jpg", "grape": "Pinot Noir"}, {"wine": "Merlot 2018", "winery": "Bonterra", "region": "Mendocino County", "country": "United States", "rating": 4.0, "type": "red", "img": "https://images.vivino.com/thumbs/IgV5ROxXT0Gg9BZH6NQgdA_pb_x600.png", "grape": "Merlot"}, {"wine": "Gran Reserva Cabernet Sauvignon 2018", "winery": "Marchigüe", "region": "Rapel Valley", "country": "Chile", "rating": 3.8, "type": "red", "img": "https://images.vivino.com/thumbs/LsvUFtICTZmgWwYYGlKWow_150x200.jpg", "grape": "Cabernet Sauvignon"}, {"wine": "Toro de Piedra Gran Reserva Cabernet Sauvignon - Syrah 2017", "winery": "Marchigüe", "region": "Rapel Valley", "country": "Chile", "rating": 3.6, "type": "red", "img": "https://images.vivino.com/thumbs/XMikFMRXSYOGUV7ZomG3bw_pb_x600.png", "grape": "Cabernet Sauvignon"}, {"wine": "Chardonnay 2017", "winery": "Bonterra", "region": "Mendocino County", "country": "United States", "rating": 4.5, "type": "white", "img": "https://images.vivino.com/thumbs/4O4ZRPecRW6AidnGvzEIPw_pb_x600.png", "grape": "Chardonnay"}, {"wine": "Organic Pinot Noir 2018", "winery": "Bonterra", "region": "Mendocino County", "country": "United States", "rating": 4.0, "type": "red", "img": "https://images.vivino.com/thumbs/ydA5zAwSQa21OwEIxIMzxA_pb_x600.png", "grape": "Pinot Noir"}, {"wine": "Sauvignon Blanc 2020", "winery": "Bonterra", "region": "Mendocino County", "country": "United States", "rating": 3.5, "type": "white", "img": "https://images.vivino.com/thumbs/3FV5dARRS3ybyCHHhFGHCw_pb_x600.png", "grape": "Sauvignon Blanc"}, {"wine": "Chardonnay 2018", "winery": "Bonterra", "region": "Mendocino County", "country": "United States", "rating": 4.0, "type": "white", "img": "https://images.vivino.com/thumbs/4O4ZRPecRW6AidnGvzEIPw_pb_x600.png", "grape": "Chardonnay"}, {"wine": "Sauvignon Blanc 2019", "winery": "Bonterra", "region": "Mendocino County", "country": "United States", "rating": 4.5, "type": "white", "img": "https://images.vivino.com/thumbs/3FV5dARRS3ybyCHHhFGHCw_pb_x600.png", "grape": "Sauvignon Blanc"}, {"wine": "Chardonnay", "winery": "Trackers Crossing", "region": "South Eastern Australia", "country": "Australia", "rating": 5.0, "type": "white", "img": "https://images.vivino.com/thumbs/WBot8XUNQoyMKurEMHUAIg_pl_480x640.png", "grape": "Chardonnay"}, {"wine": "Fantini Montepulciano d'Abruzzo", "winery": "Fantini", "region": "Montepulciano d'Abruzzo", "country": "Italy", "rating": 5.0, "type": "red", "img": "https://images.vivino.com/thumbs/GrOJatzqQqawn9sxUcf-Sg_pl_480x640.png", "grape": "Montepulciano"}, {"wine": "Cabernet Sauvignon (Reserva) 2013", "winery": "Casillero del Diablo", "region": "Central Valley", "country": "Chile", "rating": 1.0, "type": "red", "img": "https://images.vivino.com/labels/-DsFJiSbT7yLBxcibaP-6Q.jpg", "grape": "Cabernet Sauvignon"}, {"wine": "Sauvignon Blanc (Reserva)", "winery": "Casillero del Diablo", "region": "Casablanca Valley", "country": "Chile", "rating": 3.0, "type": "white", "img": "https://images.vivino.com/thumbs/LwMdHK4ERTKmIDuI5YezjA_pl_480x640.png", "grape": "Sauvignon Blanc"}, {"wine": "Lazo Cabernet Sauvignon", "winery": "Undurraga", "region": "Central Valley", "country": "Chile", "rating": 3.5, "type": "red", "img": "https://images.vivino.com/thumbs/vDvaj9InSQ6l_p_Tt2jRWA_pl_480x640.png", "grape": "Cabernet Sauvignon"}, {"wine": "Las Moras Pinot Grigio 2020", "winery": "Bodega Finca Las Moras", "region": "San Juan", "country": "Argentina", "rating": 2.5, "type": "white", "img": "https://images.vivino.com/labels/-xOV6XmBQXKAWfRkG6K3Mw.jpg", "grape": "Pinot Grigio"}, {"wine": "Tempranillo", "winery": "Sobremonte", "region": "Vino de España", "country": "Spain", "rating": 4.5, "type": "red", "img": "https://images.vivino.com/thumbs/CfHueqcNSd6j6zcpqzb6Ow_pl_480x640.png", "grape": "Tempranillo"}, {"wine": "Verdeo Verdejo", "winery": "Familia Torres", "region": "Rueda", "country": "Spain", "rating": 3.5, "type": "red", "img": "https://images.vivino.com/thumbs/5CaqngtcR5qW67CRfERGkA_pl_480x640.png", "grape": "Verdejo"}, {"wine": "Peñasol Cabernet Sauvignon", "winery": "Félix Solís", "region": "La Mancha", "country": "Spain", "rating": 3.0, "type": "red", "img": "https://images.vivino.com/thumbs/PV9iaDdwRzqdGzZx0o3JAA_pl_480x640.png", "grape": "Cabernet Sauvignon"}, {"wine": "Peñasol Selección Merlot", "winery": "Félix Solís", "region": "La Mancha", "country": "Spain", "rating": 4.0, "type": "red", "img": "https://images.vivino.com/thumbs/F-UqDc8FTYetWxGDli28Ew_pl_480x640.png", "grape": "Merlot"}, {"wine": "Tempranillo - Syrah", "winery": "Loco Barber", "region": "Catalunya", "country": "Spain", "rating": 4.5, "type": "red", "img": "https://images.vivino.com/labels/tWYsjZCPSpKZUmtjH9AP1Q.jpg", "grape": "Tempranillo"}, {"wine": "Lazo Cabernet Sauvignon", "winery": "Undurraga", "region": "Central Valley", "country": "Chile", "rating": 4.5, "type": "red", "img": "https://images.vivino.com/thumbs/vDvaj9InSQ6l_p_Tt2jRWA_pl_480x640.png", "grape": "Cabernet Sauvignon"}, {"wine": "Verdejo", "winery": "Pata Negra", "region": "Rueda", "country": "Spain", "rating": 1.0, "type": "red", "img": "https://images.vivino.com/thumbs/wJwFIu2lSi6I53iQkm5SGQ_pl_480x640.png", "grape": "Verdejo"}, {"wine": "Protos Verdejo", "winery": "", "region": "", "country": "Unknown", "rating": 5.0, "type": "red", "img": "https://images.vivino.com/thumbs/WCHCjtFpTHu0KKNKZJpjzA_pb_x600.png", "grape": "Verdejo"}, {"wine": "Valdepeñas Reserva", "winery": "Pata Negra", "region": "Valdepeñas", "country": "Spain", "rating": 3.0, "type": "red", "img": "https://images.vivino.com/thumbs/mOJQdr27Tb67-8KZ-itwbA_pl_480x640.png", "grape": "Tempranillo"}, {"wine": "Carmenère", "winery": "Sonata", "region": "Central Valley", "country": "Chile", "rating": 4.0, "type": "red", "img": "https://images.vivino.com/labels/89kgtYYlQB-uvTEYFn2WpA.jpg", "grape": "Carmenère"}, {"wine": "Snoop Cali Red", "winery": "19 Crimes", "region": "California", "country": "United States", "rating": 5.0, "type": "red", "img": "https://images.vivino.com/thumbs/BwuNhCOvTrSRHwkslD5tVA_pl_480x640.png", "grape": "Blend"}, {"wine": "Pinot Grigio", "winery": "Principato", "region": "Provincia di Pavia", "country": "Italy", "rating": 3.5, "type": "white", "img": "https://images.vivino.com/thumbs/E3hjGmArRNaW2rwpuZdkag_pl_480x640.png", "grape": "Pinot Grigio"}, {"wine": "Selección Especial Tempranillo", "winery": "Marqués de Léon", "region": "Vino de España", "country": "Spain", "rating": 3.5, "type": "red", "img": "https://images.vivino.com/labels/IXKPv3naS_SAmHlmbxrRXQ.jpg", "grape": "Tempranillo"}, {"wine": "Cabernet Sauvignon 2019", "winery": "Los Riscos", "region": "Rapel Valley", "country": "Chile", "rating": 2.5, "type": "red", "img": "https://images.vivino.com/thumbs/G5vV6wKoRQi_guhwXlxGXQ_150x200.jpg", "grape": "Cabernet Sauvignon"}, {"wine": "Pinot Noir 2020", "winery": "Los Riscos", "region": "Casablanca Valley", "country": "Chile", "rating": 2.5, "type": "red", "img": "https://images.vivino.com/thumbs/sQbl5F0rQt2DbeXgefPgyw_150x200.jpg", "grape": "Pinot Noir"}, {"wine": "Malbec 2019", "winery": "Viñas del Desierto", "region": "Mendoza", "country": "Argentina", "rating": 3.5, "type": "red", "img": "https://images.vivino.com/thumbs/yoKKwboeSJma6udgX1IGVw_150x200.jpg", "grape": "Malbec"}, {"wine": "Cabernet Sauvignon", "winery": "Undurraga", "region": "Central Valley", "country": "Chile", "rating": 3.2, "type": "red", "img": "https://images.vivino.com/labels/g09susmSSgqenqwWS3FB9Q.jpg", "rotation": 270, "grape": "Cabernet Sauvignon"}, {"wine": "Merlot 2019", "winery": "Marchigüe", "region": "Central Valley", "country": "Chile", "rating": 3.8, "type": "red", "img": "https://images.vivino.com/thumbs/42gi8XOHQei9itAtDXNmvw_pb_x600.png", "grape": "Merlot"}, {"wine": "Tempranillo", "winery": "El Torero", "region": "La Mancha", "country": "Spain", "rating": 4.5, "type": "red", "img": "https://images.vivino.com/thumbs/wZ3eYj_nT4C3g0ajlFKtGw_150x200.jpg", "grape": "Tempranillo"}, {"wine": "Reserva Cabernet Sauvignon", "winery": "Marchigüe", "region": "Rapel Valley", "country": "Chile", "rating": 3.5, "type": "red", "img": "https://images.vivino.com/thumbs/ivvvb0oSTii85S6xtTRGlA_pb_x600.png", "grape": "Cabernet Sauvignon"}, {"wine": "Selected Varietals Merlot", "winery": "Concha y Toro", "region": "Central Valley", "country": "Chile", "rating": 4.0, "type": "red", "img": "https://images.vivino.com/thumbs/gwR8MWdZRDijlcml8VWIgg_pb_x600.png", "grape": "Merlot"}, {"wine": "Cabernet Sauvignon", "winery": "Frontera", "region": "Central Valley", "country": "Chile", "rating": 1.0, "type": "red", "img": "https://images.vivino.com/thumbs/FM0nJWDRS6apb0QXN7q-og_pl_480x640.png", "grape": "Cabernet Sauvignon"}];
+const flags = {"Argentina": "🇦🇷", "Australia": "🇦🇺", "Austria": "🇦🇹", "Chile": "🇨🇱", "France": "🇫🇷", "Georgia": "🇬🇪", "Germany": "🇩🇪", "Italy": "🇮🇹", "New Zealand": "🇳🇿", "South Africa": "🇿🇦", "Spain": "🇪🇸", "United States": "🇺🇸", "Uruguay": "🇺🇾", "Unknown": "🏳️"};
+const allGrapes = ["Blend", "Cabernet Sauvignon", "Carignan", "Carmenère", "Chardonnay", "Chenin Blanc", "Grüner Veltliner", "Kindzmaruli", "Krakhuna", "Malbec", "Merlot", "Montepulciano", "Moscato", "Mtsvane", "Mukuzani", "Nebbiolo", "Nero d'Avola", "Pinot Grigio", "Pinot Noir", "Primitivo", "Prosecco", "Riesling", "Rkatsiteli", "Sangiovese", "Saperavi", "Sauvignon Blanc", "Shiraz", "Syrah", "Tannat", "Tempranillo", "Torrontes", "Trebbiano", "Tvishi", "Valpolicella", "Verdejo", "Zinfandel"];
+const allTypes = ['red','white','rosé','sparkling'];
+let activeTypes = new Set(allTypes);
+let selectedGrapes = new Set(allGrapes);
+let currentTab = 'bottle', tableSortCol = 'rating', tableSortDir = 'desc';
+let columnOrder = ['type','wine','winery','grape','region','country','rating'];
+const colLabels = {type:'Type',wine:'Wine',winery:'Winery',grape:'Grape',region:'Region',country:'Country',rating:'Rating'};
+let dragSrcCol = null;
+
+function vivinoUrl(wine, winery) {
+  const q = encodeURIComponent((winery ? winery + ' ' : '') + wine);
+  return 'https://www.vivino.com/search/wines?q=' + q;
+}
+function escHtml(s) { const d = document.createElement('div'); d.textContent = s; return d.innerHTML; }
+
+// Rotation persistence
+let rotations = {};
+wines.forEach((w, i) => { if (w.rotation) rotations[i] = w.rotation; });
+try { const saved = JSON.parse(localStorage.getItem('wine_rotations') || '{}'); Object.assign(rotations, saved); } catch(e) {}
+function getRotation(idx) { return rotations[idx] || 0; }
+function rotateWine(idx, e) {
+  if(e) { e.stopPropagation(); e.preventDefault(); }
+  rotations[idx] = ((rotations[idx] || 0) + 90) % 360;
+  try { localStorage.setItem('wine_rotations', JSON.stringify(rotations)); } catch(e) {}
+  document.querySelectorAll('[data-rotate-idx="'+idx+'"]').forEach(img => {
+    img.style.transform = 'rotate('+rotations[idx]+'deg)';
+  });
+}
+
+function buildStarEditor(rating, idx, small) {
+  const cls = small ? ' sm' : '';
+  let h = '<span class="star-editor' + cls + '" data-idx="' + idx + '" data-rating="' + rating + '">';
+  for (let i = 1; i <= 5; i++) {
+    const fp = rating >= i ? 100 : (rating >= i - 0.5 ? 50 : 0);
+    h += '<span class="se-star"><span class="se-bg">★</span><span class="se-fill" style="width:' + fp + '%">★</span><span class="se-half" data-val="' + (i-0.5) + '"></span><span class="se-full" data-val="' + i + '"></span></span>';
+  }
+  return h + '<span class="se-val">' + rating.toFixed(1) + '</span></span>';
+}
+
+// Read-only stars for cards (no numeric rating)
+function starsRO(r) {
+  let h = '<span class="stars-ro">';
+  for (let i = 1; i <= 5; i++) {
+    const fp = r >= i ? 100 : (r >= i - 0.5 ? 50 : 0);
+    h += '<span class="sr"><span class="sb">★</span><span class="sf" style="width:' + fp + '%">★</span></span>';
+  }
+  return h + '</span>';
+}
+
+// Star click/hover handlers
+document.addEventListener('click', function(e) {
+  const t = e.target.closest('.se-half') || e.target.closest('.se-full');
+  if (!t) return;
+  e.stopPropagation();
+  const val = parseFloat(t.dataset.val);
+  const ed = t.closest('.star-editor');
+  const idx = parseInt(ed.dataset.idx);
+  wines[idx].rating = val;
+  ed.dataset.rating = val;
+  ed.querySelectorAll('.se-star').forEach((s, si) => {
+    s.querySelector('.se-fill').style.width = (val >= si+1 ? 100 : (val >= si+0.5 ? 50 : 0)) + '%';
+  });
+  ed.querySelector('.se-val').textContent = val.toFixed(1);
+  document.querySelectorAll('.star-editor[data-idx="' + idx + '"]').forEach(other => {
+    if (other === ed) return;
+    other.dataset.rating = val;
+    other.querySelectorAll('.se-star').forEach((s, si) => {
+      s.querySelector('.se-fill').style.width = (val >= si+1 ? 100 : (val >= si+0.5 ? 50 : 0)) + '%';
+    });
+    other.querySelector('.se-val').textContent = val.toFixed(1);
+  });
+});
+document.addEventListener('mouseover', function(e) {
+  const t = e.target.closest('.se-half') || e.target.closest('.se-full');
+  if (!t) return;
+  const val = parseFloat(t.dataset.val);
+  const ed = t.closest('.star-editor');
+  ed.querySelectorAll('.se-star').forEach((s, si) => {
+    s.querySelector('.se-fill').style.width = (val >= si+1 ? 100 : (val >= si+0.5 ? 50 : 0)) + '%';
+  });
+  ed.querySelector('.se-val').textContent = val.toFixed(1);
+});
+document.addEventListener('mouseout', function(e) {
+  const t = e.target.closest('.se-half') || e.target.closest('.se-full');
+  if (!t) return;
+  const ed = t.closest('.star-editor');
+  if (!ed) return;
+  const r = parseFloat(ed.dataset.rating);
+  ed.querySelectorAll('.se-star').forEach((s, si) => {
+    s.querySelector('.se-fill').style.width = (r >= si+1 ? 100 : (r >= si+0.5 ? 50 : 0)) + '%';
+  });
+  ed.querySelector('.se-val').textContent = r.toFixed(1);
+});
+
+// ── Multi-select dropdown builder ──
+function buildMsDropdown(listEl, btnEl, items, selectedSet, allLabel, updateBtn, onchange) {
+  let h = '<label class="ms-all"><input type="checkbox" class="ms-all-cb" checked> ' + allLabel + '</label>';
+  items.forEach(g => {
+    h += '<label><input type="checkbox" class="ms-cb" value="' + escHtml(g) + '" checked> ' + escHtml(g.charAt(0).toUpperCase() + g.slice(1)) + '</label>';
+  });
+  listEl.innerHTML = h;
+  const allCb = listEl.querySelector('.ms-all-cb');
+  allCb.addEventListener('change', function() {
+    const checked = this.checked;
+    listEl.querySelectorAll('.ms-cb').forEach(cb => { cb.checked = checked; });
+    if (checked) { items.forEach(i => selectedSet.add(i)); } else { selectedSet.clear(); }
+    updateBtn();
+    onchange();
+  });
+  listEl.querySelectorAll('.ms-cb').forEach(cb => {
+    cb.addEventListener('change', function() {
+      if (this.checked) selectedSet.add(this.value);
+      else selectedSet.delete(this.value);
+      allCb.checked = selectedSet.size === items.length;
+      updateBtn();
+      onchange();
+    });
+  });
+}
+
+function updateTypeBtn() {
+  const btn = document.getElementById('typeBtn');
+  if (activeTypes.size === allTypes.length) btn.textContent = 'All Types ▾';
+  else if (activeTypes.size === 0) btn.textContent = 'No Types ▾';
+  else if (activeTypes.size === 1) { const v = [...activeTypes][0]; btn.textContent = v.charAt(0).toUpperCase() + v.slice(1) + ' ▾'; }
+  else btn.textContent = activeTypes.size + ' Types ▾';
+}
+function updateGrapeBtn() {
+  const btn = document.getElementById('grapeBtn');
+  if (selectedGrapes.size === allGrapes.length) btn.textContent = 'All Grapes ▾';
+  else if (selectedGrapes.size === 0) btn.textContent = 'No Grapes ▾';
+  else if (selectedGrapes.size === 1) btn.textContent = [...selectedGrapes][0] + ' ▾';
+  else btn.textContent = selectedGrapes.size + ' Grapes ▾';
+}
+
+// Toggle dropdowns
+document.querySelectorAll('.ms-dropdown-btn').forEach(btn => {
+  btn.addEventListener('click', function(e) {
+    e.stopPropagation();
+    const list = this.nextElementSibling;
+    // Close other dropdowns
+    document.querySelectorAll('.ms-dropdown-list.open').forEach(l => { if (l !== list) l.classList.remove('open'); });
+    list.classList.toggle('open');
+  });
+});
+document.addEventListener('click', function(e) {
+  if (!e.target.closest('.ms-dropdown')) {
+    document.querySelectorAll('.ms-dropdown-list.open').forEach(l => l.classList.remove('open'));
+  }
+});
+
+function getFiltered() {
+  const search = document.getElementById('search').value.toLowerCase();
+  const country = document.getElementById('countryFilter').value;
+  const minR = parseFloat(document.getElementById('minRating').value);
+  const maxR = parseFloat(document.getElementById('maxRating').value);
+  document.getElementById('minRatingVal').textContent = minR.toFixed(1);
+  document.getElementById('maxRatingVal').textContent = maxR.toFixed(1);
+  let f = wines.filter(w => {
+    if (search && !w.wine.toLowerCase().includes(search) && !w.winery.toLowerCase().includes(search) && !w.region.toLowerCase().includes(search) && !(w.grape && w.grape.toLowerCase().includes(search))) return false;
+    if (country && w.country !== country) return false;
+    if (w.rating < minR || w.rating > maxR) return false;
+    if (!activeTypes.has(w.type)) return false;
+    if (!selectedGrapes.has(w.grape || 'Unknown')) return false;
+    return true;
+  });
+  // Default sort: rating desc
+  f.sort((a, b) => b.rating - a.rating || a.wine.toLowerCase().localeCompare(b.wine.toLowerCase()));
+  document.getElementById('filterCount').textContent = 'Showing ' + f.length + ' of ' + wines.length;
+  return f;
+}
+
+function renderBottles() {
+  const f = getFiltered();
+  const grid = document.getElementById('wineGrid');
+  document.getElementById('noResults').style.display = f.length ? 'none' : 'block';
+  if (!f.length) { grid.innerHTML = ''; return; }
+  grid.innerHTML = f.map(w => {
+    const idx = wines.indexOf(w);
+    const flag = flags[w.country] || '🏳️';
+    const rot = getRotation(idx);
+    const rotStyle = rot ? ' style="transform:rotate('+rot+'deg)"' : '';
+    const img = w.img
+      ? '<div class="card-img-wrap"><img class="card-img" data-rotate-idx="'+idx+'" src="' + escHtml(w.img) + '"'+rotStyle+' loading="lazy" onerror="this.style.display=\'none\';this.nextElementSibling.style.display=\'flex\'"><div class="card-placeholder" style="display:none"><div class="pl-name">' + escHtml(w.wine) + '</div><div class="pl-winery">' + escHtml(w.winery) + '</div></div></div>'
+      : '<div class="card-placeholder"><div class="pl-name">' + escHtml(w.wine) + '</div><div class="pl-winery">' + escHtml(w.winery) + '</div></div>';
+    const rotBtn = w.img ? '<button class="rotate-btn" onclick="rotateWine('+idx+',event)" title="Rotate image">↻</button>' : '';
+    return '<div class="card" onclick="showDetail(' + idx + ')"><div class="card-type-strip ' + w.type + '"></div>' + rotBtn + img +
+      '<div class="card-info"><div class="card-name">' + escHtml(w.wine) + '</div><div class="card-winery">' + escHtml(w.winery) + '</div>' +
+      '<div class="card-meta"><div class="card-rating">' + starsRO(w.rating) + '</div><span class="card-flag" title="' + escHtml(w.country) + '">' + flag + '</span></div></div></div>';
+  }).join('');
+}
+
+function cellHtml(colKey, w, idx) {
+  const flag = flags[w.country] || '🏳️';
+  const url = vivinoUrl(w.wine, w.winery);
+  switch(colKey) {
+    case 'type': return '<td><span class="type-dot ' + w.type + '"></span>' + w.type.charAt(0).toUpperCase() + w.type.slice(1) + '</td>';
+    case 'wine': return '<td class="wine-name-cell"><a href="' + url + '" target="_blank" title="Search on Vivino">' + escHtml(w.wine) + '</a></td>';
+    case 'winery': return '<td>' + escHtml(w.winery) + '</td>';
+    case 'grape': return '<td>' + escHtml(w.grape || 'Unknown') + '</td>';
+    case 'region': return '<td>' + escHtml(w.region) + '</td>';
+    case 'country': return '<td>' + flag + ' ' + escHtml(w.country) + '</td>';
+    case 'rating': return '<td>' + buildStarEditor(w.rating, idx, true) + '</td>';
+    default: return '<td></td>';
+  }
+}
+
+function buildTableHead() {
+  const tr = document.getElementById('tableHead');
+  tr.innerHTML = columnOrder.map(key => {
+    const arrow = key === tableSortCol ? (tableSortDir === 'asc' ? ' ▲' : ' ▼') : '';
+    return '<th draggable="true" data-sort="' + key + '">' + colLabels[key] + '<span class="sort-arrow">' + arrow + '</span></th>';
+  }).join('');
+  // Drag handlers
+  tr.querySelectorAll('th').forEach(th => {
+    th.addEventListener('dragstart', function(e) {
+      dragSrcCol = this.dataset.sort;
+      e.dataTransfer.effectAllowed = 'move';
+      this.style.opacity = '0.5';
+    });
+    th.addEventListener('dragend', function() { this.style.opacity = '1'; tr.querySelectorAll('th').forEach(h => h.classList.remove('drag-over')); });
+    th.addEventListener('dragover', function(e) { e.preventDefault(); e.dataTransfer.dropEffect = 'move'; this.classList.add('drag-over'); });
+    th.addEventListener('dragleave', function() { this.classList.remove('drag-over'); });
+    th.addEventListener('drop', function(e) {
+      e.preventDefault();
+      this.classList.remove('drag-over');
+      const target = this.dataset.sort;
+      if (dragSrcCol && dragSrcCol !== target) {
+        const srcIdx = columnOrder.indexOf(dragSrcCol);
+        const tgtIdx = columnOrder.indexOf(target);
+        columnOrder.splice(srcIdx, 1);
+        columnOrder.splice(tgtIdx, 0, dragSrcCol);
+        renderTable();
+      }
+    });
+    th.addEventListener('click', function(e) {
+      const c = this.dataset.sort;
+      if (tableSortCol === c) tableSortDir = tableSortDir === 'asc' ? 'desc' : 'asc';
+      else { tableSortCol = c; tableSortDir = c === 'rating' ? 'desc' : 'asc'; }
+      renderTable();
+    });
+  });
+}
+
+function renderTable() {
+  const f = getFiltered();
+  document.getElementById('noResults').style.display = f.length ? 'none' : 'block';
+  if (!f.length) { document.getElementById('tableBody').innerHTML = ''; return; }
+  const col = tableSortCol, dir = tableSortDir;
+  f.sort((a, b) => {
+    let va = (col === 'grape') ? (a[col]||'Unknown') : a[col], vb = (col === 'grape') ? (b[col]||'Unknown') : b[col];
+    if (typeof va === 'string') { va = va.toLowerCase(); vb = vb.toLowerCase(); }
+    if (va < vb) return dir === 'asc' ? -1 : 1;
+    if (va > vb) return dir === 'asc' ? 1 : -1;
+    return 0;
+  });
+  buildTableHead();
+  document.getElementById('tableBody').innerHTML = f.map(w => {
+    const idx = wines.indexOf(w);
+    return '<tr>' + columnOrder.map(key => cellHtml(key, w, idx)).join('') + '</tr>';
+  }).join('');
+}
+
+function renderStatsView() {
+  const c = document.getElementById('statsView');
+  const filtered = getFiltered();
+  const types={}, cc={}, wc={}, rd={};
+  let tr=0, hi=null, lo=null;
+  if (filtered.length === 0) {
+    c.innerHTML = '<div style="padding: 20px; text-align: center; color: var(--text3);">No wines match current filters</div>';
+    return;
+  }
+  hi = filtered[0];
+  lo = filtered[0];
+  filtered.forEach(w => {
+    types[w.type]=(types[w.type]||0)+1;
+    cc[w.country]=(cc[w.country]||0)+1;
+    wc[w.winery]=(wc[w.winery]||0)+1;
+    rd[Math.round(w.rating*2)/2]=(rd[Math.round(w.rating*2)/2]||0)+1;
+    tr+=w.rating;
+    if(w.rating>hi.rating)hi=w;
+    if(w.rating<lo.rating)lo=w;
+  });
+  const avg=(tr/filtered.length).toFixed(2);
+  const filterNote = filtered.length < wines.length ? ' ('+filtered.length+' of '+wines.length+' wines)' : '';
+  const sc=Object.entries(cc).sort((a,b)=>b[1]-a[1]);
+  const sw=Object.entries(wc).sort((a,b)=>b[1]-a[1]).slice(0,15);
+  const mc=sc[0][1], mw=sw[0][1];
+  let h='<div class="stats-grid">';
+  h+='<div class="stats-card"><h3>📊 Overview'+filterNote+'</h3><div class="big-number">'+filtered.length+'</div><div class="big-label">Wines Rated</div><div style="margin-top:16px">';
+  h+='<div class="stat-row"><span class="sl">Average Rating</span><span class="sv">'+avg+'</span></div>';
+  h+='<div class="stat-row"><span class="sl">Highest</span><span class="sv">'+escHtml(hi.wine)+' ('+hi.rating+')</span></div>';
+  h+='<div class="stat-row"><span class="sl">Lowest</span><span class="sv">'+escHtml(lo.wine)+' ('+lo.rating+')</span></div>';
+  h+='<div class="stat-row"><span class="sl">Countries</span><span class="sv">'+Object.keys(cc).length+'</span></div>';
+  h+='<div class="stat-row"><span class="sl">Wineries</span><span class="sv">'+Object.keys(wc).length+'</span></div></div></div>';
+  h+='<div class="stats-card"><h3>🍷 By Type</h3><div class="bar-chart">';
+  Object.entries(types).sort((a,b)=>b[1]-a[1]).forEach(([t,n])=>{h+='<div class="bar-row"><div class="bar-label">'+t.charAt(0).toUpperCase()+t.slice(1)+'</div><div class="bar-track"><div class="bar-fill '+t+'" style="width:'+(n/filtered.length*100).toFixed(0)+'%">'+n+'</div></div></div>';});
+  h+='</div></div>';
+  h+='<div class="stats-card"><h3>🌍 By Country</h3><div class="bar-chart">';
+  sc.forEach(([k,n])=>{h+='<div class="bar-row"><div class="bar-label">'+(flags[k]||'🏳️')+' '+k+'</div><div class="bar-track"><div class="bar-fill country" style="width:'+(n/mc*100).toFixed(0)+'%">'+n+'</div></div></div>';});
+  h+='</div></div>';
+  h+='<div class="stats-card"><h3>🏠 Top Wineries</h3><div class="bar-chart">';
+  sw.forEach(([k,n])=>{h+='<div class="bar-row"><div class="bar-label">'+escHtml(k)+'</div><div class="bar-track"><div class="bar-fill rating" style="width:'+(n/mw*100).toFixed(0)+'%">'+n+'</div></div></div>';});
+  h+='</div></div>';
+  const mb=Math.max(...Object.values(rd));
+  h+='<div class="stats-card"><h3>⭐ Rating Distribution</h3><div class="bar-chart">';
+  for(let r=5.0;r>=0.5;r-=0.5){const n=rd[r]||0;h+='<div class="bar-row"><div class="bar-label">'+r.toFixed(1)+'</div><div class="bar-track"><div class="bar-fill rating" style="width:'+(mb>0?(n/mb*100).toFixed(0):0)+'%">'+n+'</div></div></div>';}
+  h+='</div></div>';
+
+  // Top Rated card with 5.0 and 4.5 as collapsible sub-sections
+  const top5=filtered.filter(w=>w.rating===5.0).sort((a,b)=>a.wine.localeCompare(b.wine));
+  const top45=filtered.filter(w=>w.rating===4.5).sort((a,b)=>a.wine.localeCompare(b.wine));
+  h+='<div class="stats-card"><h3>🏆 Top Rated</h3>';
+
+  // 5.0 sub-section
+  h+='<div class="collapsible-header" onclick="toggleCollapse(this)" style="padding:6px 0;border-bottom:1px solid #eef1f8;margin-bottom:4px"><span style="font-size:13px;font-weight:bold;color:#4a7cf7">5.0 Stars ('+top5.length+')</span><span class="chevron">▶</span></div>';
+  h+='<div class="collapsible-body collapsed" style="max-height:2000px">';
+  if(!top5.length)h+='<div style="color:#94a3c4;font-size:12px;padding:6px 0">None</div>';
+  else { top5.forEach(w=>{h+='<div class="stat-row" style="cursor:pointer" onclick="showDetail('+wines.indexOf(w)+')"><span class="sl">'+(flags[w.country]||'🏳️')+' '+escHtml(w.wine)+'</span><span class="sv">5.0</span></div>';}); }
+  h+='</div>';
+
+  // 4.5 sub-section
+  h+='<div class="collapsible-header" onclick="toggleCollapse(this)" style="padding:6px 0;border-bottom:1px solid #eef1f8;margin-bottom:4px;margin-top:8px"><span style="font-size:13px;font-weight:bold;color:#4a7cf7">4.5 Stars ('+top45.length+')</span><span class="chevron">▶</span></div>';
+  h+='<div class="collapsible-body collapsed" style="max-height:2000px">';
+  if(!top45.length)h+='<div style="color:#94a3c4;font-size:12px;padding:6px 0">None</div>';
+  else { top45.forEach(w=>{h+='<div class="stat-row" style="cursor:pointer" onclick="showDetail('+wines.indexOf(w)+')"><span class="sl">'+(flags[w.country]||'🏳️')+' '+escHtml(w.wine)+'</span><span class="sv">4.5</span></div>';}); }
+  h+='</div>';
+
+  h+='</div>';
+
+  h+='</div>';
+  c.innerHTML=h;
+}
+
+function toggleCollapse(header) {
+  const body = header.nextElementSibling;
+  const chevron = header.querySelector('.chevron');
+  body.classList.toggle('collapsed');
+  chevron.classList.toggle('open');
+}
+
+function showDetail(idx) {
+  const w=wines[idx], flag=flags[w.country]||'🏳️';
+  const url=vivinoUrl(w.wine,w.winery);
+  const ov=document.getElementById('wineDetail');
+  const ct=document.getElementById('wineDetailContent');
+  const rot=getRotation(idx);
+  const rotStyle=rot?' style="transform:rotate('+rot+'deg)"':'';
+  const img=w.img?'<img class="detail-img" data-rotate-idx="'+idx+'" src="'+escHtml(w.img)+'"'+rotStyle+' onerror="this.parentElement.innerHTML=\'<div class=detail-placeholder><span>🍷</span></div>\'">':'<div class="detail-placeholder"><span>🍷</span></div>';
+  const rotBtn=w.img?'<button class="detail-rotate" onclick="rotateWine('+idx+',event)">↻ Rotate</button>':'';
+  ct.innerHTML='<div class="detail-hero"><div class="detail-close" onclick="closeDetail()">✕</div>'+rotBtn+img+'</div>'+
+    '<div class="detail-body">'+
+    '<div class="detail-type-badge '+w.type+'">'+w.type.charAt(0).toUpperCase()+w.type.slice(1)+' Wine</div>'+
+    '<div class="detail-name"><a href="'+url+'" target="_blank" title="Search on Vivino">'+escHtml(w.wine)+'</a></div>'+
+    '<div class="detail-winery">'+escHtml(w.winery)+'</div>'+
+    '<div class="detail-rating-row">'+buildStarEditor(w.rating,idx,false)+'</div>'+
+    '<div class="detail-meta-grid">'+
+    '<div class="detail-meta-item"><div class="dm-label">Country</div><div class="dm-value">'+flag+' '+escHtml(w.country)+'</div></div>'+
+    '<div class="detail-meta-item"><div class="dm-label">Region</div><div class="dm-value">'+(w.region?escHtml(w.region):'—')+'</div></div>'+
+    '<div class="detail-meta-item"><div class="dm-label">Type</div><div class="dm-value" style="text-transform:capitalize">'+w.type+'</div></div>'+
+    '<div class="detail-meta-item"><div class="dm-label">Grape</div><div class="dm-value">'+escHtml(w.grape||'Unknown')+'</div></div>'+
+    '</div></div>';
+  ov.style.display='block';document.body.style.overflow='hidden';
+}
+function closeDetail() {
+  document.getElementById('wineDetail').style.display='none';
+  document.body.style.overflow='';
+  render();
+}
+
+function render() {
+  document.getElementById('noResults').style.display='none';
+  if(currentTab==='bottle')renderBottles();
+  else if(currentTab==='table')renderTable();
+}
+function switchTab(tab) {
+  currentTab=tab;
+  document.querySelectorAll('.tab').forEach(t=>t.classList.toggle('active',t.dataset.tab===tab));
+  document.getElementById('wineGrid').style.display=tab==='bottle'?'grid':'none';
+  document.getElementById('tableView').style.display=tab==='table'?'block':'none';
+  document.getElementById('statsView').style.display=tab==='stats'?'block':'none';
+  document.getElementById('controlsBar').style.display=tab==='stats'?'none':'flex';
+  document.getElementById('noResults').style.display='none';
+  if(tab==='stats')renderStatsView(); else render();
+}
+
+let searchTimeout;
+document.getElementById('search').addEventListener('input', function() {
+  clearTimeout(searchTimeout);
+  searchTimeout = setTimeout(render, 200);
+});
+document.getElementById('countryFilter').addEventListener('change',render);
+document.getElementById('minRating').addEventListener('input',render);
+document.getElementById('maxRating').addEventListener('input',render);
+document.querySelectorAll('.tab').forEach(t=>{t.addEventListener('click',()=>switchTab(t.dataset.tab));});
+document.getElementById('wineDetail').addEventListener('click',e=>{if(e.target===document.getElementById('wineDetail'))closeDetail();});
+document.addEventListener('keydown',e=>{if(e.key==='Escape')closeDetail();});
+
+
+// ── Dark mode toggle ──
+function toggleDarkMode() {
+  document.body.classList.toggle('dark');
+  const isDark = document.body.classList.contains('dark');
+  document.getElementById('darkModeMenuItem').textContent = isDark ? '✓ Dark Mode' : 'Dark Mode';
+  try { localStorage.setItem('wine_dark_mode', isDark ? '1' : '0'); } catch(e) {}
+}
+// Restore dark mode preference
+try { if (localStorage.getItem('wine_dark_mode') === '1') { document.body.classList.add('dark'); document.getElementById('darkModeMenuItem').textContent = '✓ Dark Mode'; } } catch(e) {}
+
+// ── Menu actions ──
+function exportCSV() {
+  const header = 'Type,Wine,Winery,Grape,Region,Country,Rating';
+  const rows = wines.map(w => [w.type,w.wine,w.winery,w.grape||'Unknown',w.region,w.country,w.rating].map(v => '"'+String(v).replace(/"/g,'""')+'"').join(','));
+  const csv = header + '\n' + rows.join('\n');
+  const blob = new Blob([csv], {type:'text/csv'});
+  const d = new Date().toISOString().slice(0,10);
+  const a = document.createElement('a'); a.href = URL.createObjectURL(blob); a.download = 'wine_collection_' + d + '.csv'; a.click();
+}
+function exportJSON() {
+  const blob = new Blob([JSON.stringify(wines, null, 2)], {type:'application/json'});
+  const d = new Date().toISOString().slice(0,10);
+  const a = document.createElement('a'); a.href = URL.createObjectURL(blob); a.download = 'wine_collection_' + d + '.json'; a.click();
+}
+function clearFilters() {
+  document.getElementById('search').value = '';
+  document.getElementById('countryFilter').value = '';
+  document.getElementById('minRating').value = 1;
+  document.getElementById('maxRating').value = 5;
+  tableSortCol = 'rating'; tableSortDir = 'desc';
+  activeTypes = new Set(allTypes);
+  selectedGrapes = new Set(allGrapes);
+  // Re-check all checkboxes
+  document.querySelectorAll('#typeList .ms-cb, #grapeList .ms-cb').forEach(cb => cb.checked = true);
+  document.querySelectorAll('#typeList .ms-all-cb, #grapeList .ms-all-cb').forEach(cb => cb.checked = true);
+  updateTypeBtn(); updateGrapeBtn();
+  render();
+}
+function showAbout() {
+  const ov = document.getElementById('wineDetail');
+  const ct = document.getElementById('wineDetailContent');
+  ct.innerHTML = '<div class="detail-hero"><div class="detail-close" onclick="closeDetail()">✕</div><div style="display:flex;align-items:center;justify-content:center;height:100%;font-size:4em">🍷</div></div>' +
+    '<div class="detail-body" style="text-align:center">' +
+    '<div class="detail-name">David\'s Wine Collection</div>' +
+    '<div class="detail-winery" style="margin-bottom:16px">' + wines.length + ' wines rated on Vivino</div>' +
+    '<div style="color:var(--text2);font-size:14px;line-height:1.6">Built with love and good taste<br/>for discovering and sharing great wines.</div>' +
+    '</div>';
+  ov.style.display = 'block';
+  document.body.style.overflow = 'hidden';
+}
+
+// Keyboard shortcuts
+document.addEventListener('keydown', function(e) {
+  if ((e.metaKey || e.ctrlKey) && e.key === 'e') { e.preventDefault(); exportCSV(); }
+  if ((e.metaKey || e.ctrlKey) && e.key === 'f') { e.preventDefault(); document.getElementById('search').focus(); }
+});
+
+// Init dropdowns
+buildMsDropdown(document.getElementById('typeList'), document.getElementById('typeBtn'), allTypes, activeTypes, 'All Types', updateTypeBtn, render);
+buildMsDropdown(document.getElementById('grapeList'), document.getElementById('grapeBtn'), allGrapes, selectedGrapes, 'All Grapes', updateGrapeBtn, render);
+render();
+
+// Service worker registration
+if ('serviceWorker' in navigator) {
+  navigator.serviceWorker.register('wine_sw.js').catch(function(){});
+}
+</script>
+</body>
+</html>
