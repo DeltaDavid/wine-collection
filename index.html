@@ -657,7 +657,11 @@ function getFiltered() {
   document.getElementById('minRatingVal').textContent = minR.toFixed(1);
   document.getElementById('maxRatingVal').textContent = maxR.toFixed(1);
   let f = wines.filter(w => {
-    if (search && !w.wine.toLowerCase().includes(search) && !w.winery.toLowerCase().includes(search) && !w.region.toLowerCase().includes(search) && !(w.grape && w.grape.toLowerCase().includes(search))) return false;
+    if (search) {
+      var blob = (w.wine + ' ' + w.winery + ' ' + w.region + ' ' + (w.grape || '') + ' ' + w.country + ' ' + w.type).toLowerCase();
+      var words = search.split(/\s+/);
+      for (var wi = 0; wi < words.length; wi++) { if (words[wi] && !blob.includes(words[wi])) return false; }
+    }
     if (country && w.country !== country) return false;
     if (w.rating < minR || w.rating > maxR) return false;
     if (!activeTypes.has(w.type)) return false;
@@ -904,7 +908,7 @@ function openMobileSearch() {
   if (!bar) return;
   bar.classList.add('open');
   var input = document.getElementById('mobileSearchInput');
-  if (input) { input.setAttribute('autofocus',''); setTimeout(function() { input.focus(); input.click(); }, 50); }
+  if (input) { input.focus(); }
 }
 function closeMobileSearch() {
   var bar = document.getElementById('mobileSearchBar');
