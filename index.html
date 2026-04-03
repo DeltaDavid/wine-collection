@@ -81,6 +81,7 @@ body { background: var(--bg); color: var(--text); font-family: -apple-system, Bl
 .controls .rating-range { display: flex; align-items: center; gap: 4px; }
 .controls .rating-range input[type="range"] { width: 60px; accent-color: #4a7cf7; }
 .controls .filter-count { margin-left: auto; color: var(--text3); font-size: 11px; }
+.controls-mobile-buttons { display: none; }
 
 /* Multi-select dropdown (shared by type + grape) */
 .ms-dropdown { position: relative; display: inline-block; }
@@ -214,15 +215,25 @@ body { background: var(--bg); color: var(--text); font-family: -apple-system, Bl
   .header h1 { font-size: 1.4em; }
   .tabs { padding: 0 15px; }
   .tab { padding: 8px 14px; font-size: 11px; }
-  .controls { padding: 8px 12px; gap: 4px; flex-wrap: nowrap; overflow-x: auto; }
+  .controls { padding: 6px 12px; gap: 0; flex-wrap: wrap; position: relative; }
   .controls input[type="text"] { display: none; }
   .controls select { display: none; }
   .controls .ms-dropdown { display: none; }
   .controls .rating-range { display: none; }
   .controls .filter-count { display: none; }
-  .controls-mobile-buttons { display: flex; gap: 6px; align-items: center; }
+  .controls-mobile-buttons { display: flex; gap: 6px; align-items: center; width: 100%; }
   .controls-mobile-buttons button { flex: 0 0 auto; width: 40px; height: 40px; padding: 0; border-radius: 8px; border: 1px solid var(--border2); background: var(--input-bg); color: var(--text); font-size: 18px; cursor: pointer; display: flex; align-items: center; justify-content: center; }
+  .controls-mobile-buttons button.active { background: #4a7cf7; color: white; border-color: #4a7cf7; }
   .controls-mobile-buttons button:active { background: var(--hover-bg); }
+  .mobile-panel { display: none; width: 100%; padding: 8px 0 4px; }
+  .mobile-panel.open { display: block; }
+  .mobile-panel input[type="text"] { display: block !important; width: 100%; font-size: 16px; padding: 8px 12px; border-radius: 8px; border: 1px solid var(--border2); background: var(--input-bg); }
+  .mobile-panel select { display: block !important; width: 100%; font-size: 16px; padding: 8px; border-radius: 8px; border: 1px solid var(--border2); background: var(--input-bg); }
+  .mobile-panel .ms-dropdown { display: block !important; width: 100%; }
+  .mobile-panel .ms-dropdown-btn { width: 100%; font-size: 14px; padding: 8px 12px; border-radius: 8px; min-height: 40px; }
+  .mobile-panel .ms-dropdown-list { position: relative; top: 4px; width: 100%; }
+  .mobile-panel .rating-range { display: flex !important; width: 100%; gap: 8px; align-items: center; }
+  .mobile-panel .rating-range input[type="range"] { flex: 1; width: auto; }
   .grid { padding: 10px; grid-template-columns: repeat(auto-fill, minmax(110px, 1fr)); gap: 8px; }
   .table-container { padding: 0 10px 10px; }
   .stats-container { padding: 12px; }
@@ -294,7 +305,7 @@ input[type="text"], select, textarea { font-size: 16px; }
   </div>
 </div>
 <div class="header">
-  <h1>🍷 David's Wine Collection</h1>
+  <h1><img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='white'/%3E%3Cpath d='M22 12h20l-5 22c-1.5 5-5 8-5 8s-3.5-3-5-8L22 12z' fill='%23722F37'/%3E%3Cellipse cx='32' cy='18' rx='8' ry='3' fill='%23944' opacity='0.4'/%3E%3Crect x='30' y='42' width='4' height='10' rx='1' fill='%23722F37'/%3E%3Crect x='25' y='51' width='14' height='3' rx='1.5' fill='%23722F37'/%3E%3C/svg%3E" alt="" style="height:1.1em;vertical-align:middle;margin-right:6px;border-radius:4px"> David's Wine Collection</h1>
 </div>
 <div class="tabs">
   <div class="tab active" data-tab="bottle">🍾 Bottles</div>
@@ -334,11 +345,37 @@ input[type="text"], select, textarea { font-size: 16px; }
   </div>
   <div class="filter-count" id="filterCount"></div>
   <div class="controls-mobile-buttons">
-    <button id="mobileSearchBtn" title="Search">🔍</button>
-    <button id="mobileCountryBtn" title="Country">🌍</button>
-    <button id="mobileTypeBtn" title="Type">🍷</button>
-    <button id="mobileGrapeBtn" title="Grape">🍇</button>
-    <button id="mobileRatingBtn" title="Rating">⭐</button>
+    <button id="mobileSearchBtn" title="Search" data-panel="panelSearch">🔍</button>
+    <button id="mobileCountryBtn" title="Country" data-panel="panelCountry">🌍</button>
+    <button id="mobileTypeBtn" title="Type" data-panel="panelType">🍷</button>
+    <button id="mobileGrapeBtn" title="Grape" data-panel="panelGrape">🍇</button>
+    <button id="mobileRatingBtn" title="Rating" data-panel="panelRating">⭐</button>
+  </div>
+  <div class="mobile-panel" id="panelSearch">
+    <input type="text" id="mobileSearch" placeholder="Search wines, wineries, grapes..." oninput="document.getElementById('search').value=this.value;render()">
+  </div>
+  <div class="mobile-panel" id="panelCountry">
+    <select id="mobileCountry" onchange="document.getElementById('countryFilter').value=this.value;render()"></select>
+  </div>
+  <div class="mobile-panel" id="panelType">
+    <div class="ms-dropdown" style="display:block">
+      <button class="ms-dropdown-btn" id="mobileTypeToggle">All Types ▾</button>
+      <div class="ms-dropdown-list open" id="mobileTypeList"></div>
+    </div>
+  </div>
+  <div class="mobile-panel" id="panelGrape">
+    <div class="ms-dropdown" style="display:block">
+      <button class="ms-dropdown-btn" id="mobileGrapeToggle">All Grapes ▾</button>
+      <div class="ms-dropdown-list open" id="mobileGrapeList"></div>
+    </div>
+  </div>
+  <div class="mobile-panel" id="panelRating">
+    <div class="rating-range" style="display:flex">
+      <label>Min: <span id="mobileMinVal">1.0</span></label>
+      <input type="range" id="mobileMinRating" min="1" max="5" step="0.5" value="1">
+      <label>Max: <span id="mobileMaxVal">5.0</span></label>
+      <input type="range" id="mobileMaxRating" min="1" max="5" step="0.5" value="5">
+    </div>
   </div>
 </div>
 </div>
@@ -752,31 +789,58 @@ document.querySelectorAll('.tab').forEach(t=>{t.addEventListener('click',()=>swi
 document.getElementById('wineDetail').addEventListener('click',e=>{if(e.target===document.getElementById('wineDetail'))closeDetail();});
 document.addEventListener('keydown',e=>{if(e.key==='Escape')closeDetail();});
 
-// ── Mobile toolbar buttons ──
-document.getElementById('mobileSearchBtn').addEventListener('click', function() {
-  document.getElementById('search').style.display = document.getElementById('search').style.display === 'none' ? 'block' : 'none';
-});
-document.getElementById('mobileCountryBtn').addEventListener('click', function() {
-  document.getElementById('countryFilter').style.display = document.getElementById('countryFilter').style.display === 'none' ? 'block' : 'none';
-});
-document.getElementById('mobileTypeBtn').addEventListener('click', function() {
-  const dropdown = document.getElementById('typeDropdown');
-  dropdown.style.display = dropdown.style.display === 'none' ? 'block' : 'none';
-  if (dropdown.style.display === 'block') {
-    document.getElementById('typeList').classList.toggle('open');
-  }
-});
-document.getElementById('mobileGrapeBtn').addEventListener('click', function() {
-  const dropdown = document.getElementById('grapeDropdown');
-  dropdown.style.display = dropdown.style.display === 'none' ? 'block' : 'none';
-  if (dropdown.style.display === 'block') {
-    document.getElementById('grapeList').classList.toggle('open');
-  }
-});
-document.getElementById('mobileRatingBtn').addEventListener('click', function() {
-  const ratingRange = document.querySelector('.rating-range');
-  ratingRange.style.display = ratingRange.style.display === 'none' ? 'flex' : 'none';
-});
+// ── Mobile toolbar buttons (1-step toggle) ──
+(function() {
+  const allBtns = document.querySelectorAll('.controls-mobile-buttons button');
+  allBtns.forEach(function(btn) {
+    btn.addEventListener('click', function() {
+      const panelId = btn.dataset.panel;
+      const panel = document.getElementById(panelId);
+      const isOpen = panel.classList.contains('open');
+      // Close all panels and deactivate all buttons
+      document.querySelectorAll('.mobile-panel').forEach(function(p) { p.classList.remove('open'); });
+      allBtns.forEach(function(b) { b.classList.remove('active'); });
+      // Toggle the clicked one
+      if (!isOpen) {
+        panel.classList.add('open');
+        btn.classList.add('active');
+        // Auto-focus search input
+        if (panelId === 'panelSearch') {
+          panel.querySelector('input').focus();
+        }
+        // Auto-open country select
+        if (panelId === 'panelCountry') {
+          var sel = document.getElementById('mobileCountry');
+          if (typeof sel.showPicker === 'function') { try { sel.showPicker(); } catch(e){} }
+        }
+      }
+    });
+  });
+  // Populate mobile country select from desktop one
+  var desktopCountry = document.getElementById('countryFilter');
+  var mobileCountry = document.getElementById('mobileCountry');
+  mobileCountry.innerHTML = desktopCountry.innerHTML;
+  // Sync mobile rating sliders
+  var mMin = document.getElementById('mobileMinRating');
+  var mMax = document.getElementById('mobileMaxRating');
+  var dMin = document.getElementById('minRating');
+  var dMax = document.getElementById('maxRating');
+  mMin.addEventListener('input', function() {
+    dMin.value = mMin.value;
+    document.getElementById('mobileMinVal').textContent = parseFloat(mMin.value).toFixed(1);
+    document.getElementById('minRatingVal').textContent = parseFloat(mMin.value).toFixed(1);
+    render();
+  });
+  mMax.addEventListener('input', function() {
+    dMax.value = mMax.value;
+    document.getElementById('mobileMaxVal').textContent = parseFloat(mMax.value).toFixed(1);
+    document.getElementById('maxRatingVal').textContent = parseFloat(mMax.value).toFixed(1);
+    render();
+  });
+  // Build mobile type and grape dropdowns (mirrors desktop)
+  buildMsDropdown(document.getElementById('mobileTypeList'), document.getElementById('mobileTypeToggle'), allTypes, activeTypes, 'All Types', updateTypeBtn, render);
+  buildMsDropdown(document.getElementById('mobileGrapeList'), document.getElementById('mobileGrapeToggle'), allGrapes, selectedGrapes, 'All Grapes', updateGrapeBtn, render);
+})();
 
 // ── Collapsing header on scroll ──
 let lastScrollPos = 0;
