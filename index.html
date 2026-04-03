@@ -416,7 +416,7 @@ input[type="text"], select, textarea { font-size: 16px; }
 </div>
 
 <div class="bottom-nav">
-  <button class="bottom-tab active" data-tab="bottle"><svg class="bt-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M11 2h2v3l1.5 2.5c.3.5.5 1.1.5 1.7V20a2 2 0 0 1-2 2h-2a2 2 0 0 1-2-2V9.2c0-.6.2-1.2.5-1.7L11 5V2z"/><ellipse cx="12" cy="2" rx="1.5" ry="0.5"/><path d="M9.5 13c0-1.5 1-2.5 2.5-2.5s2.5 1 2.5 2.5c0 2-1.5 3-2.5 4.5C11 16 9.5 15 9.5 13z" stroke-width="1.2"/></svg>Bottles</button>
+  <button class="bottom-tab active" data-tab="bottle"><svg class="bt-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="10.8" y="1" width="2.4" height="1.5" rx="0.5"/><path d="M10.8 2.5v4L9 9v12a2 2 0 0 0 2 2h2a2 2 0 0 0 2-2V9l-1.8-2.5v-4"/><rect x="9" y="14" width="6" height="5" rx="0.5" stroke-width="1" opacity="0.3"/></svg>Bottles</button>
   <button class="bottom-tab" data-tab="table"><svg class="bt-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/><line x1="9" y1="3" x2="9" y2="21"/></svg>Table</button>
   <button class="bottom-tab" data-tab="stats"><svg class="bt-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="14" width="4" height="7" rx="1"/><rect x="10" y="9" width="4" height="12" rx="1"/><rect x="17" y="4" width="4" height="17" rx="1"/></svg>Stats</button>
   <button class="bottom-tab" data-tab="search"><svg class="bt-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><line x1="16.5" y1="16.5" x2="21" y2="21"/></svg>Search</button>
@@ -814,10 +814,11 @@ function switchTab(tab) {
   document.getElementById('wineGrid').style.display=tab==='bottle'?'grid':'none';
   document.getElementById('tableView').style.display=tab==='table'?'block':'none';
   document.getElementById('statsView').style.display=tab==='stats'?'block':'none';
-  document.getElementById('controlsBar').style.display=tab==='stats'?'none':'flex';
+  var hideControls = (tab==='stats') || (tab==='table' && window.innerWidth <= 768);
+  document.getElementById('controlsBar').style.display=hideControls?'none':'flex';
   document.getElementById('noResults').style.display='none';
   if(tab==='stats')renderStatsView(); else render();
-  if(tab==='table') setTimeout(updateStickyTableOffset, 50);
+  if(tab==='table') { setTimeout(updateStickyTableOffset, 100); setTimeout(updateStickyTableOffset, 300); }
 }
 
 let searchTimeout;
