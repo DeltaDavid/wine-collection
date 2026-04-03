@@ -1245,18 +1245,20 @@ function clearSelectedWine() {
 
 // ── Add Wine ──
 function openAddWine() {
-  var addCountry = document.getElementById('addCountry');
-  if (addCountry.options.length <= 1) {
-    var countries = document.getElementById('countryFilter').querySelectorAll('option');
-    countries.forEach(function(opt) {
-      if (opt.value) {
-        var o = document.createElement('option');
-        o.value = opt.value;
-        o.textContent = opt.textContent;
-        addCountry.appendChild(o);
-      }
-    });
-  }
+  document.getElementById('addWineName').value = '';
+  document.getElementById('addWinery').value = '';
+  document.getElementById('addType').value = '';
+  document.getElementById('addCountry').value = '';
+  document.getElementById('addGrape').value = '';
+  document.getElementById('addRegion').value = '';
+  document.getElementById('addImage').value = '';
+  document.getElementById('addRating').value = '0';
+  currentStarRating = 0; updateStarDisplay();
+  document.getElementById('starRatingVal').textContent = 'Drag or tap to rate';
+  document.getElementById('selectedWinePreview').style.display = 'none';
+  document.getElementById('lookupResults').style.display = 'none';
+  document.getElementById('lookupStatus').style.display = 'none';
+  document.getElementById('addWineError').style.display = 'none';
   document.getElementById('addWineOverlay').style.display = 'block';
 }
 function closeAddWine() {
