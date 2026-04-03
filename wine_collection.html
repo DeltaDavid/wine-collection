@@ -77,6 +77,7 @@ body.dark .header h1 { color: #e8edf8; }
 .tab.active { color: #4a7cf7; border-bottom-color: #4a7cf7; }
 .controls { display: flex; gap: 10px; align-items: center; flex-wrap: nowrap; margin-left: auto; padding: 6px 0; transition: max-height 0.3s ease-out, opacity 0.3s ease-out, padding 0.3s ease-out; overflow: hidden; }
 .controls.controls-collapsed { max-height: 0; opacity: 0; padding: 0; }
+/* On mobile, never collapse the filter icon buttons */
 .controls input[type="text"] { padding: 6px 12px; border-radius: 24px; border: 1px solid var(--border2); background: var(--input-bg); color: var(--input-text); font-size: 12px; width: 200px; outline: none; }
 .controls input[type="text"]:focus { border-color: #4a7cf7; }
 .controls select { padding: 6px 8px; border-radius: 16px; border: 1px solid var(--border2); background: var(--input-bg); color: var(--input-text); font-size: 12px; cursor: pointer; max-width: 170px; }
@@ -223,7 +224,8 @@ body.dark .header h1 { color: #e8edf8; }
   /* Hide desktop tabs - moved to bottom nav */
   .tabs-row { flex-direction: column; padding: 0; border-bottom: none; }
   .tabs { display: none; }
-  .controls { padding: 6px 12px; gap: 0; flex-wrap: wrap; position: relative; margin-left: 0; }
+  .controls { padding: 6px 12px; gap: 0; flex-wrap: wrap; position: relative; margin-left: 0; max-height: none !important; opacity: 1 !important; }
+  .controls.controls-collapsed { max-height: none !important; opacity: 1 !important; padding: 6px 12px !important; }
   .controls input[type="text"] { display: none; }
   .controls select { display: none; }
   .controls .ms-dropdown { display: none; }
