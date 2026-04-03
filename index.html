@@ -440,14 +440,14 @@ input[type="text"], select, textarea { font-size: 16px; }
       <h2 style="margin:0;font-size:1.4em;color:var(--text)">Add a Wine</h2>
       <button onclick="closeAddWine()" style="border:none;background:none;font-size:24px;cursor:pointer;color:var(--text3)">✕</button>
     </div>
-    <a href="https://www.vivino.com/search/wines" target="_blank" rel="noopener" style="display:block;text-align:center;padding:12px;margin-bottom:20px;background:#a61d24;color:white;border-radius:10px;text-decoration:none;font-weight:600;font-size:14px">🔍 Look up on Vivino first</a>
-    <p style="font-size:12px;color:var(--text3);margin:-12px 0 16px;text-align:center">Find your wine on Vivino, then fill in the details below</p>
     <div id="addWineForm" style="display:flex;flex-direction:column;gap:12px">
-      <input type="text" id="addWineName" placeholder="Wine name *" style="padding:10px 14px;border-radius:8px;border:1px solid var(--border2);background:var(--input-bg);color:var(--input-text);font-size:15px">
-      <input type="text" id="addWinery" placeholder="Winery *" style="padding:10px 14px;border-radius:8px;border:1px solid var(--border2);background:var(--input-bg);color:var(--input-text);font-size:15px">
+      <input type="text" id="addWineName" placeholder="Wine name" style="padding:10px 14px;border-radius:8px;border:1px solid var(--border2);background:var(--input-bg);color:var(--input-text);font-size:15px">
+      <input type="text" id="addWinery" placeholder="Winery" style="padding:10px 14px;border-radius:8px;border:1px solid var(--border2);background:var(--input-bg);color:var(--input-text);font-size:15px">
+      <a id="vivinoLookup" href="https://www.vivino.com/search/wines" target="_blank" rel="noopener" style="display:block;text-align:center;padding:12px;background:#a61d24;color:white;border-radius:10px;text-decoration:none;font-weight:600;font-size:14px">🔍 Look up on Vivino</a>
+      <p style="font-size:12px;color:var(--text3);margin:-4px 0 4px;text-align:center">Type name/winery above, then tap to look up details on Vivino</p>
       <div style="display:flex;gap:10px">
         <select id="addType" style="flex:1;padding:10px;border-radius:8px;border:1px solid var(--border2);background:var(--input-bg);color:var(--input-text);font-size:15px">
-          <option value="">Type *</option>
+          <option value="">Type</option>
           <option value="Red">Red</option>
           <option value="White">White</option>
           <option value="Rosé">Rosé</option>
@@ -456,15 +456,16 @@ input[type="text"], select, textarea { font-size: 16px; }
           <option value="Orange">Orange</option>
         </select>
         <select id="addCountry" style="flex:1;padding:10px;border-radius:8px;border:1px solid var(--border2);background:var(--input-bg);color:var(--input-text);font-size:15px">
-          <option value="">Country *</option>
+          <option value="">Country</option>
         </select>
       </div>
       <input type="text" id="addGrape" placeholder="Grape variety" style="padding:10px 14px;border-radius:8px;border:1px solid var(--border2);background:var(--input-bg);color:var(--input-text);font-size:15px">
       <input type="text" id="addRegion" placeholder="Region" style="padding:10px 14px;border-radius:8px;border:1px solid var(--border2);background:var(--input-bg);color:var(--input-text);font-size:15px">
-      <div style="display:flex;align-items:center;gap:12px">
-        <label style="color:var(--text2);font-size:14px;white-space:nowrap">Rating:</label>
-        <input type="range" id="addRating" min="1" max="5" step="0.1" value="3.5" style="flex:1;accent-color:#4a7cf7" oninput="document.getElementById('addRatingVal').textContent=parseFloat(this.value).toFixed(1)">
-        <span id="addRatingVal" style="color:var(--text);font-weight:600;font-size:16px;min-width:28px">3.5</span>
+      <div style="text-align:center;padding:8px 0">
+        <div style="color:var(--text2);font-size:14px;margin-bottom:8px">Your Rating</div>
+        <div id="starRating" style="display:inline-flex;gap:2px;cursor:pointer;font-size:32px;line-height:1"></div>
+        <div id="starRatingVal" style="color:var(--text3);font-size:13px;margin-top:4px">Tap a star</div>
+        <input type="hidden" id="addRating" value="0">
       </div>
       <input type="text" id="addImage" placeholder="Image URL (optional)" style="padding:10px 14px;border-radius:8px;border:1px solid var(--border2);background:var(--input-bg);color:var(--input-text);font-size:15px">
       <button onclick="saveNewWine()" style="padding:14px;border-radius:10px;border:none;background:#4a7cf7;color:white;font-size:16px;font-weight:600;cursor:pointer;margin-top:4px">Add to Collection</button>
@@ -1078,9 +1079,54 @@ document.querySelectorAll('.bottom-tab').forEach(function(bt) {
   });
 });
 
+// ── Star Rating Widget ──
+var currentStarRating = 0;
+function buildStarRating() {
+  var container = document.getElementById('starRating');
+  if (!container) return;
+  container.innerHTML = '';
+  for (var i = 0; i < 10; i++) {
+    var half = document.createElement('span');
+    half.dataset.value = ((i + 1) * 0.5).toString();
+    half.style.cssText = 'display:inline-block;width:16px;overflow:hidden;cursor:pointer;' + (i % 2 === 1 ? 'margin-right:4px;' : '');
+    half.style.direction = (i % 2 === 0) ? 'ltr' : 'rtl';
+    half.textContent = '★';
+    half.style.color = 'var(--star-empty, #d1d5db)';
+    half.addEventListener('click', function() {
+      currentStarRating = parseFloat(this.dataset.value);
+      document.getElementById('addRating').value = currentStarRating;
+      document.getElementById('starRatingVal').textContent = currentStarRating.toFixed(1) + ' / 5.0';
+      updateStarDisplay();
+    });
+    container.appendChild(half);
+  }
+}
+function updateStarDisplay() {
+  var halves = document.getElementById('starRating').children;
+  for (var i = 0; i < halves.length; i++) {
+    var val = parseFloat(halves[i].dataset.value);
+    halves[i].style.color = val <= currentStarRating ? '#f6c23e' : 'var(--star-empty, #d1d5db)';
+  }
+}
+buildStarRating();
+
+// ── Vivino link auto-fill ──
+function updateVivinoLink() {
+  var name = document.getElementById('addWineName').value.trim();
+  var winery = document.getElementById('addWinery').value.trim();
+  var query = [name, winery].filter(Boolean).join(' ');
+  var link = document.getElementById('vivinoLookup');
+  if (query) {
+    link.href = 'https://www.vivino.com/search/wines?q=' + encodeURIComponent(query);
+  } else {
+    link.href = 'https://www.vivino.com/search/wines';
+  }
+}
+document.getElementById('addWineName').addEventListener('input', updateVivinoLink);
+document.getElementById('addWinery').addEventListener('input', updateVivinoLink);
+
 // ── Add Wine ──
 function openAddWine() {
-  // Populate country dropdown from existing countries
   var addCountry = document.getElementById('addCountry');
   if (addCountry.options.length <= 1) {
     var countries = document.getElementById('countryFilter').querySelectorAll('option');
@@ -1105,39 +1151,41 @@ document.getElementById('addWineOverlay').addEventListener('click', function(e) 
 function saveNewWine() {
   var name = document.getElementById('addWineName').value.trim();
   var winery = document.getElementById('addWinery').value.trim();
-  var type = document.getElementById('addType').value;
-  var country = document.getElementById('addCountry').value;
+  var type = document.getElementById('addType').value || 'Unknown';
+  var country = document.getElementById('addCountry').value || 'Unknown';
   var grape = document.getElementById('addGrape').value.trim() || 'Unknown';
   var region = document.getElementById('addRegion').value.trim() || 'Unknown';
-  var rating = parseFloat(document.getElementById('addRating').value);
+  var rating = parseFloat(document.getElementById('addRating').value) || 0;
   var image = document.getElementById('addImage').value.trim() || '';
   var errEl = document.getElementById('addWineError');
 
-  if (!name || !winery || !type || !country) {
-    errEl.textContent = 'Please fill in all required fields (marked with *)';
+  if (!name) {
+    errEl.textContent = 'Please enter a wine name';
+    errEl.style.display = 'block';
+    return;
+  }
+  if (rating === 0) {
+    errEl.textContent = 'Please tap a star to set your rating';
     errEl.style.display = 'block';
     return;
   }
 
-  var newWine = {type: type, wine: name, winery: winery, grape: grape, region: region, country: country, rating: rating};
+  var newWine = {type: type, wine: name, winery: winery || 'Unknown', grape: grape, region: region, country: country, rating: rating, _added: true};
   if (image) newWine.image = image;
   wines.push(newWine);
 
-  // Add grape to allGrapes if new
   if (grape !== 'Unknown' && !allGrapes.includes(grape)) {
-    allGrapes.push(grape);
-    allGrapes.sort();
-    selectedGrapes.add(grape);
+    allGrapes.push(grape); allGrapes.sort(); selectedGrapes.add(grape);
   }
-  // Add type to allTypes if new
-  if (!allTypes.includes(type)) {
-    allTypes.push(type);
-    activeTypes.add(type);
+  if (!allTypes.includes(type) && type !== 'Unknown') {
+    allTypes.push(type); activeTypes.add(type);
   }
 
-  // Save to localStorage so it persists
-  try { localStorage.setItem('wine_user_additions', JSON.stringify(wines.filter(function(w) { return w._added; }))); } catch(e) {}
-  newWine._added = true;
+  // Persist user-added wines
+  try {
+    var userWines = wines.filter(function(w) { return w._added; });
+    localStorage.setItem('wine_user_additions', JSON.stringify(userWines));
+  } catch(e) {}
 
   // Clear form
   document.getElementById('addWineName').value = '';
@@ -1146,9 +1194,11 @@ function saveNewWine() {
   document.getElementById('addCountry').value = '';
   document.getElementById('addGrape').value = '';
   document.getElementById('addRegion').value = '';
-  document.getElementById('addRating').value = '3.5';
-  document.getElementById('addRatingVal').textContent = '3.5';
+  document.getElementById('addRating').value = '0';
   document.getElementById('addImage').value = '';
+  currentStarRating = 0; updateStarDisplay();
+  document.getElementById('starRatingVal').textContent = 'Tap a star';
+  updateVivinoLink();
 
   closeAddWine();
   render();
@@ -1157,8 +1207,7 @@ function saveNewWine() {
 try {
   var saved = localStorage.getItem('wine_user_additions');
   if (saved) {
-    var additions = JSON.parse(saved);
-    additions.forEach(function(w) { w._added = true; wines.push(w); });
+    JSON.parse(saved).forEach(function(w) { w._added = true; wines.push(w); });
   }
 } catch(e) {}
 
