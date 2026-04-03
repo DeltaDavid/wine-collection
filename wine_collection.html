@@ -45,9 +45,9 @@ body.dark {
 body { background: var(--bg); color: var(--text); font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Text', 'Helvetica Neue', sans-serif; min-height: 100vh; transition: background 0.3s, color 0.3s; padding-bottom: env(safe-area-inset-bottom); }
 
 /* ── Menu bar ── */
-.menubar { display: flex; align-items: center; background: #fff; padding: env(safe-area-inset-top) 20px 0 20px; font-size: 12px; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; z-index: 250; border-bottom: 1px solid #eef1f8; }
+.menubar { display: flex; align-items: center; background: var(--surface); padding: env(safe-area-inset-top) 20px 0 20px; font-size: 12px; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; z-index: 250; border-bottom: 1px solid var(--border); }
 .menu-item { position: relative; }
-.menu-item > span { display: inline-block; padding: 5px 12px; color: #718096; cursor: default; user-select: none; }
+.menu-item > span { display: inline-block; padding: 5px 12px; color: var(--text3); cursor: default; user-select: none; }
 .menu-item:hover > span { background: rgba(74,124,247,0.08); color: #2d3748; }
 .menu-drop { display: none; position: absolute; top: 100%; left: 0; background: var(--surface); border: 1px solid var(--border2); border-radius: 6px; min-width: 180px; padding: 4px 0; box-shadow: 0 8px 24px rgba(0,0,0,0.2); z-index: 400; }
 .menu-item:hover > .menu-drop { display: block; }
@@ -239,6 +239,10 @@ body.dark .header h1 { color: #e8edf8; }
   .mobile-panel .ms-dropdown-list { display: block !important; position: relative; top: 0; width: 100%; max-height: 250px; }
   .mobile-panel .rating-range { display: flex !important; width: 100%; gap: 8px; align-items: center; }
   .mobile-panel .rating-range input[type="range"] { flex: 1; width: auto; }
+  .mobile-country-list { max-height: 250px; overflow-y: auto; border: 1px solid var(--border2); border-radius: 8px; background: var(--input-bg); }
+  .mobile-country-list .mc-item { padding: 10px 14px; font-size: 15px; color: var(--text); cursor: pointer; border-bottom: 1px solid var(--border); }
+  .mobile-country-list .mc-item:last-child { border-bottom: none; }
+  .mobile-country-list .mc-item:active, .mobile-country-list .mc-item.selected { background: #4a7cf7; color: white; }
   .grid { padding: 10px 10px 70px; grid-template-columns: repeat(auto-fill, minmax(110px, 1fr)); gap: 8px; }
   .table-container { padding: 0 10px 70px; }
   .stats-container { padding: 12px 12px 70px; }
@@ -262,9 +266,9 @@ body.dark .header h1 { color: #e8edf8; }
 }
 
 /* Bottom navigation bar */
-.bottom-nav { display: none; position: fixed; bottom: 0; left: 0; right: 0; background: var(--surface); border-top: 1px solid var(--border); z-index: 300; padding: 4px 0 env(safe-area-inset-bottom, 4px); }
-.bottom-nav .bottom-tab { flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 6px 0; font-size: 10px; color: var(--text3); cursor: pointer; text-decoration: none; gap: 2px; border: none; background: none; }
-.bottom-nav .bottom-tab .bt-icon { font-size: 20px; }
+.bottom-nav { display: none; position: fixed; bottom: 0; left: 0; right: 0; background: var(--surface); border-top: 1px solid var(--border); z-index: 300; padding: 8px 0 calc(env(safe-area-inset-bottom, 8px) + 8px); }
+.bottom-nav .bottom-tab { flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 10px 0 4px; font-size: 11px; color: var(--text3); cursor: pointer; text-decoration: none; gap: 3px; border: none; background: none; min-height: 50px; }
+.bottom-nav .bottom-tab .bt-icon { font-size: 24px; }
 .bottom-nav .bottom-tab.active { color: #4a7cf7; }
 
 /* Mobile touch targets - minimum 44px for accessibility */
@@ -370,7 +374,7 @@ input[type="text"], select, textarea { font-size: 16px; }
     <button id="mobileDarkModeBtn" title="Dark Mode" onclick="toggleDarkMode()">🌙</button>
   </div>
   <div class="mobile-panel" id="panelCountry">
-    <select id="mobileCountry" onchange="document.getElementById('countryFilter').value=this.value;render()"></select>
+    <div class="mobile-country-list" id="mobileCountryList"></div>
   </div>
   <div class="mobile-panel" id="panelType">
     <div class="ms-dropdown" style="display:block">
@@ -393,6 +397,18 @@ input[type="text"], select, textarea { font-size: 16px; }
     </div>
   </div>
 </div>
+</div>
+
+<div class="mobile-search-bar" id="mobileSearchBar">
+  <input type="text" id="mobileSearchInput" placeholder="Search wines, wineries, grapes...">
+  <button class="close-search" onclick="closeMobileSearch()">✕</button>
+</div>
+
+<div class="bottom-nav">
+  <button class="bottom-tab active" data-tab="bottle"><span class="bt-icon">🍾</span>Bottles</button>
+  <button class="bottom-tab" data-tab="table"><span class="bt-icon">📋</span>Table</button>
+  <button class="bottom-tab" data-tab="stats"><span class="bt-icon">📊</span>Stats</button>
+  <button class="bottom-tab" data-tab="search"><span class="bt-icon">🔍</span>Search</button>
 </div>
 
 <div class="grid" id="wineGrid"></div>
@@ -816,15 +832,9 @@ function closeMobileSearch() {
   var bar = document.getElementById('mobileSearchBar');
   if (bar) bar.classList.remove('open');
 }
-// Deferred: bind mobileSearchInput after DOM is fully loaded
-window.addEventListener('DOMContentLoaded', function() {
-  var msi = document.getElementById('mobileSearchInput');
-  if (msi) {
-    msi.addEventListener('input', function() {
-      document.getElementById('search').value = this.value;
-      render();
-    });
-  }
+document.getElementById('mobileSearchInput').addEventListener('input', function() {
+  document.getElementById('search').value = this.value;
+  render();
 });
 
 // ── Mobile toolbar buttons (1-step toggle) ──
@@ -849,21 +859,27 @@ window.addEventListener('DOMContentLoaded', function() {
       if (!isOpen) {
         panel.classList.add('open');
         btn.classList.add('active');
-        // Auto-open country select on mobile
-        if (panelId === 'panelCountry') {
-          var sel = document.getElementById('mobileCountry');
-          setTimeout(function() {
-            sel.focus();
-            if (typeof sel.showPicker === 'function') { try { sel.showPicker(); } catch(e){} }
-          }, 50);
-        }
       }
     });
   });
-  // Populate mobile country select from desktop one
+  // Populate mobile country list from desktop select
   var desktopCountry = document.getElementById('countryFilter');
-  var mobileCountry = document.getElementById('mobileCountry');
-  mobileCountry.innerHTML = desktopCountry.innerHTML;
+  var mobileCountryList = document.getElementById('mobileCountryList');
+  var countryOptions = desktopCountry.querySelectorAll('option');
+  countryOptions.forEach(function(opt) {
+    var div = document.createElement('div');
+    div.className = 'mc-item';
+    div.textContent = opt.textContent;
+    div.dataset.value = opt.value;
+    if (opt.value === '') div.classList.add('selected');
+    div.addEventListener('click', function() {
+      desktopCountry.value = div.dataset.value;
+      mobileCountryList.querySelectorAll('.mc-item').forEach(function(d) { d.classList.remove('selected'); });
+      div.classList.add('selected');
+      render();
+    });
+    mobileCountryList.appendChild(div);
+  });
   // Sync mobile rating sliders
   var mMin = document.getElementById('mobileMinRating');
   var mMax = document.getElementById('mobileMaxRating');
@@ -993,18 +1009,5 @@ document.querySelectorAll('.bottom-tab').forEach(function(bt) {
   });
 });
 </script>
-
-<div class="mobile-search-bar" id="mobileSearchBar">
-  <input type="text" id="mobileSearchInput" placeholder="Search wines, wineries, grapes...">
-  <button class="close-search" onclick="closeMobileSearch()">✕</button>
-</div>
-
-<div class="bottom-nav">
-  <button class="bottom-tab active" data-tab="bottle"><span class="bt-icon">🍾</span>Bottles</button>
-  <button class="bottom-tab" data-tab="table"><span class="bt-icon">📋</span>Table</button>
-  <button class="bottom-tab" data-tab="stats"><span class="bt-icon">📊</span>Stats</button>
-  <button class="bottom-tab" data-tab="search"><span class="bt-icon">🔍</span>Search</button>
-</div>
-
 </body>
 </html>
