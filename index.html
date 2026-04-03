@@ -65,8 +65,9 @@ body { background: var(--bg); color: var(--text); font-family: -apple-system, Bl
 .md-sub .md-item:hover { background: var(--hover-bg); }
 
 .top-fixed { position: sticky; top: 0; z-index: 200; }
-.header { background: var(--bg); padding: 18px 40px 12px; border-bottom: 1px solid #eef1f8; transition: padding 0.3s ease-out, background 0.3s ease-out; }
-.header h1 { font-size: 1.9em; color: #2d3748; margin-bottom: 4px; transition: font-size 0.3s ease-out; }
+.header { background: var(--bg); padding: 18px 40px 12px; border-bottom: 1px solid var(--border); transition: padding 0.3s ease-out, background 0.3s ease-out; }
+.header h1 { font-size: 1.9em; color: #1a202c; margin-bottom: 4px; transition: font-size 0.3s ease-out; }
+body.dark .header h1 { color: #e8edf8; }
 .header.header-collapsed { padding: 6px 40px 4px; }
 .header.header-collapsed h1 { font-size: 1.2em; margin-bottom: 0; }
 .tabs { display: flex; gap: 0; background: var(--surface); border-bottom: 2px solid var(--border); padding: 0 40px; transition: padding 0.3s ease-out; }
@@ -806,16 +807,24 @@ document.addEventListener('keydown',e=>{if(e.key==='Escape')closeDetail();});
 // ── Mobile search bar (bottom nav trigger) ──
 function openMobileSearch() {
   var bar = document.getElementById('mobileSearchBar');
+  if (!bar) return;
   bar.classList.add('open');
   var input = document.getElementById('mobileSearchInput');
-  setTimeout(function() { input.focus(); }, 100);
+  if (input) setTimeout(function() { input.focus(); }, 100);
 }
 function closeMobileSearch() {
-  document.getElementById('mobileSearchBar').classList.remove('open');
+  var bar = document.getElementById('mobileSearchBar');
+  if (bar) bar.classList.remove('open');
 }
-document.getElementById('mobileSearchInput').addEventListener('input', function() {
-  document.getElementById('search').value = this.value;
-  render();
+// Deferred: bind mobileSearchInput after DOM is fully loaded
+window.addEventListener('DOMContentLoaded', function() {
+  var msi = document.getElementById('mobileSearchInput');
+  if (msi) {
+    msi.addEventListener('input', function() {
+      document.getElementById('search').value = this.value;
+      render();
+    });
+  }
 });
 
 // ── Mobile toolbar buttons (1-step toggle) ──
@@ -823,12 +832,19 @@ document.getElementById('mobileSearchInput').addEventListener('input', function(
   const allBtns = document.querySelectorAll('.controls-mobile-buttons button');
   allBtns.forEach(function(btn) {
     btn.addEventListener('click', function() {
+      // Dark mode button has no panel - just toggle
+      if (btn.id === 'mobileDarkModeBtn') {
+        toggleDarkMode();
+        return;
+      }
       const panelId = btn.dataset.panel;
+      if (!panelId) return;
       const panel = document.getElementById(panelId);
+      if (!panel) return;
       const isOpen = panel.classList.contains('open');
       // Close all panels and deactivate all buttons
       document.querySelectorAll('.mobile-panel').forEach(function(p) { p.classList.remove('open'); });
-      allBtns.forEach(function(b) { b.classList.remove('active'); });
+      allBtns.forEach(function(b) { if (b.id !== 'mobileDarkModeBtn') b.classList.remove('active'); });
       // Toggle the clicked one
       if (!isOpen) {
         panel.classList.add('open');
