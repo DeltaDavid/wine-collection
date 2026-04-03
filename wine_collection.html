@@ -263,7 +263,7 @@ body.dark .header h1 { color: #e8edf8; }
   /* Mobile search bar */
   .mobile-search-bar { display: none; position: fixed; top: 0; left: 0; right: 0; background: var(--surface); padding: 12px; z-index: 500; box-shadow: 0 4px 12px rgba(0,0,0,0.15); }
   .mobile-search-bar.open { display: flex; gap: 8px; align-items: center; }
-  .mobile-search-bar input { flex: 1; font-size: 16px; padding: 10px 14px; border-radius: 10px; border: 1px solid var(--border2); background: var(--input-bg); }
+  .mobile-search-bar input { flex: 1; font-size: 16px; padding: 10px 14px; border-radius: 10px; border: 1px solid var(--border2); background: var(--input-bg); color: var(--input-text); }
   .mobile-search-bar .close-search { font-size: 20px; padding: 8px; cursor: pointer; border: none; background: none; color: var(--text2); }
 }
 
@@ -904,7 +904,7 @@ function openMobileSearch() {
   if (!bar) return;
   bar.classList.add('open');
   var input = document.getElementById('mobileSearchInput');
-  if (input) setTimeout(function() { input.focus(); }, 100);
+  if (input) { input.setAttribute('autofocus',''); setTimeout(function() { input.focus(); input.click(); }, 50); }
 }
 function closeMobileSearch() {
   var bar = document.getElementById('mobileSearchBar');
