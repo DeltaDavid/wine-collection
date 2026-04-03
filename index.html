@@ -122,9 +122,12 @@ body.dark .header h1 { color: #e8edf8; }
 .detail-rotate:hover { background: #4a7cf7; color: white; border-color: #4a7cf7; }
 
 /* ── Table View ── */
-.table-container { padding: 0 40px 20px; display: none; overflow-x: clip; }
+.table-container { padding: 0 40px 20px; display: none; overflow-x: auto; }
 .wine-table { width: 100%; border-collapse: collapse; font-size: 13px; }
-.wine-table th { background: var(--th-bg); color: var(--th-text); padding: 10px 12px; text-align: left; cursor: pointer; user-select: none; border-bottom: 2px solid #4a7cf7; white-space: nowrap; position: sticky; top: var(--sticky-th-top, 0px); z-index: 10; }
+.wine-table th { background: var(--th-bg); color: var(--th-text); padding: 10px 12px; text-align: left; cursor: pointer; user-select: none; border-bottom: 2px solid #4a7cf7; white-space: nowrap; }
+.fixed-thead-clone { position: fixed; z-index: 10; overflow: hidden; display: none; }
+.fixed-thead-clone table { border-collapse: collapse; }
+.fixed-thead-clone th { background: var(--th-bg); color: var(--th-text); padding: 10px 12px; text-align: left; white-space: nowrap; border-bottom: 2px solid #4a7cf7; }
 .wine-table th:hover { background: var(--th-hover); }
 .wine-table th .sort-arrow { margin-left: 4px; font-size: 10px; }
 .wine-table th { cursor: grab; }
@@ -429,6 +432,7 @@ input[type="text"], select, textarea { font-size: 16px; }
 </div>
 
 <div class="grid" id="wineGrid"></div>
+<div class="fixed-thead-clone" id="fixedThead"></div>
 <div class="table-container" id="tableView">
   <table class="wine-table"><thead><tr id="tableHead"></tr></thead><tbody id="tableBody"></tbody></table>
 </div>
@@ -445,7 +449,7 @@ input[type="text"], select, textarea { font-size: 16px; }
     </div>
     <div id="addWineForm" style="display:flex;flex-direction:column;gap:12px">
       <div style="position:relative">
-        <input type="text" id="addWineName" placeholder="Wine name" autocomplete="off" style="padding:10px 14px;border-radius:8px;border:1px solid var(--border2);background:var(--input-bg);color:var(--input-text);font-size:15px;width:100%;box-sizing:border-box">
+        <input type="text" id="addWineName" placeholder="Search wine name, winery, or grape..." autocomplete="off" style="padding:10px 14px;border-radius:8px;border:1px solid var(--border2);background:var(--input-bg);color:var(--input-text);font-size:15px;width:100%;box-sizing:border-box">
         <div id="wineAutocomplete" style="display:none;position:absolute;top:100%;left:0;right:0;background:var(--surface);border:1px solid var(--border2);border-radius:0 0 8px 8px;max-height:200px;overflow-y:auto;z-index:10;box-shadow:0 4px 12px rgba(0,0,0,0.15)"></div>
       </div>
       <button id="wineLookupBtn" onclick="lookupWine()" style="padding:12px;background:#a61d24;color:white;border-radius:10px;border:none;font-weight:600;font-size:14px;cursor:pointer">🔍 Look Up Wine</button>
@@ -887,7 +891,7 @@ function switchTab(tab) {
   document.getElementById('controlsBar').style.display=hideControls?'none':'flex';
   document.getElementById('noResults').style.display='none';
   if(tab==='stats')renderStatsView(); else render();
-  if(tab==='table') { setTimeout(updateStickyTableOffset, 100); setTimeout(updateStickyTableOffset, 300); }
+  if(tab==='table') { setTimeout(updateFixedThead, 100); } else { document.getElementById('fixedThead').style.display = 'none'; }
 }
 
 let searchTimeout;
@@ -984,19 +988,43 @@ document.getElementById('mobileSearchInput').addEventListener('input', function(
   buildMsDropdown(document.getElementById('mobileGrapeList'), document.getElementById('mobileGrapeToggle'), allGrapes, selectedGrapes, 'All Grapes', updateGrapeBtn, render);
 })();
 
-// ── Collapsing header on scroll ──
+// ── Collapsing header + fixed table header on scroll ──
 let lastScrollPos = 0;
-function updateStickyTableOffset() {
+function updateFixedThead() {
+  var clone = document.getElementById('fixedThead');
+  var tv = document.getElementById('tableView');
+  if (!clone || !tv || tv.style.display === 'none') { clone.style.display = 'none'; return; }
+  var thead = tv.querySelector('thead');
+  if (!thead) { clone.style.display = 'none'; return; }
   var topFixed = document.querySelector('.top-fixed');
-  if (!topFixed) return;
-  var h = topFixed.offsetHeight;
-  document.documentElement.style.setProperty('--sticky-th-top', h + 'px');
+  var fixedBottom = topFixed ? topFixed.getBoundingClientRect().bottom : 0;
+  var theadRect = thead.getBoundingClientRect();
+  // Show fixed clone when real thead scrolls behind the top bar
+  if (theadRect.top < fixedBottom) {
+    var tvRect = tv.getBoundingClientRect();
+    clone.style.display = 'block';
+    clone.style.top = fixedBottom + 'px';
+    clone.style.left = tvRect.left + 'px';
+    clone.style.width = tvRect.width + 'px';
+    // Sync horizontal scroll
+    clone.scrollLeft = tv.scrollLeft;
+    // Sync column widths
+    var realThs = thead.querySelectorAll('th');
+    var cloneTr = clone.querySelector('tr');
+    if (!cloneTr || cloneTr.children.length !== realThs.length) {
+      clone.innerHTML = '<table class="wine-table" style="width:' + thead.parentElement.offsetWidth + 'px"><thead><tr>' + thead.innerHTML.replace(/<tr[^>]*>|<\/tr>/gi, '') + '</tr></thead></table>';
+    }
+    var cloneThs = clone.querySelectorAll('th');
+    realThs.forEach(function(th, i) { if (cloneThs[i]) cloneThs[i].style.width = th.offsetWidth + 'px'; });
+    clone.querySelector('table').style.width = thead.parentElement.offsetWidth + 'px';
+  } else {
+    clone.style.display = 'none';
+  }
 }
 function handleHeaderScroll() {
   const scrollPos = window.scrollY || document.documentElement.scrollTop;
   const header = document.querySelector('.header');
   const controls = document.getElementById('controlsBar');
-
   if (scrollPos > 50) {
     header.classList.add('header-collapsed');
     if (controls) controls.classList.add('controls-collapsed');
@@ -1005,11 +1033,11 @@ function handleHeaderScroll() {
     if (controls) controls.classList.remove('controls-collapsed');
   }
   lastScrollPos = scrollPos;
-  updateStickyTableOffset();
+  updateFixedThead();
 }
 window.addEventListener('scroll', handleHeaderScroll, { passive: true });
-window.addEventListener('resize', updateStickyTableOffset);
-setTimeout(updateStickyTableOffset, 100);
+window.addEventListener('resize', updateFixedThead);
+document.getElementById('tableView').addEventListener('scroll', updateFixedThead, { passive: true });
 
 // ── Dark mode toggle ──
 function toggleDarkMode() {
