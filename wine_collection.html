@@ -65,7 +65,7 @@ body { background: var(--bg); color: var(--text); font-family: -apple-system, Bl
 .md-sub .md-item:hover { background: var(--hover-bg); }
 
 .top-fixed { position: sticky; top: 0; z-index: 200; }
-.header { background: #fff; padding: 18px 40px 12px; border-bottom: 1px solid #eef1f8; transition: padding 0.3s ease-out, background 0.3s ease-out; }
+.header { background: var(--bg); padding: 18px 40px 12px; border-bottom: 1px solid #eef1f8; transition: padding 0.3s ease-out, background 0.3s ease-out; }
 .header h1 { font-size: 1.9em; color: #2d3748; margin-bottom: 4px; transition: font-size 0.3s ease-out; }
 .header.header-collapsed { padding: 6px 40px 4px; }
 .header.header-collapsed h1 { font-size: 1.2em; margin-bottom: 0; }
@@ -216,6 +216,7 @@ body { background: var(--bg); color: var(--text); font-family: -apple-system, Bl
   .header h1 { font-size: 1.4em; }
   .header.header-collapsed { padding: 4px 15px 2px; }
   .header.header-collapsed h1 { font-size: 1em; }
+  .menubar { display: none; }
   /* Hide desktop tabs - moved to bottom nav */
   .tabs { display: none; }
   .controls { padding: 6px 12px; gap: 0; flex-wrap: wrap; position: relative; }
@@ -245,7 +246,12 @@ body { background: var(--bg); color: var(--text); font-family: -apple-system, Bl
   .detail-body { padding: 18px; }
   .detail-meta-grid { grid-template-columns: 1fr; }
   /* Bottom navigation bar */
-  .bottom-nav { display: flex; }
+  .bottom-nav { display: flex !important; }
+  /* Mobile search bar */
+  .mobile-search-bar { display: none; position: fixed; top: 0; left: 0; right: 0; background: var(--surface); padding: 12px; z-index: 500; box-shadow: 0 4px 12px rgba(0,0,0,0.15); }
+  .mobile-search-bar.open { display: flex; gap: 8px; align-items: center; }
+  .mobile-search-bar input { flex: 1; font-size: 16px; padding: 10px 14px; border-radius: 10px; border: 1px solid var(--border2); background: var(--input-bg); }
+  .mobile-search-bar .close-search { font-size: 20px; padding: 8px; cursor: pointer; border: none; background: none; color: var(--text2); }
 }
 
 
@@ -356,14 +362,11 @@ input[type="text"], select, textarea { font-size: 16px; }
   </div>
   <div class="filter-count" id="filterCount"></div>
   <div class="controls-mobile-buttons">
-    <button id="mobileSearchBtn" title="Search" data-panel="panelSearch">🔍</button>
     <button id="mobileCountryBtn" title="Country" data-panel="panelCountry">🌍</button>
     <button id="mobileTypeBtn" title="Type" data-panel="panelType">🍷</button>
     <button id="mobileGrapeBtn" title="Grape" data-panel="panelGrape">🍇</button>
     <button id="mobileRatingBtn" title="Rating" data-panel="panelRating">⭐</button>
-  </div>
-  <div class="mobile-panel" id="panelSearch">
-    <input type="text" id="mobileSearch" placeholder="Search wines, wineries, grapes..." oninput="document.getElementById('search').value=this.value;render()">
+    <button id="mobileDarkModeBtn" title="Dark Mode" onclick="toggleDarkMode()">🌙</button>
   </div>
   <div class="mobile-panel" id="panelCountry">
     <select id="mobileCountry" onchange="document.getElementById('countryFilter').value=this.value;render()"></select>
@@ -800,6 +803,21 @@ document.querySelectorAll('.tab').forEach(t=>{t.addEventListener('click',functio
 document.getElementById('wineDetail').addEventListener('click',e=>{if(e.target===document.getElementById('wineDetail'))closeDetail();});
 document.addEventListener('keydown',e=>{if(e.key==='Escape')closeDetail();});
 
+// ── Mobile search bar (bottom nav trigger) ──
+function openMobileSearch() {
+  var bar = document.getElementById('mobileSearchBar');
+  bar.classList.add('open');
+  var input = document.getElementById('mobileSearchInput');
+  setTimeout(function() { input.focus(); }, 100);
+}
+function closeMobileSearch() {
+  document.getElementById('mobileSearchBar').classList.remove('open');
+}
+document.getElementById('mobileSearchInput').addEventListener('input', function() {
+  document.getElementById('search').value = this.value;
+  render();
+});
+
 // ── Mobile toolbar buttons (1-step toggle) ──
 (function() {
   const allBtns = document.querySelectorAll('.controls-mobile-buttons button');
@@ -815,10 +833,6 @@ document.addEventListener('keydown',e=>{if(e.key==='Escape')closeDetail();});
       if (!isOpen) {
         panel.classList.add('open');
         btn.classList.add('active');
-        // Auto-focus search input
-        if (panelId === 'panelSearch') {
-          panel.querySelector('input').focus();
-        }
         // Auto-open country select on mobile
         if (panelId === 'panelCountry') {
           var sel = document.getElementById('mobileCountry');
@@ -942,7 +956,21 @@ if ('serviceWorker' in navigator) {
 document.querySelectorAll('.bottom-tab').forEach(function(bt) {
   bt.addEventListener('click', function() {
     var tab = bt.dataset.tab;
+    // Handle search tab specially - toggle search bar instead of switching view
+    if (tab === 'search') {
+      var bar = document.getElementById('mobileSearchBar');
+      if (bar.classList.contains('open')) {
+        closeMobileSearch();
+        bt.classList.remove('active');
+      } else {
+        openMobileSearch();
+        bt.classList.add('active');
+      }
+      return;
+    }
+    // Normal tab switching for bottle/table/stats
     switchTab(tab);
+    closeMobileSearch();
     document.querySelectorAll('.bottom-tab').forEach(function(b) { b.classList.toggle('active', b.dataset.tab === tab); });
     // Also sync desktop tabs
     document.querySelectorAll('.tab').forEach(function(t) { t.classList.toggle('active', t.dataset.tab === tab); });
@@ -950,10 +978,16 @@ document.querySelectorAll('.bottom-tab').forEach(function(bt) {
 });
 </script>
 
+<div class="mobile-search-bar" id="mobileSearchBar">
+  <input type="text" id="mobileSearchInput" placeholder="Search wines, wineries, grapes...">
+  <button class="close-search" onclick="closeMobileSearch()">✕</button>
+</div>
+
 <div class="bottom-nav">
   <button class="bottom-tab active" data-tab="bottle"><span class="bt-icon">🍾</span>Bottles</button>
   <button class="bottom-tab" data-tab="table"><span class="bt-icon">📋</span>Table</button>
   <button class="bottom-tab" data-tab="stats"><span class="bt-icon">📊</span>Stats</button>
+  <button class="bottom-tab" data-tab="search"><span class="bt-icon">🔍</span>Search</button>
 </div>
 
 </body>
