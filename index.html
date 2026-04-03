@@ -1077,6 +1077,8 @@ if ('serviceWorker' in navigator) {
 document.querySelectorAll('.bottom-tab').forEach(function(bt) {
   bt.addEventListener('click', function() {
     var tab = bt.dataset.tab;
+    // Add button has no data-tab - skip tab switching (onclick handles it)
+    if (!tab) return;
     // Handle search tab specially - toggle search bar instead of switching view
     if (tab === 'search') {
       var bar = document.getElementById('mobileSearchBar');
@@ -1208,35 +1210,40 @@ function clearSelectedWine() {
   document.getElementById('addImage').value = '';
 }
 
-// ── Wine Name Autocomplete (from existing collection) ──
+// ── Wine Name Autocomplete (Vivino search as you type) ──
 (function() {
   var input = document.getElementById('addWineName');
   var dropdown = document.getElementById('wineAutocomplete');
   var debounce = null;
   input.addEventListener('input', function() {
     clearTimeout(debounce);
+    var q = input.value.trim();
+    if (q.length < 3) { dropdown.style.display = 'none'; return; }
     debounce = setTimeout(function() {
-      var q = input.value.trim().toLowerCase();
-      if (q.length < 2) { dropdown.style.display = 'none'; return; }
-      var matches = wines.filter(function(w) {
-        return w.wine.toLowerCase().indexOf(q) !== -1 || w.winery.toLowerCase().indexOf(q) !== -1;
-      }).slice(0, 5);
-      if (!matches.length) { dropdown.style.display = 'none'; return; }
-      dropdown.innerHTML = matches.map(function(w, i) {
-        return '<div data-idx="' + i + '" style="padding:10px 14px;cursor:pointer;border-bottom:1px solid var(--border);font-size:14px;color:var(--text)">'
-          + '<strong>' + w.wine + '</strong><br><span style="font-size:12px;color:var(--text3)">' + w.winery + ' · ' + w.country + ' · ' + w.type + '</span></div>';
-      }).join('');
+      dropdown.innerHTML = '<div style="padding:12px;color:var(--text3);font-size:13px">Searching Vivino...</div>';
       dropdown.style.display = 'block';
-      dropdown.querySelectorAll('div').forEach(function(el) {
-        el.addEventListener('click', function() {
-          var w = matches[parseInt(el.dataset.idx)];
-          selectLookupResult({wine: w.wine, winery: w.winery, type: w.type, country: w.country, grape: w.grape || '', region: w.region || '', image: w.image || ''});
-          dropdown.style.display = 'none';
-        });
-        el.addEventListener('mouseenter', function() { el.style.background = 'var(--hover-bg)'; });
-        el.addEventListener('mouseleave', function() { el.style.background = 'none'; });
-      });
-    }, 150);
+      fetch('/.netlify/functions/wine-lookup?q=' + encodeURIComponent(q))
+        .then(function(r) { return r.json(); })
+        .then(function(data) {
+          var results = data.results || [];
+          if (!results.length) { dropdown.innerHTML = '<div style="padding:12px;color:var(--text3);font-size:13px">No results</div>'; return; }
+          dropdown.innerHTML = results.map(function(w, i) {
+            var imgHtml = w.image ? '<img src="' + w.image + '" style="width:30px;height:42px;object-fit:contain;border-radius:3px;flex-shrink:0">' : '';
+            return '<div data-idx="' + i + '" style="padding:10px 12px;cursor:pointer;border-bottom:1px solid var(--border);display:flex;gap:8px;align-items:center">'
+              + imgHtml + '<div style="flex:1;min-width:0"><div style="font-weight:600;color:var(--text);font-size:13px">' + w.wine + '</div>'
+              + '<div style="color:var(--text3);font-size:11px">' + [w.winery, w.type, w.country].filter(Boolean).join(' · ') + '</div></div></div>';
+          }).join('');
+          dropdown.querySelectorAll('[data-idx]').forEach(function(el) {
+            el.addEventListener('click', function() {
+              selectLookupResult(results[parseInt(el.dataset.idx)]);
+              dropdown.style.display = 'none';
+            });
+            el.addEventListener('mouseenter', function() { el.style.background = 'var(--hover-bg)'; });
+            el.addEventListener('mouseleave', function() { el.style.background = 'none'; });
+          });
+        })
+        .catch(function() { dropdown.innerHTML = '<div style="padding:12px;color:var(--text3);font-size:13px">Search failed</div>'; });
+    }, 500);
   });
   document.addEventListener('click', function(e) {
     if (!input.contains(e.target) && !dropdown.contains(e.target)) dropdown.style.display = 'none';
