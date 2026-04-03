@@ -70,11 +70,13 @@ body { background: var(--bg); color: var(--text); font-family: -apple-system, Bl
 body.dark .header h1 { color: #e8edf8; }
 .header.header-collapsed { padding: 6px 40px 4px; }
 .header.header-collapsed h1 { font-size: 1.2em; margin-bottom: 0; }
-.tabs { display: flex; gap: 0; background: var(--surface); border-bottom: 2px solid var(--border); padding: 0 40px; transition: padding 0.3s ease-out; }
+.tabs-row { display: flex; align-items: center; background: var(--surface); border-bottom: 2px solid var(--border); padding: 0 40px; }
+.tabs { display: flex; gap: 0; flex-shrink: 0; }
 .tab { padding: 10px 26px; cursor: pointer; color: var(--text3); font-size: 13px; font-weight: bold; border-bottom: 3px solid transparent; transition: all 0.2s; letter-spacing: 0.5px; }
 .tab:hover { color: var(--text2); }
 .tab.active { color: #4a7cf7; border-bottom-color: #4a7cf7; }
-.controls { background: var(--surface); padding: 10px 40px; display: flex; gap: 10px; align-items: center; flex-wrap: wrap; border-bottom: 1px solid var(--border); }
+.controls { display: flex; gap: 10px; align-items: center; flex-wrap: nowrap; margin-left: auto; padding: 6px 0; transition: max-height 0.3s ease-out, opacity 0.3s ease-out, padding 0.3s ease-out; overflow: hidden; }
+.controls.controls-collapsed { max-height: 0; opacity: 0; padding: 0; }
 .controls input[type="text"] { padding: 6px 12px; border-radius: 24px; border: 1px solid var(--border2); background: var(--input-bg); color: var(--input-text); font-size: 12px; width: 200px; outline: none; }
 .controls input[type="text"]:focus { border-color: #4a7cf7; }
 .controls select { padding: 6px 8px; border-radius: 16px; border: 1px solid var(--border2); background: var(--input-bg); color: var(--input-text); font-size: 12px; cursor: pointer; max-width: 170px; }
@@ -219,8 +221,9 @@ body.dark .header h1 { color: #e8edf8; }
   .header.header-collapsed h1 { font-size: 1em; }
   .menubar { display: none; }
   /* Hide desktop tabs - moved to bottom nav */
+  .tabs-row { flex-direction: column; padding: 0; border-bottom: none; }
   .tabs { display: none; }
-  .controls { padding: 6px 12px; gap: 0; flex-wrap: wrap; position: relative; }
+  .controls { padding: 6px 12px; gap: 0; flex-wrap: wrap; position: relative; margin-left: 0; }
   .controls input[type="text"] { display: none; }
   .controls select { display: none; }
   .controls .ms-dropdown { display: none; }
@@ -333,6 +336,7 @@ input[type="text"], select, textarea { font-size: 16px; }
 <div class="header">
   <h1>🍷 David's Wine Collection</h1>
 </div>
+<div class="tabs-row">
 <div class="tabs">
   <div class="tab active" data-tab="bottle">🍾 Bottles</div>
   <div class="tab" data-tab="table">📋 Table</div>
@@ -402,6 +406,7 @@ input[type="text"], select, textarea { font-size: 16px; }
   </div>
 </div>
 </div>
+</div>
 
 <div class="mobile-search-bar" id="mobileSearchBar">
   <input type="text" id="mobileSearchInput" placeholder="Search wines, wineries, grapes...">
@@ -409,7 +414,7 @@ input[type="text"], select, textarea { font-size: 16px; }
 </div>
 
 <div class="bottom-nav">
-  <button class="bottom-tab active" data-tab="bottle"><svg class="bt-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M10 2h4v4l2 3v11a2 2 0 0 1-2 2h-4a2 2 0 0 1-2-2V9l2-3V2z"/><line x1="10" y1="6" x2="14" y2="6"/></svg>Bottles</button>
+  <button class="bottom-tab active" data-tab="bottle"><svg class="bt-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M11 2h2v3l1.5 2.5c.3.5.5 1.1.5 1.7V20a2 2 0 0 1-2 2h-2a2 2 0 0 1-2-2V9.2c0-.6.2-1.2.5-1.7L11 5V2z"/><ellipse cx="12" cy="2" rx="1.5" ry="0.5"/><path d="M9.5 13c0-1.5 1-2.5 2.5-2.5s2.5 1 2.5 2.5c0 2-1.5 3-2.5 4.5C11 16 9.5 15 9.5 13z" stroke-width="1.2"/></svg>Bottles</button>
   <button class="bottom-tab" data-tab="table"><svg class="bt-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/><line x1="9" y1="3" x2="9" y2="21"/></svg>Table</button>
   <button class="bottom-tab" data-tab="stats"><svg class="bt-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="14" width="4" height="7" rx="1"/><rect x="10" y="9" width="4" height="12" rx="1"/><rect x="17" y="4" width="4" height="17" rx="1"/></svg>Stats</button>
   <button class="bottom-tab" data-tab="search"><svg class="bt-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><line x1="16.5" y1="16.5" x2="21" y2="21"/></svg>Search</button>
@@ -918,11 +923,14 @@ function updateStickyTableOffset() {
 function handleHeaderScroll() {
   const scrollPos = window.scrollY || document.documentElement.scrollTop;
   const header = document.querySelector('.header');
+  const controls = document.getElementById('controlsBar');
 
   if (scrollPos > 50) {
     header.classList.add('header-collapsed');
+    if (controls) controls.classList.add('controls-collapsed');
   } else {
     header.classList.remove('header-collapsed');
+    if (controls) controls.classList.remove('controls-collapsed');
   }
   lastScrollPos = scrollPos;
   updateStickyTableOffset();
