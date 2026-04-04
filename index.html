@@ -316,6 +316,11 @@ input[type="text"], select, textarea { font-size: 16px; }
 .offline-banner { display: none; position: fixed; top: 0; left: 0; right: 0; background: #e8a020; color: #fff; text-align: center; padding: 4px 0; font-size: 12px; z-index: 2000; }
 
 /* ── Context menu ── */
+/* FAB (floating action button) */
+.fab { position: fixed; bottom: calc(env(safe-area-inset-bottom, 0px) + 88px); right: 20px; width: 56px; height: 56px; border-radius: 50%; background: #4a7cf7; border: none; cursor: pointer; z-index: 301; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 12px rgba(74,124,247,0.4); transition: transform 0.2s, box-shadow 0.2s; -webkit-tap-highlight-color: transparent; }
+.fab:hover { transform: scale(1.08); box-shadow: 0 6px 20px rgba(74,124,247,0.5); }
+.fab:active { transform: scale(0.95); }
+.fab svg { width: 24px; height: 24px; }
 /* View transitions */
 .view-fade { animation: viewFadeIn 0.2s ease-out; }
 @keyframes viewFadeIn { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: translateY(0); } }
@@ -467,8 +472,10 @@ input[type="text"], select, textarea { font-size: 16px; }
   <button class="bottom-tab" data-tab="table"><svg class="bt-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/><line x1="9" y1="3" x2="9" y2="21"/></svg>Table</button>
   <button class="bottom-tab" data-tab="stats"><svg class="bt-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="14" width="4" height="7" rx="1"/><rect x="10" y="9" width="4" height="12" rx="1"/><rect x="17" y="4" width="4" height="17" rx="1"/></svg>Stats</button>
   <button class="bottom-tab" data-tab="search"><svg class="bt-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><line x1="16.5" y1="16.5" x2="21" y2="21"/></svg>Search</button>
-  <button class="bottom-tab" onclick="openAddWine()"><svg class="bt-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>Add</button>
 </div>
+<button class="fab" onclick="openAddWine()" title="Add Wine">
+  <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+</button>
 
 <div class="grid" id="wineGrid"></div>
 <div class="fixed-thead-clone" id="fixedThead"></div>
