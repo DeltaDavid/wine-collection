@@ -1318,9 +1318,11 @@ buildMsDropdown(document.getElementById('typeList'), document.getElementById('ty
 buildMsDropdown(document.getElementById('grapeList'), document.getElementById('grapeBtn'), allGrapes, selectedGrapes, 'All Grapes', updateGrapeBtn, render);
 render();
 
-// Service worker registration
+// Service worker registration - updateViaCache 'none' forces browser to always check for new SW
 if ('serviceWorker' in navigator) {
-  navigator.serviceWorker.register('wine_sw.js').catch(function(){});
+  navigator.serviceWorker.register('wine_sw.js', { updateViaCache: 'none' }).then(function(reg) {
+    reg.update();
+  }).catch(function(){});
 }
 // ── Bottom nav tab switching ──
 document.querySelectorAll('.bottom-tab').forEach(function(bt) {
