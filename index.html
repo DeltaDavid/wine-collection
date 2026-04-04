@@ -200,8 +200,8 @@ body.dark .header h1 { color: #e8edf8; }
 .wine-detail { max-width: 680px; margin: 40px auto; background: var(--detail-bg); border-radius: 24px; overflow: hidden; border: 1px solid var(--border); box-shadow: 0 20px 60px rgba(0,0,0,0.25); }
 .detail-close { position: absolute; top: 14px; right: 18px; font-size: 26px; color: var(--text3); cursor: pointer; z-index: 10; background: var(--surface); border-radius: 50%; width: 38px; height: 38px; display: flex; align-items: center; justify-content: center; transition: color 0.2s; }
 .detail-close:hover { color: var(--text); }
-.detail-nav-bar { display: flex; justify-content: space-between; align-items: center; padding: 10px 16px; border-top: 1px solid var(--border); background: var(--surface2); }
-.detail-nav-btn { font-size: 14px; color: var(--text2); cursor: pointer; padding: 8px 16px; border-radius: 8px; border: 1px solid var(--border); background: var(--surface); user-select: none; display: flex; align-items: center; gap: 6px; transition: color 0.2s, background 0.2s; }
+.detail-nav-bar { position: sticky; top: 0; z-index: 11; display: flex; justify-content: space-between; align-items: center; padding: 10px 16px; background: var(--surface); border-bottom: 1px solid var(--border); }
+.detail-nav-btn { font-size: 14px; color: var(--text2); cursor: pointer; padding: 8px 16px; border-radius: 8px; border: 1px solid var(--border); background: var(--surface); user-select: none; display: flex; align-items: center; gap: 6px; transition: color 0.2s, background 0.2s; -webkit-tap-highlight-color: transparent; }
 .detail-nav-btn:hover { color: var(--text); background: var(--hover-bg); }
 .detail-nav-btn.disabled { opacity: 0.3; pointer-events: none; }
 .detail-nav-pos { font-size: 12px; color: var(--text3); }
@@ -952,7 +952,7 @@ function _renderDetail(idx) {
   var prevCls = (_detailCurrentPos <= 0) ? ' disabled' : '';
   var nextCls = (_detailCurrentPos >= _detailFilteredList.length - 1) ? ' disabled' : '';
   var navBar = hasMultiple ? '<div class="detail-nav-bar"><div class="detail-nav-btn' + prevCls + '" onclick="navDetail(-1)">‹ Prev</div><div class="detail-nav-pos">' + (_detailCurrentPos + 1) + ' of ' + _detailFilteredList.length + '</div><div class="detail-nav-btn' + nextCls + '" onclick="navDetail(1)">Next ›</div></div>' : '';
-  ct.innerHTML='<div class="detail-hero"><div class="detail-close" onclick="closeDetail()">✕</div>'+rotBtn+img+'</div>'+
+  ct.innerHTML=navBar+'<div class="detail-hero"><div class="detail-close" onclick="closeDetail()">✕</div>'+rotBtn+img+'</div>'+
     '<div class="detail-body">'+
     '<div class="detail-type-badge '+w.type+'">'+w.type.charAt(0).toUpperCase()+w.type.slice(1)+' Wine</div>'+
     '<div class="detail-name"><a href="'+url+'" target="_blank" title="Search on Vivino">'+escHtml(w.wine)+'</a></div>'+
@@ -963,7 +963,7 @@ function _renderDetail(idx) {
     '<div class="detail-meta-item"><div class="dm-label">Region</div><div class="dm-value">'+(w.region?escHtml(w.region):'—')+'</div></div>'+
     '<div class="detail-meta-item"><div class="dm-label">Type</div><div class="dm-value" style="text-transform:capitalize">'+w.type+'</div></div>'+
     '<div class="detail-meta-item"><div class="dm-label">Grape</div><div class="dm-value">'+escHtml(w.grape||'Unknown')+'</div></div>'+
-    '</div></div>' + navBar;
+    '</div></div>';
   ov.style.display='block';document.body.style.overflow='hidden';
 }
 
@@ -972,21 +972,24 @@ function navDetail(dir) {
   if (_detailCurrentPos < 0) _detailCurrentPos = 0;
   if (_detailCurrentPos >= _detailFilteredList.length) _detailCurrentPos = _detailFilteredList.length - 1;
   _renderDetail(_detailFilteredList[_detailCurrentPos]);
+  document.getElementById('wineDetail').scrollTop = 0;
 }
 
 // Swipe navigation in detail view
-(function() {
-  var sx = 0, sy = 0;
-  var ov = document.getElementById('wineDetail');
-  ov.addEventListener('touchstart', function(e) { sx = e.touches[0].clientX; sy = e.touches[0].clientY; }, { passive: true });
-  ov.addEventListener('touchend', function(e) {
-    var dx = e.changedTouches[0].clientX - sx;
-    var dy = e.changedTouches[0].clientY - sy;
-    if (Math.abs(dx) > 60 && Math.abs(dx) > Math.abs(dy) * 1.5) {
-      if (dx < 0) navDetail(1); else navDetail(-1);
-    }
-  });
-})();
+var _swipeX = 0, _swipeY = 0;
+document.getElementById('wineDetail').addEventListener('touchstart', function(e) {
+  _swipeX = e.touches[0].clientX;
+  _swipeY = e.touches[0].clientY;
+}, { passive: true });
+document.getElementById('wineDetail').addEventListener('touchend', function(e) {
+  if (document.getElementById('wineDetail').style.display !== 'block') return;
+  if (_detailFilteredList.length <= 1) return;
+  var dx = e.changedTouches[0].clientX - _swipeX;
+  var dy = e.changedTouches[0].clientY - _swipeY;
+  if (Math.abs(dx) > 50 && Math.abs(dx) > Math.abs(dy)) {
+    if (dx < 0) navDetail(1); else navDetail(-1);
+  }
+});
 function closeDetail() {
   document.getElementById('wineDetail').style.display='none';
   document.body.style.overflow='';
