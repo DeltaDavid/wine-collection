@@ -1,4 +1,4 @@
-const CACHE_NAME = 'wine-collection-v2';
+const CACHE_NAME = 'wine-collection-v3';
 const FILES_TO_CACHE = [
   '/',
   '/wine_collection.html',
