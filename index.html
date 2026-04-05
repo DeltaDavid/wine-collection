@@ -342,6 +342,25 @@ input[type="text"], select, textarea { font-size: 16px; }
 </style>
 </head>
 <body>
+<script>
+// App version - bump this on every deploy to force PWA cache clear
+var APP_VERSION = '4.1';
+(function() {
+  var stored = localStorage.getItem('wine_app_version');
+  if (stored !== APP_VERSION && 'serviceWorker' in navigator) {
+    localStorage.setItem('wine_app_version', APP_VERSION);
+    caches.keys().then(function(names) {
+      return Promise.all(names.map(function(n) { return caches.delete(n); }));
+    }).then(function() {
+      return navigator.serviceWorker.getRegistrations();
+    }).then(function(regs) {
+      return Promise.all(regs.map(function(r) { return r.unregister(); }));
+    }).then(function() {
+      if (stored) location.reload(true);
+    });
+  }
+})();
+</script>
 <div class="top-fixed">
 <div class="menubar">
   <div class="menu-item"><span>File</span>
