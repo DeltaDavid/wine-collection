@@ -197,7 +197,11 @@ body.dark .header h1 { color: #e8edf8; }
 .wine-detail-overlay input[type="text"], .wine-detail-overlay select { color: var(--input-text); background: var(--input-bg); border-color: var(--border2); }
 .wine-detail-overlay select option { color: var(--input-text); background: var(--input-bg); }
 .wine-detail-overlay input::placeholder { color: var(--text3); }
-.wine-detail { max-width: 680px; margin: 40px auto; background: var(--detail-bg); border-radius: 24px; overflow: hidden; border: 1px solid var(--border); box-shadow: 0 20px 60px rgba(0,0,0,0.25); }
+.wine-detail { max-width: 680px; margin: 40px auto; background: var(--detail-bg); border-radius: 24px; overflow: hidden; border: 1px solid var(--border); box-shadow: 0 20px 60px rgba(0,0,0,0.25); transition: transform 0.25s ease-out, opacity 0.25s ease-out; }
+.wine-detail.slide-left { animation: slideLeft 0.25s ease-out; }
+.wine-detail.slide-right { animation: slideRight 0.25s ease-out; }
+@keyframes slideLeft { from { transform: translateX(60px); opacity: 0; } to { transform: translateX(0); opacity: 1; } }
+@keyframes slideRight { from { transform: translateX(-60px); opacity: 0; } to { transform: translateX(0); opacity: 1; } }
 .detail-close { position: absolute; top: 14px; right: 18px; font-size: 26px; color: var(--text3); cursor: pointer; z-index: 10; background: var(--surface); border-radius: 50%; width: 38px; height: 38px; display: flex; align-items: center; justify-content: center; transition: color 0.2s; }
 .detail-close:hover { color: var(--text); }
 .detail-nav-bar { position: sticky; top: 0; z-index: 11; display: flex; justify-content: space-between; align-items: center; padding: 10px 16px; background: var(--surface); border-bottom: 1px solid var(--border); }
@@ -344,7 +348,7 @@ input[type="text"], select, textarea { font-size: 16px; }
 <body>
 <script>
 // App version - bump this on every deploy to force PWA cache clear
-var APP_VERSION = '4.1';
+var APP_VERSION = '4.2';
 (function() {
   var stored = localStorage.getItem('wine_app_version');
   if (stored !== APP_VERSION && 'serviceWorker' in navigator) {
@@ -994,9 +998,14 @@ function _renderDetail(idx) {
 }
 
 function navDetail(dir) {
-  _detailCurrentPos += dir;
-  if (_detailCurrentPos < 0) _detailCurrentPos = 0;
-  if (_detailCurrentPos >= _detailFilteredList.length) _detailCurrentPos = _detailFilteredList.length - 1;
+  var newPos = _detailCurrentPos + dir;
+  if (newPos < 0 || newPos >= _detailFilteredList.length) return;
+  _detailCurrentPos = newPos;
+  var card = document.getElementById('wineDetailContent');
+  var anim = dir > 0 ? 'slide-left' : 'slide-right';
+  card.classList.remove('slide-left', 'slide-right');
+  void card.offsetWidth;
+  card.classList.add(anim);
   _renderDetail(_detailFilteredList[_detailCurrentPos]);
   document.getElementById('wineDetail').scrollTop = 0;
 }
