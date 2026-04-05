@@ -1337,7 +1337,8 @@ buildMsDropdown(document.getElementById('typeList'), document.getElementById('ty
 buildMsDropdown(document.getElementById('grapeList'), document.getElementById('grapeBtn'), allGrapes, selectedGrapes, 'All Grapes', updateGrapeBtn, render);
 render();
 
-// Service worker registration - updateViaCache 'none' forces browser to always check for new SW
+// Service worker: register the self-destruct SW to kill any old cached versions
+// Once all users have cleared, this block can be removed entirely
 if ('serviceWorker' in navigator) {
   navigator.serviceWorker.register('wine_sw.js', { updateViaCache: 'none' }).then(function(reg) {
     reg.update();
