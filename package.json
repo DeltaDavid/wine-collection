@@ -1,0 +1,18 @@
+{
+  "name": "david-wine",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Personal wine collection browser PWA",
+  "scripts": {
+    "lint": "eslint --ext .html,.js .",
+    "lint:fix": "eslint --ext .html,.js . --fix",
+    "format": "prettier --write '**/*.{html,css,js,json,md}'",
+    "format:check": "prettier --check '**/*.{html,css,js,json,md}'",
+    "validate": "npm run lint && npm run format:check"
+  },
+  "devDependencies": {
+    "eslint": "^8.57.0",
+    "eslint-plugin-html": "^8.0.0",
+    "prettier": "^3.2.0"
+  }
+}
