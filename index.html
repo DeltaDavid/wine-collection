@@ -1623,7 +1623,7 @@ function saveNewWine() {
 }
 // Restore user-added wines from localStorage
 try {
-  let saved = localStorage.getItem('wine_user_additions');
+  const saved = localStorage.getItem('wine_user_additions');
   if (saved) {
     JSON.parse(saved).forEach(function(w) { w._added = true; wines.push(w); });
   }
