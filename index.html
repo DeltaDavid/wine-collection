@@ -358,9 +358,21 @@ input[type="text"], select, textarea { font-size: 16px; }
   .wine-table td { color: black; border-bottom: 1px solid #ccc; }
   .card { break-inside: avoid; box-shadow: none; border: 1px solid #ccc; }
 }
+
+/* ── Splash overlay ── */
+#wine-splash {
+  position: fixed; inset: 0; z-index: 9999;
+  background: #f5f5f7;
+  display: flex; align-items: center; justify-content: center;
+  opacity: 1; transition: opacity 0.4s ease;
+  pointer-events: none;
+}
+#wine-splash.fade { opacity: 0; }
+#wine-splash img { width: 30vmin; height: 30vmin; object-fit: contain; }
 </style>
 </head>
 <body>
+<div id="wine-splash"><img src="wine_icon_512.png" alt=""></div>
 <script>
 // App version - bump this on every deploy to force PWA cache clear
 const APP_VERSION = '4.2';
@@ -1647,6 +1659,16 @@ try {
 document.addEventListener('keydown', function(e) {
   if ((e.metaKey || e.ctrlKey) && e.key === 'n') { e.preventDefault(); openAddWine(); }
 });
+</script>
+<script>
+(function() {
+  const s = document.getElementById('wine-splash');
+  if (!s) return;
+  setTimeout(function() {
+    s.classList.add('fade');
+    setTimeout(function() { s.remove(); }, 450);
+  }, 1200);
+})();
 </script>
 </body>
 </html>
