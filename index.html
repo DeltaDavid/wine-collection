@@ -1651,7 +1651,12 @@ function saveNewWine() {
 try {
   const saved = localStorage.getItem('wine_user_additions');
   if (saved) {
-    JSON.parse(saved).forEach(function(w) { w._added = true; wines.push(w); });
+    JSON.parse(saved).forEach(function(w) {
+      w._added = true; wines.push(w);
+      if (w.grape && w.grape !== 'Unknown' && !allGrapes.includes(w.grape)) { allGrapes.push(w.grape); allGrapes.sort(); selectedGrapes.add(w.grape); }
+      if (w.type && w.type !== 'Unknown' && !allTypes.includes(w.type)) { allTypes.push(w.type); activeTypes.add(w.type); }
+    });
+    invalidateFilterCache(); render();
   }
 } catch(e) {}
 
