@@ -1,3 +1,9 @@
+# Secret-file exclusions (Code Share / P&S, 2026-10-27)
+.env
+.env.*
+.dev.vars
+.dev.vars.*
+
 node_modules/
 .wrangler/
 *.bak
